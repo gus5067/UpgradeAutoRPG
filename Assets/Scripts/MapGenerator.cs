@@ -18,12 +18,9 @@ public class MapGenerator : MonoBehaviour
     {
         mapCube = curMap.tilePrefab.gameObject;
         mapSize = curMap.tileSize;
+        CreateGrid();
     }
 
-    private void Start()
-    {
-        CreateGrid();   
-    }
     public void CreateGrid()
     {
         if (parentGrid != null)
