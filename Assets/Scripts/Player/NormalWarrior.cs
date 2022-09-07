@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NormalWarrior : MonoBehaviour
 {
-    public enum State { Idle, Trace, Attack, RunAway, Hit, Die }
+    public enum State { Idle, Trace, Attack, Stun, Die }
     private StateMachine<State, NormalWarrior> stateMachine;
 
     [SerializeField]
@@ -38,8 +38,7 @@ public class NormalWarrior : MonoBehaviour
         stateMachine.AddState(State.Idle, new NormalWarriorStates.IdleState());
         stateMachine.AddState(State.Trace, new NormalWarriorStates.TraceState());
         stateMachine.AddState(State.Attack, new NormalWarriorStates.AttackState());
-        stateMachine.AddState(State.RunAway, new NormalWarriorStates.StunState());
-        stateMachine.AddState(State.Hit, new NormalWarriorStates.HitState());
+        stateMachine.AddState(State.Stun, new NormalWarriorStates.StunState());
         stateMachine.AddState(State.Die, new NormalWarriorStates.DieState());
 
         stateMachine.ChangeState(State.Idle);
