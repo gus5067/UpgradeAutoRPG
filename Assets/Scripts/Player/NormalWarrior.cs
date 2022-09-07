@@ -14,9 +14,9 @@ public class NormalWarrior : MonoBehaviour
     private float _attackRange;
     public float attackRange { get { return _attackRange; } }
 
-    [SerializeField, Range(0f, 10f)]
-    private float _RunRange;
-    public float RunRange { get { return _RunRange; } }
+    //[SerializeField, Range(0f, 10f)]
+    //private float _RunRange;
+    //public float RunRange { get { return _RunRange; } }
 
     [SerializeField, Range(0f, 10f)]
     private float _moveSpeed;
@@ -30,7 +30,7 @@ public class NormalWarrior : MonoBehaviour
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
+        _animator = GetComponentInChildren<Animator>();
         _characterController = GetComponent<CharacterController>();
 
         stateMachine = new StateMachine<State, NormalWarrior>(this);
@@ -38,7 +38,7 @@ public class NormalWarrior : MonoBehaviour
         stateMachine.AddState(State.Idle, new NormalWarriorStates.IdleState());
         stateMachine.AddState(State.Trace, new NormalWarriorStates.TraceState());
         stateMachine.AddState(State.Attack, new NormalWarriorStates.AttackState());
-        stateMachine.AddState(State.RunAway, new NormalWarriorStates.RunAwayState());
+        stateMachine.AddState(State.RunAway, new NormalWarriorStates.StunState());
         stateMachine.AddState(State.Hit, new NormalWarriorStates.HitState());
         stateMachine.AddState(State.Die, new NormalWarriorStates.DieState());
 
@@ -59,8 +59,5 @@ public class NormalWarrior : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _attackRange);
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, _RunRange);
     }
 }

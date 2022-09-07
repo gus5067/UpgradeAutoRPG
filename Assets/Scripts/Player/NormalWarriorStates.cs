@@ -84,7 +84,7 @@ namespace NormalWarriorStates
         }
     }
 
-    public class RunAwayState : BaseState
+    public class StunState : BaseState
     {
         public override void Enter(NormalWarrior Owner)
         {
