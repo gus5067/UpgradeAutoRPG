@@ -12,7 +12,7 @@ public class MapGenerator : MonoBehaviour
     private GameObject parentGrid;
     private Vector2 mapSize;
 
-    Node[,] grid;
+    public Node[,] grid;
 
     private void Awake()
     {
