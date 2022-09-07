@@ -29,12 +29,22 @@ namespace NormalWarriorStates
     {
         public override void Enter(NormalWarrior Owner)
         {
-      
         }
 
         public override void Update(NormalWarrior Owner)
         {
-     
+            GameObject findtarget;
+            Collider[] targets = Physics.OverlapSphere(Owner.transform.position, Owner.findRange, Owner.targetLayerMask);
+            if (targets.Length > 0)
+            {
+                findtarget = targets[0].gameObject;
+                Owner.ChangeState(NormalWarrior.State.Trace);
+                return;
+            }
+            else
+            {
+                findtarget = null;
+            }
 
         }
 
@@ -48,17 +58,48 @@ namespace NormalWarriorStates
     {
         public override void Enter(NormalWarrior Owner)
         {
-
+            Owner.animator.SetBool("isRun", true);
         }
 
         public override void Update(NormalWarrior Owner)
         {
-          
+            //몬스터 추적
+            GameObject traceTarget = null;
+            Collider[] targets = Physics.OverlapSphere(Owner.transform.position, Owner.attackRange, Owner.targetLayerMask);
+            if (targets.Length > 0)
+            {
+                traceTarget = targets[0].gameObject;
+                Owner.ChangeState(NormalWarrior.State.Attack);
+                return;
+            }
+            if (traceTarget == null)
+            {
+                Owner.ChangeState(NormalWarrior.State.Idle);
+                return;
+            }
+
+            Vector3 moveDir = traceTarget.transform.position - Owner.transform.position;
+            Owner.characterController.Move(new Vector3(moveDir.x, 0, moveDir.z).normalized * Time.deltaTime * Owner.moveSpeed);
+            Owner.transform.LookAt(traceTarget.transform.position);
+
+            //몬스터 공격
+            GameObject attackTarget;
+            Collider[] attackTargets = Physics.OverlapSphere(Owner.transform.position, Owner.attackRange, Owner.targetLayerMask);
+            if (targets.Length > 0)
+            {
+                attackTarget = targets[0].gameObject;
+                Owner.ChangeState(NormalWarrior.State.Attack);
+                return;
+            }
+            else
+            {
+                attackTarget = null;
+            }
         }
 
-        public override void Exit(NormalWarrior Onwer)
+        public override void Exit(NormalWarrior Owner)
         {
-
+            Owner.animator.SetBool("isRun", false);
         }
     }
 
@@ -66,7 +107,7 @@ namespace NormalWarriorStates
     {
         public override void Enter(NormalWarrior Owner)
         {
-      
+           
         }
 
         public override void Update(NormalWarrior Owner)

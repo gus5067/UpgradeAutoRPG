@@ -14,9 +14,9 @@ public class NormalWarrior : MonoBehaviour
     private float _attackRange;
     public float attackRange { get { return _attackRange; } }
 
-    //[SerializeField, Range(0f, 10f)]
-    //private float _RunRange;
-    //public float RunRange { get { return _RunRange; } }
+    [SerializeField, Range(0f, 10f)]
+    private float _findRange;
+    public float findRange { get { return _findRange; } }
 
     [SerializeField, Range(0f, 10f)]
     private float _moveSpeed;
@@ -59,5 +59,8 @@ public class NormalWarrior : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _attackRange);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, _findRange);
     }
 }
