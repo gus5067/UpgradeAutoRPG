@@ -12,17 +12,19 @@ public class MapGenerator : MonoBehaviour
     private GameObject parentGrid;
     private Vector2 mapSize;
 
-    Node[,] grid;
+    [SerializeField]
+    private GameObject testPlayer;
+
+    [SerializeField]
+    private GameObject testMonster;
+
+    public Node[,] grid;
 
     private void Awake()
     {
         mapCube = curMap.tilePrefab.gameObject;
         mapSize = curMap.tileSize;
-    }
-
-    private void Start()
-    {
-        CreateGrid();   
+        CreateGrid();
     }
     public void CreateGrid()
     {
@@ -44,5 +46,6 @@ public class MapGenerator : MonoBehaviour
             }
         }
     }
+
 
 }
