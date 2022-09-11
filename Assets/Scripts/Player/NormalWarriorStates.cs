@@ -21,6 +21,10 @@ namespace NormalWarriorStates
 
         public override void HandleStateChange(NormalWarrior Owner)
         {
+            if (Owner.characterController.isGrounded == false)
+            {
+                Owner.characterController.Move(new Vector3(Owner.transform.position.x, Physics.gravity.y, Owner.transform.position.z).normalized * Time.deltaTime);
+            }
 
         }
     }
@@ -95,7 +99,7 @@ namespace NormalWarriorStates
             }
 
             Vector3 moveDir = traceTarget.transform.position - Owner.transform.position;
-            Owner.characterController.Move(new Vector3(moveDir.x, 0, moveDir.z).normalized * Time.deltaTime * Owner.moveSpeed);
+            Owner.characterController.Move(new Vector3(moveDir.x, Physics.gravity.y, moveDir.z).normalized * Time.deltaTime * Owner.moveSpeed);
             Owner.transform.LookAt(traceTarget.transform.position);
 
             

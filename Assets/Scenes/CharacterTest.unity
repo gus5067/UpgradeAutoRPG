@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curMap: {fileID: 11400000, guid: db555f39f70cc49419b4c58dd310fa56, type: 2}
-  unvisibleWall: {fileID: 1870781243438164727, guid: 4655a11b0c6f2494788192d7abc83fca, type: 3}
+  unvisibleWall: {fileID: 1643719497323972, guid: 7553277937e95b8409cfc49371f69ec7, type: 3}
   testPlayer: {fileID: 0}
   testMonster: {fileID: 0}
 --- !u!4 &1144476795

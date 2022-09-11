@@ -54,6 +54,7 @@ public class NormalWarrior : MonoBehaviour
         stateMachine.ChangeState(nextState);
     }
 
+  
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
