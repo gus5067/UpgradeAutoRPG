@@ -9,6 +9,9 @@ public class MapGenerator : MonoBehaviour
 
     private GameObject mapCube;
 
+    [SerializeField]
+    private GameObject unvisibleWall;
+
     private GameObject parentGrid;
     private Vector2 mapSize;
 
@@ -45,6 +48,21 @@ public class MapGenerator : MonoBehaviour
                 grid[x, y] = new Node(obj, true, x, y);
             }
         }
+
+        for (int y = 0; y < (int)mapSize.y; y++)
+        {
+            Vector3 wallPoint = worldBottomLeft + Vector3.right * (0.5f) + Vector3.forward * (y + 0.5f);
+            GameObject leftWall = Instantiate(unvisibleWall, wallPoint - Vector3.right, Quaternion.identity);
+            GameObject  rightWall= Instantiate(unvisibleWall, wallPoint + Vector3.right * (mapSize.x), Quaternion.identity);
+        }
+
+        for (int x = 0; x < (int)mapSize.x; x++)
+        {
+            Vector3 wallPoint = worldBottomLeft + Vector3.right * (x + 0.5f) + Vector3.forward * (0.5f);
+            GameObject leftWall = Instantiate(unvisibleWall, wallPoint - Vector3.forward, Quaternion.identity);
+            GameObject rightWall = Instantiate(unvisibleWall, wallPoint + Vector3.forward * (mapSize.y), Quaternion.identity);
+        }
+
     }
 
 
