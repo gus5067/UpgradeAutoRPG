@@ -9,7 +9,7 @@ public class Monster : MonoBehaviour,IDamageable
     private float initHp;
     private HpController hpController;
 
-    public event UnityAction<float> OnChangeHp;
+    public event UnityAction<float> onChangeHp;
 
     private void Start()
     {
@@ -22,7 +22,7 @@ public class Monster : MonoBehaviour,IDamageable
     public void HitDamage(float damage)
     {
         hp -= damage;
-        OnChangeHp?.Invoke(hp);
+        onChangeHp?.Invoke(hp);
 
     }
 }

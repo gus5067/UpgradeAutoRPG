@@ -16,6 +16,13 @@ public class HpController : MonoBehaviour
 
     private Slider hpSlider;
 
+    private Monster monster;
+
+    private void Awake()
+    {
+        monster = GetComponent<Monster>();
+        monster.onChangeHp += OnChangeHp;
+    }
     private void Start()
     {
         SetHpBar();
@@ -36,4 +43,12 @@ public class HpController : MonoBehaviour
 
         _hpBar.offset = hpBarOffset;
     }
+
+    private void OnChangeHp(float hp)
+    {
+        this.hp = hp;
+        hpSlider.value = this.hp/this.initHp;
+    }
+    
+
 }
