@@ -16,9 +16,6 @@ public class MapGenerator : MonoBehaviour
     private Vector2 mapSize;
 
     [SerializeField]
-    private GameObject testPlayer;
-
-    [SerializeField]
     private GameObject testMonster;
 
     //public Node[,] grid;

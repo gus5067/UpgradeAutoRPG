@@ -63,7 +63,7 @@ namespace NormalWarriorStates
     {
         public override void Enter(NormalWarrior Owner)
         {
-            Owner.animator.SetBool("isRun", true);
+           
         }
 
         public override void Update(NormalWarrior Owner)
@@ -87,6 +87,7 @@ namespace NormalWarriorStates
             if (targets.Length > 0)
             {
                 traceTarget = targets[0].gameObject;
+                Owner.animator.SetBool("isRun", true);
             }
             else
             {
@@ -136,6 +137,22 @@ namespace NormalWarriorStates
 
         IEnumerator AttackTime(NormalWarrior Owner)
         {
+            GameObject attackTarget;
+
+            Collider[] attackTargets = Physics.OverlapSphere(Owner.transform.position, Owner.attackRange, Owner.targetLayerMask);
+            if (attackTargets.Length > 0)
+            {
+
+                IDamageable monster;
+                attackTarget = attackTargets[0].gameObject;
+                monster = attackTarget.GetComponent<IDamageable>();
+                if (monster != null)
+                {
+                    monster.HitDamage(10f);
+                }
+
+
+            }
             yield return new WaitForSeconds(1.0f);
             Owner.ChangeState(NormalWarrior.State.Idle);
         }
