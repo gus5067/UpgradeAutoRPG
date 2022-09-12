@@ -33,11 +33,11 @@ public class StateMachine<T1, T2> where T2 : MonoBehaviour
         if (curState != null)
         {
             curState.Exit(Owner);
-            Debug.Log("상태 : " + curState + "종료");
+            //Debug.Log("상태 : " + curState + "종료");
         }
         curState = states[type];
         curState.Enter(Owner);
-        Debug.Log("현재 상태 : " + curState + "시작");
+        //Debug.Log("현재 상태 : " + curState + "시작");
     }
 }
 

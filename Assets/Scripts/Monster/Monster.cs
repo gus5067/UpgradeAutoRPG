@@ -11,7 +11,7 @@ public class Monster : MonoBehaviour,IDamageable
 
     public event UnityAction<float> onChangeHp;
 
-    private void Start()
+    private void Awake()
     {
         hpController = GetComponent<HpController>();
 

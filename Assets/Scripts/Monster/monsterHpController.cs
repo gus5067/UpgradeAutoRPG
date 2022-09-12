@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class HpController : MonoBehaviour
+public class monsterHpController : MonoBehaviour
 {
     public float hp;
 
@@ -16,11 +16,11 @@ public class HpController : MonoBehaviour
 
     private Slider hpSlider;
 
-    private NormalWarrior hpWarrior;
+    private Grunt hpGrunt;
     private void Awake()
     {
-        hpWarrior = GetComponent<NormalWarrior>();
-        hpWarrior.onChangeHp += OnChangeHp;
+        hpGrunt= GetComponent<Grunt>();
+        hpGrunt.onChangeHp += OnChangeHp;
     }
     private void Start()
     {

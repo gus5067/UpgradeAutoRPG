@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
-
-public class NormalWarrior : MonoBehaviour,IDamageable
+public class Grunt : MonoBehaviour,IDamageable
 {
-    public enum State {Idle, Trace, Attack, Stun, Die }
-    private StateMachine<State, NormalWarrior> stateMachine;
+    public enum State { Idle, Trace, Attack, Stun, Die }
+    private StateMachine<State, Grunt> stateMachine;
 
 
     [SerializeField]
@@ -36,30 +34,28 @@ public class NormalWarrior : MonoBehaviour,IDamageable
 
     public bool isGround;
 
-
     private float hp;
     private float initHp;
-    private HpController hpController;
+    private monsterHpController hpController;
 
     public event UnityAction<float> onChangeHp;
 
     private void Awake()
     {
-        _animator = GetComponentInChildren<Animator>();
+        _animator = GetComponent<Animator>();
         _characterController = GetComponent<CharacterController>();
         groundChecker = GetComponent<GroundChecker>();
-        stateMachine = new StateMachine<State, NormalWarrior>(this);
+        stateMachine = new StateMachine<State, Grunt>(this);
 
-        stateMachine.AddState(State.Idle, new NormalWarriorStates.IdleState());
-        stateMachine.AddState(State.Trace, new NormalWarriorStates.TraceState());
-        stateMachine.AddState(State.Attack, new NormalWarriorStates.AttackState());
-        stateMachine.AddState(State.Stun, new NormalWarriorStates.StunState());
-        stateMachine.AddState(State.Die, new NormalWarriorStates.DieState());
+        stateMachine.AddState(State.Idle, new GruntStates.IdleState());
+        stateMachine.AddState(State.Trace, new GruntStates.TraceState());
+        stateMachine.AddState(State.Attack, new GruntStates.AttackState());
+        stateMachine.AddState(State.Stun, new GruntStates.StunState());
+        stateMachine.AddState(State.Die, new GruntStates.DieState());
 
         stateMachine.ChangeState(State.Idle);
 
-
-        hpController = GetComponent<HpController>();
+        hpController = GetComponent<monsterHpController>();
 
         hp = hpController.hp;
         initHp = hpController.initHp;
@@ -84,7 +80,7 @@ public class NormalWarrior : MonoBehaviour,IDamageable
         stateMachine.ChangeState(nextState);
     }
 
-  
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
