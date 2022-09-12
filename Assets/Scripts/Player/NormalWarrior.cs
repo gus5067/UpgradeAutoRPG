@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NormalWarrior : MonoBehaviour
 {
     public enum State {Idle, Trace, Attack, Stun, Die }
     private StateMachine<State, NormalWarrior> stateMachine;
+
 
     [SerializeField]
     private LayerMask _targetLayerMask;

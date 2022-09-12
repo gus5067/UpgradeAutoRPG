@@ -116,10 +116,8 @@ namespace NormalWarriorStates
 
     public class AttackState : BaseState
     {
-        private bool isAttack;
         public override void Enter(NormalWarrior Owner)
         {
-           isAttack = true;
         }
 
         public override void Update(NormalWarrior Owner)
