@@ -116,9 +116,10 @@ namespace NormalWarriorStates
 
     public class AttackState : BaseState
     {
+        private bool isAttack;
         public override void Enter(NormalWarrior Owner)
         {
-           
+           isAttack = true;
         }
 
         public override void Update(NormalWarrior Owner)
@@ -137,28 +138,12 @@ namespace NormalWarriorStates
 
         IEnumerator AttackTime(NormalWarrior Owner)
         {
-            GameObject attackTarget;
-
-            Collider[] attackTargets = Physics.OverlapSphere(Owner.transform.position, Owner.attackRange, Owner.targetLayerMask);
-            if (attackTargets.Length > 0)
-            {
-
-                IDamageable monster;
-                attackTarget = attackTargets[0].gameObject;
-                monster = attackTarget.GetComponent<IDamageable>();
-                if (monster != null)
-                {
-                    monster.HitDamage(10f);
-                }
-
-
-            }
             yield return new WaitForSeconds(1.0f);
             Owner.ChangeState(NormalWarrior.State.Idle);
         }
     }
 
-    public class StunState : BaseState
+public class StunState : BaseState
     {
         public override void Enter(NormalWarrior Owner)
         {
