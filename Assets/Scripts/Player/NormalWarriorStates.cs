@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace NormalWarriorStates
 {
+
     public class BaseState : State<NormalWarrior>
     {
         public override void Enter(NormalWarrior Owner)
@@ -12,6 +13,7 @@ namespace NormalWarriorStates
 
         public override void Update(NormalWarrior Owner)
         {
+
         }
 
         public override void Exit(NormalWarrior Owner)
@@ -21,11 +23,10 @@ namespace NormalWarriorStates
 
         public override void HandleStateChange(NormalWarrior Owner)
         {
-            if (Owner.characterController.isGrounded == false)
+            if(!Owner.isGround)
             {
-                Owner.characterController.Move(new Vector3(Owner.transform.position.x, Physics.gravity.y, Owner.transform.position.z).normalized * Time.deltaTime);
+                Owner.characterController.Move(new Vector3(0, Physics.gravity.y, 0).normalized * Time.deltaTime);
             }
-
         }
     }
 
@@ -100,7 +101,7 @@ namespace NormalWarriorStates
 
             Vector3 moveDir = traceTarget.transform.position - Owner.transform.position;
             Owner.characterController.Move(new Vector3(moveDir.x, Physics.gravity.y, moveDir.z).normalized * Time.deltaTime * Owner.moveSpeed);
-            Owner.transform.LookAt(traceTarget.transform.position);
+            Owner.transform.LookAt(new Vector3(traceTarget.transform.position.x, Owner.transform.position.y, traceTarget.transform.position.z));
 
             
            
@@ -125,10 +126,12 @@ namespace NormalWarriorStates
             Owner.animator.SetTrigger("Attack");
             Owner.animator.SetInteger("randomAttack", randomNum);
             Owner.StartCoroutine(AttackTime(Owner));
+
         }
 
         public override void Exit(NormalWarrior Owner)
         {
+            Owner.animator.ResetTrigger("Attack");
         }
 
         IEnumerator AttackTime(NormalWarrior Owner)

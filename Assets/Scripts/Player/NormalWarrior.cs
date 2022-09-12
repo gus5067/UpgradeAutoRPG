@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NormalWarrior : MonoBehaviour
 {
-    public enum State { Idle, Trace, Attack, Stun, Die }
+    public enum State {Idle, Trace, Attack, Stun, Die }
     private StateMachine<State, NormalWarrior> stateMachine;
 
     [SerializeField]
@@ -22,17 +22,22 @@ public class NormalWarrior : MonoBehaviour
     private float _moveSpeed;
     public float moveSpeed { get { return _moveSpeed; } }
 
+    [SerializeField]
+    private GroundChecker groundChecker;
+
     private Animator _animator;
     public Animator animator { get { return _animator; } }
 
     private CharacterController _characterController;
     public CharacterController characterController { get { return _characterController; } }
 
+    public bool isGround;
+
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
         _characterController = GetComponent<CharacterController>();
-
+        groundChecker = GetComponent<GroundChecker>();
         stateMachine = new StateMachine<State, NormalWarrior>(this);
 
         stateMachine.AddState(State.Idle, new NormalWarriorStates.IdleState());
@@ -46,6 +51,15 @@ public class NormalWarrior : MonoBehaviour
     private void Update()
     {
         stateMachine.Update();
+        if (groundChecker.IsGrounded)
+        {
+            isGround = true;
+        }
+        else
+        {
+
+            isGround = false;
+        }
     }
 
 
@@ -63,4 +77,5 @@ public class NormalWarrior : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, _findRange);
     }
+
 }
