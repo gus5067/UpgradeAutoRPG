@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapGenerator : MonoBehaviour
+public class MapGenerator : Singleton<MapGenerator>
 {
     [SerializeField]
     private MapData curMap;
@@ -15,9 +15,9 @@ public class MapGenerator : MonoBehaviour
     private GameObject parentGrid;
     private Vector2 mapSize;
 
-    [SerializeField]
-    private GameObject testMonster;
-
+    public Vector3 monsterPoint;
+    public Vector3 monsterPoint2;
+    public Vector3 monsterPoint3;
     //public Node[,] grid;
 
     private void Awake()
@@ -25,6 +25,9 @@ public class MapGenerator : MonoBehaviour
         mapCube = curMap.tilePrefab.gameObject;
         mapSize = curMap.tileSize;
         CreateGrid();
+        monsterPoint = Vector3.zero + Vector3.forward * (mapSize.y * 0.25f);
+        monsterPoint2 = Vector3.zero + Vector3.forward * (mapSize.y * 0.25f) + Vector3.right * (mapSize.x * 0.25f);
+        monsterPoint3 = Vector3.zero + Vector3.forward * (mapSize.y * 0.25f) - Vector3.right * (mapSize.x * 0.25f);
     }
     public void CreateGrid()
     {
@@ -33,7 +36,7 @@ public class MapGenerator : MonoBehaviour
         parentGrid = new GameObject("parentGrid");
 
         //grid = new Node[(int)mapSize.x, (int)mapSize.y];
-        Vector3 worldBottomLeft = Vector3.zero - Vector3.right * mapSize.x / 2 - Vector3.forward * mapSize.y / 2;
+        Vector3 worldBottomLeft = Vector3.zero - Vector3.right * mapSize.x *0.5f - Vector3.forward * mapSize.y *0.5f;
 
         for (int x = 0; x < (int)mapSize.x; x++)
         {
@@ -65,6 +68,5 @@ public class MapGenerator : MonoBehaviour
         }
 
     }
-
 
 }
