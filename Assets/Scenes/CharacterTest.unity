@@ -426,6 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 987499d46187dd2468ff6a54fb806c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageTextPrefab: {fileID: 3819743118781976203, guid: 507660ee4a7f9ff45b5fccf77ef7864b, type: 3}
 --- !u!4 &681978893
 Transform:
   m_ObjectHideFlags: 0
