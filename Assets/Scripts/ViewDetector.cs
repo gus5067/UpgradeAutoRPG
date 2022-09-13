@@ -20,7 +20,7 @@ public class ViewDetector : MonoBehaviour
     public void FindTarget()
     {
         Collider[] targets = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
-        if(targets.Length <= 0)
+        if(targets.Length < 1)
         {
             target = null;
             return;

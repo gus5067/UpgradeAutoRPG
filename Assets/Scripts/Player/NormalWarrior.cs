@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class NormalWarrior : MonoBehaviour,IDamageable
+public class NormalWarrior : Player,IDamageable
 {
     public enum State {Idle, Trace, Attack, Stun, Die }
     private StateMachine<State, NormalWarrior> stateMachine;
@@ -36,13 +36,6 @@ public class NormalWarrior : MonoBehaviour,IDamageable
 
     public bool isGround;
 
-
-    private float hp;
-    private float initHp;
-    private HpController hpController;
-
-    public event UnityAction<float> onChangeHp;
-
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
@@ -57,12 +50,6 @@ public class NormalWarrior : MonoBehaviour,IDamageable
         stateMachine.AddState(State.Die, new NormalWarriorStates.DieState());
 
         stateMachine.ChangeState(State.Idle);
-
-
-        hpController = GetComponent<HpController>();
-
-        hp = hpController.hp;
-        initHp = hpController.initHp;
     }
     private void Update()
     {
@@ -92,11 +79,5 @@ public class NormalWarrior : MonoBehaviour,IDamageable
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, _findRange);
-    }
-
-    public void HitDamage(float damage)
-    {
-        hp -= damage;
-        onChangeHp?.Invoke(hp);
     }
 }

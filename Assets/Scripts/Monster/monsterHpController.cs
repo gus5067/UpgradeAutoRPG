@@ -16,11 +16,11 @@ public class monsterHpController : MonoBehaviour
 
     private Slider hpSlider;
 
-    private Grunt hpGrunt;
+    private Monster hpMonster;
     private void Awake()
     {
-        hpGrunt= GetComponent<Grunt>();
-        hpGrunt.onChangeHp += OnChangeHp;
+        hpMonster = GetComponent<Monster>();
+        hpMonster.onChangeHp += OnChangeHp;
     }
     private void Start()
     {

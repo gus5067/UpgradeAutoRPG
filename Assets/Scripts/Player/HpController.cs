@@ -16,11 +16,11 @@ public class HpController : MonoBehaviour
 
     private Slider hpSlider;
 
-    private NormalWarrior hpWarrior;
+    private Player hpPlayer;
     private void Awake()
     {
-        hpWarrior = GetComponent<NormalWarrior>();
-        hpWarrior.onChangeHp += OnChangeHp;
+        hpPlayer = GetComponent<Player>();
+        hpPlayer.onChangeHp += OnChangeHp;
     }
     private void Start()
     {
@@ -47,6 +47,8 @@ public class HpController : MonoBehaviour
     {
         this.hp = hp;
         hpSlider.value = this.hp/this.initHp;
+
+        Debug.Log("현재 체력 : " + this.hp);
     }
     
 

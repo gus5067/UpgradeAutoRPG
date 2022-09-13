@@ -116,17 +116,17 @@ namespace NormalWarriorStates
 
     public class AttackState : BaseState
     {
+        private bool isAttacking;
         public override void Enter(NormalWarrior Owner)
         {
         }
 
         public override void Update(NormalWarrior Owner)
         {
-            int randomNum = Random.Range(1, 6);
-            Owner.animator.SetTrigger("Attack");
-            Owner.animator.SetInteger("randomAttack", randomNum);
-            Owner.StartCoroutine(AttackTime(Owner));
-
+            if(isAttacking == false)
+            {
+                Owner.StartCoroutine(AttackTime(Owner));
+            }
         }
 
         public override void Exit(NormalWarrior Owner)
@@ -136,6 +136,9 @@ namespace NormalWarriorStates
 
         IEnumerator AttackTime(NormalWarrior Owner)
         {
+            int randomNum = Random.Range(1, 6);
+            Owner.animator.SetTrigger("Attack");
+            Owner.animator.SetInteger("randomAttack", randomNum);
             yield return new WaitForSeconds(1.0f);
             Owner.ChangeState(NormalWarrior.State.Idle);
         }

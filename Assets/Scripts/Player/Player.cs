@@ -1,10 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Player : MonoBehaviour
+public abstract class Player : MonoBehaviour,IDamageable
 {
-    public enum State { Idle, Trace, Attack, Stun, Die }
+    [SerializeField]
+    private float hp;
+    [SerializeField]
+    private float initHp;
+    private HpController hpController;
+    public event UnityAction<float> onChangeHp;
 
-    protected State curState;
+    private void Awake()
+    {
+        hpController = GetComponent<HpController>();
+    }
+
+    public void HitDamage(float damage)
+    {
+        hp -= damage;
+        onChangeHp?.Invoke(hp);
+
+    }
 }

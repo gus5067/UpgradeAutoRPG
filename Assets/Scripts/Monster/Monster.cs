@@ -1,22 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
-public class Monster : MonoBehaviour,IDamageable
+public abstract class Monster : MonoBehaviour,IDamageable
 {
+    [SerializeField]
     private float hp;
+    [SerializeField]
     private float initHp;
-    private HpController hpController;
-
+    private monsterHpController hpController;
     public event UnityAction<float> onChangeHp;
 
     private void Awake()
     {
-        hpController = GetComponent<HpController>();
-
-        hp = hpController.hp;
-        initHp = hpController.initHp; 
+        hpController = GetComponent<monsterHpController>();
     }
 
     public void HitDamage(float damage)

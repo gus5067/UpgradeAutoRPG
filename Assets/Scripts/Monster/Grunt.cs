@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-public class Grunt : MonoBehaviour,IDamageable
+public class Grunt : Monster,IDamageable
 {
     public enum State { Idle, Trace, Attack, Stun, Die }
     private StateMachine<State, Grunt> stateMachine;
@@ -34,11 +34,6 @@ public class Grunt : MonoBehaviour,IDamageable
 
     public bool isGround;
 
-    private float hp;
-    private float initHp;
-    private monsterHpController hpController;
-
-    public event UnityAction<float> onChangeHp;
 
     private void Awake()
     {
@@ -54,11 +49,6 @@ public class Grunt : MonoBehaviour,IDamageable
         stateMachine.AddState(State.Die, new GruntStates.DieState());
 
         stateMachine.ChangeState(State.Idle);
-
-        hpController = GetComponent<monsterHpController>();
-
-        hp = hpController.hp;
-        initHp = hpController.initHp;
     }
     private void Update()
     {
@@ -88,11 +78,5 @@ public class Grunt : MonoBehaviour,IDamageable
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, _findRange);
-    }
-
-    public void HitDamage(float damage)
-    {
-        hp -= damage;
-        onChangeHp?.Invoke(hp);
     }
 }

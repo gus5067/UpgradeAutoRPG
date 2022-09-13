@@ -34,7 +34,7 @@ namespace GruntStates
     {
         public override void Enter(Grunt Owner)
         {
-            Debug.Log("idle 입장");
+            
         }
 
         public override void Update(Grunt Owner)
@@ -64,7 +64,7 @@ namespace GruntStates
     {
         public override void Enter(Grunt Owner)
         {
-            Debug.Log("Trace 입장");
+           
         }
 
         public override void Update(Grunt Owner)
@@ -117,18 +117,19 @@ namespace GruntStates
 
     public class AttackState : BaseState
     {
+        private bool isAttackking;
         public override void Enter(Grunt Owner)
         {
-            Debug.Log("Attack 입장");
+           
         }
 
         public override void Update(Grunt Owner)
         {
-            int randomNum = Random.Range(1, 3);
-            Owner.animator.SetTrigger("Attack");
-            Owner.animator.SetInteger("randomAttack", randomNum);
-            Owner.StartCoroutine(AttackTime(Owner));
-
+          
+            if(isAttackking == false)
+            {
+                Owner.StartCoroutine(AttackTime(Owner));
+            }
         }
 
         public override void Exit(Grunt Owner)
@@ -138,7 +139,12 @@ namespace GruntStates
 
         IEnumerator AttackTime(Grunt Owner)
         {
-            yield return new WaitForSeconds(1.0f);
+            int randomNum = Random.Range(1, 3);
+            Owner.animator.SetTrigger("Attack");
+            Owner.animator.SetInteger("randomAttack", randomNum);
+            isAttackking = true;
+            yield return new WaitForSeconds(1.5f);
+            isAttackking = false;
             Owner.ChangeState(Grunt.State.Idle);
         }
     }
