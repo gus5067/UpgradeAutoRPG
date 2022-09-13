@@ -34,6 +34,10 @@ public class NormalWarrior : Player,IDamageable
     private CharacterController _characterController;
     public CharacterController characterController { get { return _characterController; } }
 
+    private AttackController _attackController;
+
+    public AttackController attackController { get { return _attackController; } }
+
     public bool isGround;
 
     private HpController _hpController;
@@ -41,6 +45,7 @@ public class NormalWarrior : Player,IDamageable
 
     private void Awake()
     {
+        _attackController = GetComponent<AttackController>();
         _hpController = GetComponent<HpController>();
         _animator = GetComponentInChildren<Animator>();
         _characterController = GetComponent<CharacterController>();

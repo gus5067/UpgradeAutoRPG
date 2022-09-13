@@ -148,7 +148,7 @@ namespace NormalWarriorStates
             int randomNum = Random.Range(1, 6);
             Owner.animator.SetTrigger("Attack");
             Owner.animator.SetInteger("randomAttack", randomNum);
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(1.0f/Owner.attackController.attackSpeed);
             Owner.ChangeState(NormalWarrior.State.Idle);
         }
     }

@@ -41,7 +41,7 @@ public class Grunt : Monster,IDamageable
     private void Awake()
     {
         _hpController = GetComponent<monsterHpController>();
-        _animator = GetComponent<Animator>();
+        _animator = GetComponentInChildren<Animator>();
         _characterController = GetComponent<CharacterController>();
         groundChecker = GetComponent<GroundChecker>();
         stateMachine = new StateMachine<State, Grunt>(this);

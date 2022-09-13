@@ -8,8 +8,10 @@ public class playerAttackBehaviour : StateMachineBehaviour
     private float damage;
     private IDamageable target;
     private ViewDetector viewDetector;
+    private AttackController attackController;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        attackController = animator.GetComponentInParent<AttackController>();
         viewDetector = animator.GetComponentInParent<ViewDetector>();
         viewDetector.FindTarget();
         if (viewDetector.target != null)
@@ -24,7 +26,7 @@ public class playerAttackBehaviour : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        animator.speed = 1f * attackController.attackSpeed;
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

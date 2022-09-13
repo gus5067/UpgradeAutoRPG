@@ -11,7 +11,6 @@ public abstract class Player : MonoBehaviour,IDamageable
     private float initHp;
     private HpController hpController;
     public event UnityAction<float> onChangeHp;
-
     private void Awake()
     {
         hpController = GetComponent<HpController>();
