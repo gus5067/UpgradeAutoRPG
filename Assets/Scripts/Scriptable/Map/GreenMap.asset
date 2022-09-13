@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: GreenMap
   m_EditorClassIdentifier: 
   _tilePrefab: {fileID: 1141756196039588, guid: d7698c69246c64044ab2a94628bf0291, type: 3}
-  _tileSize: {x: 10, y: 10}
+  _tileSize: {x: 20, y: 20}

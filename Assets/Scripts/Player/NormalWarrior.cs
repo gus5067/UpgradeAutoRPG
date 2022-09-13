@@ -36,8 +36,12 @@ public class NormalWarrior : Player,IDamageable
 
     public bool isGround;
 
+    private HpController _hpController;
+    public HpController hpController { get { return _hpController; } }
+
     private void Awake()
     {
+        _hpController = GetComponent<HpController>();
         _animator = GetComponentInChildren<Animator>();
         _characterController = GetComponent<CharacterController>();
         groundChecker = GetComponent<GroundChecker>();
@@ -71,7 +75,12 @@ public class NormalWarrior : Player,IDamageable
         stateMachine.ChangeState(nextState);
     }
 
-  
+    public void Die(float time)
+    {
+        Destroy(gameObject, time);
+    }
+
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

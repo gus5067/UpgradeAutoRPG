@@ -41,12 +41,15 @@ public class monsterHpController : MonoBehaviour
         _hpBar.targetTr = this.gameObject.transform;
 
         _hpBar.offset = hpBarOffset;
+
     }
 
     private void OnChangeHp(float hp)
     {
         this.hp = hp;
         hpSlider.value = this.hp/this.initHp;
+
+        
     }
     
 

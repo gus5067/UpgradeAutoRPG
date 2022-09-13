@@ -7,7 +7,6 @@ public class Grunt : Monster,IDamageable
     public enum State { Idle, Trace, Attack, Stun, Die }
     private StateMachine<State, Grunt> stateMachine;
 
-
     [SerializeField]
     private LayerMask _targetLayerMask;
     public LayerMask targetLayerMask { get { return _targetLayerMask; } }
@@ -32,11 +31,16 @@ public class Grunt : Monster,IDamageable
     private CharacterController _characterController;
     public CharacterController characterController { get { return _characterController; } }
 
+    private monsterHpController _hpController;
+    public monsterHpController hpController { get { return _hpController; } }
+
+
     public bool isGround;
 
 
     private void Awake()
     {
+        _hpController = GetComponent<monsterHpController>();
         _animator = GetComponent<Animator>();
         _characterController = GetComponent<CharacterController>();
         groundChecker = GetComponent<GroundChecker>();
@@ -68,6 +72,11 @@ public class Grunt : Monster,IDamageable
     public void ChangeState(State nextState)
     {
         stateMachine.ChangeState(nextState);
+    }
+
+    public void Die(float time)
+    {
+        Destroy(gameObject, time);
     }
 
 

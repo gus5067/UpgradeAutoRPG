@@ -45,6 +45,10 @@ public class EnemyHpBar : MonoBehaviour
 
             rectHp.localPosition = localPos;
         }
+        else if(targetTr == null)
+        {
+            Destroy(gameObject);
+        }
        
     }
 }

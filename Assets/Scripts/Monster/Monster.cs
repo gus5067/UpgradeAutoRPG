@@ -8,13 +8,9 @@ public abstract class Monster : MonoBehaviour,IDamageable
     private float hp;
     [SerializeField]
     private float initHp;
-    private monsterHpController hpController;
     public event UnityAction<float> onChangeHp;
 
-    private void Awake()
-    {
-        hpController = GetComponent<monsterHpController>();
-    }
+   
 
     public void HitDamage(float damage)
     {

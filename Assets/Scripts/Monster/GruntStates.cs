@@ -27,6 +27,15 @@ namespace GruntStates
             {
                 Owner.characterController.Move(new Vector3(0, Physics.gravity.y, 0).normalized * Time.deltaTime);
             }
+
+            if(Owner.hpController.hp <= 0)
+            {
+                Owner.ChangeState(Grunt.State.Die);
+            }
+            else
+            {
+                return;
+            }
         }
     }
 
@@ -170,8 +179,17 @@ namespace GruntStates
 
     public class DieState : BaseState
     {
+        private bool isDie = true;
         public override void Enter(Grunt Owner)
         {
+            if(isDie == true)
+            {
+                isDie = false;
+                Owner.animator.SetTrigger("Die");
+                Owner.Die(1.5f);
+            }
+            
+            
         }
 
         public override void Update(Grunt Owner)

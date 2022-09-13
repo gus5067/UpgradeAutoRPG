@@ -47,8 +47,6 @@ public class HpController : MonoBehaviour
     {
         this.hp = hp;
         hpSlider.value = this.hp/this.initHp;
-
-        Debug.Log("현재 체력 : " + this.hp);
     }
     
 
