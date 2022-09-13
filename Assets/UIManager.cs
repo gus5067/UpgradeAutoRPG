@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IDamageable
+public class UIManager : Singleton<UIManager>
 {
-    public void HitDamage(int damage);
 }

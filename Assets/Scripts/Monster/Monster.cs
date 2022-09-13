@@ -10,9 +10,10 @@ public abstract class Monster : MonoBehaviour,IDamageable
     private float initHp;
     public event UnityAction<float> onChangeHp;
 
+
    
 
-    public void HitDamage(float damage)
+    public void HitDamage(int damage)
     {
         hp -= damage;
         onChangeHp?.Invoke(hp);
