@@ -83,6 +83,7 @@ namespace NormalWarriorStates
             if (attackTargets.Length > 0)
             {
                 attackTarget = attackTargets[0].gameObject;
+                Owner.transform.LookAt(new Vector3(attackTarget.transform.position.x, Owner.transform.position.y, attackTarget.transform.position.z));
                 Owner.ChangeState(NormalWarrior.State.Attack);
                 return;
             }

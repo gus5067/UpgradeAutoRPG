@@ -5,17 +5,9 @@ using UnityEngine.Events;
 
 public abstract class Player : MonoBehaviour,IDamageable
 {
-    [SerializeField]
-    private float hp;
-    [SerializeField]
-    private float initHp;
-    private HpController hpController;
+    protected float hp;
+    protected float initHp;
     public event UnityAction<float> onChangeHp;
-    private void Awake()
-    {
-        hpController = GetComponent<HpController>();
-    }
-
     public void HitDamage(float damage)
     {
         hp -= damage;
