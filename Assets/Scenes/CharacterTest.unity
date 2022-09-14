@@ -200,6 +200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 560128794}
+  - component: {fileID: 560128795}
   m_Layer: 0
   m_Name: WeaponManager
   m_TagString: Untagged
@@ -222,6 +223,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &560128795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560128793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad85df8b167964046b8efdc9ba27fd3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerWeapon: {fileID: 11400000, guid: b79c9ad762b7e5f4eaa31eb5215ec153, type: 2}
+  minDamage: 0
+  maxDamage: 0
+  attackSpeed: 0
 --- !u!1 &593644264
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -733,7 +750,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 106
+  field of view: 44
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -758,11 +775,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904166515}
-  m_LocalRotation: {x: 0.12669984, y: -0, z: -0, w: 0.99194115}
-  m_LocalPosition: {x: 0.19, y: 8.55, z: -14.25}
+  m_LocalRotation: {x: 0.073515646, y: -0, z: -0, w: 0.99729407}
+  m_LocalPosition: {x: 0.19, y: 6.83, z: -17.57}
   m_LocalScale: {x: 1, y: 1.5272, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 14.558, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 8.432, y: 0, z: 0}
