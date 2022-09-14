@@ -4,6 +4,17 @@ using UnityEngine;
 using TMPro;
 public class damageText : MonoBehaviour
 {
+    private Camera uiCamera;
+    private Canvas canvas;
+    private RectTransform rectParent;
+    private RectTransform rectDamage;
+
+    [HideInInspector]
+    public Vector3 offset = Vector3.zero;
+
+    [HideInInspector]
+    public Transform targetTr;
+
     [SerializeField]
     private float moveSpeed = 5f;
 
@@ -12,11 +23,42 @@ public class damageText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canvas = GetComponentInParent<Canvas>();
+
+        uiCamera = canvas.worldCamera;
+
+        rectParent = canvas.GetComponent<RectTransform>();
+        rectDamage = this.gameObject.GetComponent<RectTransform>();
+
         Destroy(gameObject, destroyTime);
     }
 
     void Update()
     {
         transform.position += Vector3.up * moveSpeed * Time.deltaTime;
+    }
+
+    private void LateUpdate()
+    {
+        if (targetTr != null)
+        {
+            var screenPos = Camera.main.WorldToScreenPoint(targetTr.position + offset);
+
+            if (screenPos.z < 0.0f)
+            {
+                screenPos *= -1.0f;
+            }
+
+            var localPos = Vector2.zero;
+
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(rectParent, screenPos, uiCamera, out localPos);
+
+            rectDamage.localPosition = localPos;
+        }
+        else if (targetTr == null)
+        {
+            Destroy(gameObject);
+        }
+
     }
 }

@@ -5,18 +5,17 @@ using UnityEngine.Events;
 public abstract class Monster : MonoBehaviour,IDamageable
 {
     [SerializeField]
-    private float hp;
+    private int hp;
     [SerializeField]
-    private float initHp;
-    public event UnityAction<float> onChangeHp;
+    private int initHp;
+    public event UnityAction<int> onChangeHp;
 
 
    
 
     public void HitDamage(int damage)
     {
-        hp -= damage;
-        onChangeHp?.Invoke(hp);
+        onChangeHp?.Invoke(damage);
 
     }
 }
