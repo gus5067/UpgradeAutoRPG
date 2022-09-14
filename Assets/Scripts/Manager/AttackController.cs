@@ -5,7 +5,6 @@ using UnityEngine;
 public class AttackController : MonoBehaviour
 {
     
-    private Sword curSword;
 
     [HideInInspector]
     public float attackSpeed;
@@ -15,9 +14,9 @@ public class AttackController : MonoBehaviour
     public int maxDamage;
     private void Awake()
     {
-        curSword = WeaponManager.instance.playerWeapon;
-        minDamage = curSword.minDamage;
-        maxDamage = curSword.maxDamage;
-        attackSpeed = curSword.attackSpeed;
+  
+        minDamage = WeaponManager.instance.minDamage;
+        maxDamage = WeaponManager.instance.maxDamage;
+        attackSpeed = WeaponManager.instance.attackSpeed;
     }
 }
