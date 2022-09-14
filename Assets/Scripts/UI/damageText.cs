@@ -21,7 +21,7 @@ public class damageText : MonoBehaviour
     [SerializeField]
     private float destroyTime = 5f;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         canvas = GetComponentInParent<Canvas>();
 
@@ -31,15 +31,7 @@ public class damageText : MonoBehaviour
         rectDamage = this.gameObject.GetComponent<RectTransform>();
 
         Destroy(gameObject, destroyTime);
-    }
 
-    void Update()
-    {
-        transform.position += Vector3.up * moveSpeed * Time.deltaTime;
-    }
-
-    private void LateUpdate()
-    {
         if (targetTr != null)
         {
             var screenPos = Camera.main.WorldToScreenPoint(targetTr.position + offset);
@@ -55,10 +47,11 @@ public class damageText : MonoBehaviour
 
             rectDamage.localPosition = localPos;
         }
-        else if (targetTr == null)
-        {
-            Destroy(gameObject);
-        }
-
     }
+
+    private void Update()
+    {
+        gameObject.transform.position += Vector3.up * moveSpeed * Time.deltaTime;
+    }
+
 }

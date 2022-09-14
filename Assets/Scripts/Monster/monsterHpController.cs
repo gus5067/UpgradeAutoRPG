@@ -11,7 +11,7 @@ public class monsterHpController : MonoBehaviour
 
     public GameObject hpBarPrefab;
 
-    private GameObject damageText = UIManager.Instance.damageTextPrefab;
+    private GameObject damageText;
 
     public Vector3 hpBarOffset = new Vector3(0, 2.2f, 0);
 
@@ -25,8 +25,11 @@ public class monsterHpController : MonoBehaviour
     private Monster hpMonster;
     private void Awake()
     {
+        damageText = UIManager.instance.damageTextPrefab;
         hpMonster = GetComponent<Monster>();
         hpMonster.onChangeHp += OnChangeHp;
+
+        
     }
     private void Start()
     {
@@ -36,7 +39,7 @@ public class monsterHpController : MonoBehaviour
 
     private void SetHpBar()
     {
-        uiCanvas = GameObject.Find("UI Canvas").GetComponent<Canvas>();
+        uiCanvas = UIManager.instance.uiCanvas;
 
         GameObject hpBar = Instantiate<GameObject>(hpBarPrefab, uiCanvas.transform);
 
@@ -49,10 +52,16 @@ public class monsterHpController : MonoBehaviour
         _hpBar.offset = hpBarOffset;
 
     }
-
-    private void SetDamageText()
+    private void OnChangeHp(int damage)
     {
-        uiCanvas = GameObject.Find("UI Canvas").GetComponent<Canvas>();
+        this.hp -= damage;
+        hpSlider.value = this.hp/this.initHp;
+        SetDamageText(damage);
+    }
+
+    private void SetDamageText(int damageValue)
+    {
+        uiCanvas = UIManager.instance.uiCanvas;
 
         GameObject damageObj = Instantiate<GameObject>(damageText, uiCanvas.transform);
 
@@ -63,15 +72,9 @@ public class monsterHpController : MonoBehaviour
         _damage.targetTr = this.gameObject.transform;
 
         _damage.offset = damageOffset;
+
+        this.text.text = damageValue.ToString();
     }
 
-    private void OnChangeHp(int damage)
-    {
-        this.hp -= damage;
-        hpSlider.value = this.hp/this.initHp;
-
-        
-    }
-    
 
 }

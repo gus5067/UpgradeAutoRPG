@@ -10,13 +10,9 @@ public class StageManager : Singleton<StageManager>
     [SerializeField]
     private MonsterData monsterData;
 
-    private void Awake()
-    {
-        curMap = GetComponent<MapGenerator>();
-    }
-
     private void Start()
     {
+        curMap = GetComponent<MapGenerator>();
         StartCoroutine(SummonMonsterRoutine());
     }
 

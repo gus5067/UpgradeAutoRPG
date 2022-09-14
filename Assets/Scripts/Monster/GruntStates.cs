@@ -186,6 +186,7 @@ namespace GruntStates
             {
                 isDie = false;
                 Owner.animator.SetTrigger("Die");
+                Owner.characterController.enabled = false;
                 Owner.Die(1.5f);
             }
             

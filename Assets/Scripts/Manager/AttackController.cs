@@ -9,8 +9,9 @@ public class AttackController : MonoBehaviour
 
     public float attackSpeed;
 
+    [HideInInspector]
     public int minDamage;
-
+    [HideInInspector]
     public int maxDamage;
     private void Awake()
     {

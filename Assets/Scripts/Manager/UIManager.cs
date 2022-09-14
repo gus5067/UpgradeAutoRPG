@@ -6,4 +6,7 @@ public class UIManager : Singleton<UIManager>
 {
     [SerializeField]
     public GameObject damageTextPrefab;
+
+    [SerializeField]
+    public Canvas uiCanvas;
 }
