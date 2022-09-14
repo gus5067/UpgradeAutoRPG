@@ -14,7 +14,7 @@ public class MoneyTextController : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.GetComponent<GameManager>().onChangeMoney += OnChangeMoney;
+        GameManager.instance.onChangeMoney += OnChangeMoney;
         moneyText.text = GameManager.instance.gameMoney.ToString();
         gemText.text = GameManager.instance.gameGem.ToString();
     }
