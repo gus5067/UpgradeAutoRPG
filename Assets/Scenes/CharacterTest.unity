@@ -371,6 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerWeapon: {fileID: 11400000, guid: b79c9ad762b7e5f4eaa31eb5215ec153, type: 2}
+  weaponValue: 1
   minDamage: 0
   maxDamage: 0
   attackSpeed: 0
