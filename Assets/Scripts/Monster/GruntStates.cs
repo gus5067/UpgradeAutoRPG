@@ -187,6 +187,8 @@ namespace GruntStates
                 isDie = false;
                 Owner.animator.SetTrigger("Die");
                 Owner.characterController.enabled = false;
+                GameManager.instance.gameMoney += 10;
+                GameManager.instance.gameGem += 10;
                 Owner.Die(1.5f);
             }
             

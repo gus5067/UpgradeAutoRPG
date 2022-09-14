@@ -5,9 +5,12 @@ using UnityEngine;
 public class Sword : ScriptableObject
 {
     [SerializeField]
+    public string swordName;
+    [SerializeField]
     public int minDamage;
     [SerializeField]
     public int maxDamage;
     [SerializeField]
     public float attackSpeed;
+
 }

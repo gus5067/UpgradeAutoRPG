@@ -12,9 +12,12 @@ public class WeaponManager : Singleton<WeaponManager>
     public int maxDamage;
 
     public float attackSpeed;
+
+    public string swordName;
     private void Awake()
     {
         base.Awake();
+        swordName = playerWeapon.swordName;
         minDamage = playerWeapon.minDamage;
         maxDamage = playerWeapon.maxDamage;
         attackSpeed = playerWeapon.attackSpeed;

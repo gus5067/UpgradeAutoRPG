@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b781ca6957d95884a9f95fed833908ca, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
+  swordName: nameTest
   minDamage: 10
   maxDamage: 30
   attackSpeed: 1
