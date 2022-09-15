@@ -42,19 +42,27 @@ public class UpgradeButton : MonoBehaviour
     }
     IEnumerator UpgradeRoutine()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         upgradeButton.interactable = false;
         weaponAnimator.SetTrigger("Upgrade");
         yield return new WaitForSeconds(2f);
         Upgrade();
         upgradeButton.interactable = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     IEnumerator SpeicalUpgradeRoutine()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         specialButton.interactable = false;
         weaponAnimator.SetTrigger("Upgrade");
         yield return new WaitForSeconds(2f);
         SpecialUpgrade();
         specialButton.interactable = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     public void Upgrade()
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 public class ChangeSceneButton : MonoBehaviour
 {
@@ -42,5 +42,15 @@ public class ChangeSceneButton : MonoBehaviour
             yield return new WaitForSeconds(0.01f); 
         }
     
+    }
+
+    public void LoadStageScene()
+    {
+        SceneManager.LoadScene("StageSelectTest");
+    }
+
+    public void LoadBattleScene()
+    {
+        SceneManager.LoadScene("CharacterTest");
     }
 }
