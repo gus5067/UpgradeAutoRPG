@@ -7,9 +7,34 @@ public class UpgradeButton : MonoBehaviour
     [SerializeField]
     private Button upgradeButton;
 
+    [SerializeField]
+    private Button specialButton;
     public void ButtonClick()
     {
+        if(GameManager.instance.gameMoney >= WeaponManager.instance.weaponValue * 100)
+        {
+            GameManager.instance.gameMoney -= WeaponManager.instance.weaponValue * 100;
+        }
+        else
+        {
+            Debug.Log("돈이 부족합니다");
+            return;
+        }
         StartCoroutine(UpgradeRoutine());  
+    }
+
+    public void SpecialButtonClick()
+    {
+        if (GameManager.instance.gameGem >= 1)
+        {
+            GameManager.instance.gameGem--;
+        }
+        else
+        {
+            Debug.Log("보석이 부족합니다");
+            return;
+        }
+        StartCoroutine(SpeicalUpgradeRoutine());
     }
     IEnumerator UpgradeRoutine()
     {
@@ -17,6 +42,13 @@ public class UpgradeButton : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Upgrade();
         upgradeButton.interactable = true;
+    }
+    IEnumerator SpeicalUpgradeRoutine()
+    {
+        specialButton.interactable = false;
+        yield return new WaitForSeconds(2f);
+        SpecialUpgrade();
+        specialButton.interactable = true;
     }
     public void Upgrade()
     {
@@ -45,6 +77,21 @@ public class UpgradeButton : MonoBehaviour
                 Debug.Log("강화 수치 유지");
              
             }
+        }
+    }
+
+    public void SpecialUpgrade()
+    {
+        int num = Random.Range(1, 101);
+
+        if (num >= 70)
+        {
+            Debug.Log("특수 강화 성공");
+            
+        }
+        else
+        {
+            Debug.Log("특수 강화 실패");
         }
     }
 }

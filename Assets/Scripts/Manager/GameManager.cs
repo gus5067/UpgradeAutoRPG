@@ -5,9 +5,9 @@ using UnityEngine.Events;
 public class GameManager : Singleton<GameManager>
 {
     public event UnityAction onChangeMoney;
-    [HideInInspector]
+    //[HideInInspector]
     public int gameMoney = 0;
-    [HideInInspector]
+    //[HideInInspector]
     public int gameGem = 0;
 
     private int curMoney;
@@ -24,7 +24,6 @@ public class GameManager : Singleton<GameManager>
     {
         if(curMoney != gameMoney | curGem != gameGem)
         {
-            Debug.Log("µ·µé¾î¿Ô´Ù");
             curGem = gameGem;
             curMoney = gameMoney;
             onChangeMoney?.Invoke();
