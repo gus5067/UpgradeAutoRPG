@@ -7,6 +7,7 @@ namespace GruntStates
 
     public class BaseState : State<Grunt>
     {
+        private bool isDie = false;
         public override void Enter(Grunt Owner)
         {
         }
@@ -23,19 +24,26 @@ namespace GruntStates
 
         public override void HandleStateChange(Grunt Owner)
         {
-            if (!Owner.isGround)
+            if (Owner.hpController.hp <= 0)
             {
-                Owner.characterController.Move(new Vector3(0, Physics.gravity.y, 0).normalized * Time.deltaTime);
-            }
-
-            if(Owner.hpController.hp <= 0)
-            {
+                isDie = true;
                 Owner.ChangeState(Grunt.State.Die);
             }
             else
             {
                 return;
             }
+
+            if (!isDie)
+            {
+                if (!Owner.isGround)
+                {
+                    Owner.characterController.Move(new Vector3(0, Physics.gravity.y, 0).normalized * Time.deltaTime);
+                }
+            }
+
+
+            
         }
     }
 
@@ -78,6 +86,10 @@ namespace GruntStates
 
         public override void Update(Grunt Owner)
         {
+            if(Owner.characterController == null)
+            {
+                return;
+            }
             //몬스터 공격
             GameObject attackTarget;
             Collider[] attackTargets = Physics.OverlapSphere(Owner.transform.position, Owner.attackRange, Owner.targetLayerMask);
