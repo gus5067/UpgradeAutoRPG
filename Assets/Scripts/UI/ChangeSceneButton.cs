@@ -7,15 +7,14 @@ using UnityEngine.UI;
 public class ChangeSceneButton : MonoBehaviour
 {
 
-    [SerializeField]
     private Button toStageButton;
 
-    [SerializeField]
     private RectTransform curStageButtonPos;
     private Vector2 firstPos;
 
     private void Awake()
     {
+        toStageButton = GetComponent<Button>();
         firstPos = toStageButton.GetComponent<RectTransform>().anchoredPosition;
         curStageButtonPos = toStageButton.GetComponent<RectTransform>();
     }
