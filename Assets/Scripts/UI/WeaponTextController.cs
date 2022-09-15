@@ -25,6 +25,6 @@ public class WeaponTextController : MonoBehaviour
     {
         weaponNameText.text = WeaponManager.instance.swordName;
         weaponValueText.text = "+" + WeaponManager.instance.weaponValue.ToString();
-        weaponDamageText.text = "Damage : " + WeaponManager.instance.minDamage + " ~ " + WeaponManager.instance.maxDamage;
+        weaponDamageText.text = "°ø°Ý·Â : " + WeaponManager.instance.minDamage + " ~ " + WeaponManager.instance.maxDamage;
     }
 }

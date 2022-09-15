@@ -9,6 +9,10 @@ public class UpgradeButton : MonoBehaviour
 
     [SerializeField]
     private Button specialButton;
+
+    [SerializeField]
+    private Animator weaponAnimator;
+
     public void ButtonClick()
     {
         if(GameManager.instance.gameMoney >= WeaponManager.instance.weaponValue * 100)
@@ -39,6 +43,7 @@ public class UpgradeButton : MonoBehaviour
     IEnumerator UpgradeRoutine()
     {
         upgradeButton.interactable = false;
+        weaponAnimator.SetTrigger("Upgrade");
         yield return new WaitForSeconds(2f);
         Upgrade();
         upgradeButton.interactable = true;
@@ -46,6 +51,7 @@ public class UpgradeButton : MonoBehaviour
     IEnumerator SpeicalUpgradeRoutine()
     {
         specialButton.interactable = false;
+        weaponAnimator.SetTrigger("Upgrade");
         yield return new WaitForSeconds(2f);
         SpecialUpgrade();
         specialButton.interactable = true;
