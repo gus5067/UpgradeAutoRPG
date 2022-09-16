@@ -30,6 +30,7 @@ public class UIControllOnStageScene : MonoBehaviour
         {
             preStage.onStageMonster -= UIactive;
             curStage.onStageMonster += UIactive;
+            preStage = curStage;
         }
         else
         {
