@@ -8,7 +8,7 @@ public class StageManager : Singleton<StageManager>
     [SerializeField]
     private MapGenerator curMap;
 
-    [SerializeField]
+    [HideInInspector]
     public MonsterData monsterData;
 
     public event UnityAction<bool> onStageEnd;
@@ -18,6 +18,10 @@ public class StageManager : Singleton<StageManager>
     public int monsterCount;
     private void Start()
     {
+        if (GameManager.instance.curStage != null)
+        {
+            monsterData = GameManager.instance.curStage;
+        }
         curMap = GetComponent<MapGenerator>();
         StartCoroutine(SummonMonsterRoutine());
         monsterCount = monsterData.monstersPrefab.Length;

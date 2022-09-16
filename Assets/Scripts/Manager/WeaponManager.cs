@@ -23,6 +23,10 @@ public class WeaponManager : Singleton<WeaponManager>
     private void Awake()
     {
         base.Awake();
+    }
+
+    private void OnEnable()
+    {
         swordName = playerWeapon.swordName;
         minDamage = playerWeapon.minDamage;
         maxDamage = playerWeapon.maxDamage;

@@ -13,17 +13,27 @@ public class AttackController : MonoBehaviour
     [HideInInspector]
     public int maxDamage;
 
+    private void Start()
+    {
+        minDamage = WeaponManager.instance.minDamage;
+        maxDamage = WeaponManager.instance.maxDamage;
+        attackSpeed = WeaponManager.instance.attackSpeed;
+    }
     private void Update()
     {
-        if (minDamage != WeaponManager.instance.minDamage | maxDamage != WeaponManager.instance.maxDamage | attackSpeed != WeaponManager.instance.attackSpeed)
+        if(WeaponManager.instance != null)
         {
-            minDamage = WeaponManager.instance.minDamage;
-            maxDamage = WeaponManager.instance.maxDamage;
-            attackSpeed = WeaponManager.instance.attackSpeed;
+            if (minDamage != WeaponManager.instance.minDamage | maxDamage != WeaponManager.instance.maxDamage | attackSpeed != WeaponManager.instance.attackSpeed)
+            {
+                minDamage = WeaponManager.instance.minDamage;
+                maxDamage = WeaponManager.instance.maxDamage;
+                attackSpeed = WeaponManager.instance.attackSpeed;
+            }
+            else
+            {
+                return;
+            }
         }
-        else
-        {
-            return;
-        }
+        
     }
 }

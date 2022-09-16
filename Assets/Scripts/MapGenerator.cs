@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapGenerator : Singleton<MapGenerator>
+public class MapGenerator : MonoBehaviour
 {
     [SerializeField]
     private MapData curMap;

@@ -1266,7 +1266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a4df469fe6024c4991c06732f824b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorImg: {fileID: 2800000, guid: 51cb6ee928f89b64691ef4dfd57c03e9, type: 3}
 --- !u!1 &859523061
 GameObject:
   m_ObjectHideFlags: 0
@@ -2114,6 +2113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d46ce486d84c3b4483a4c89f9ca978d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorImg: {fileID: 2800000, guid: 51cb6ee928f89b64691ef4dfd57c03e9, type: 3}
+  curStage: {fileID: 0}
   gameMoney: 200
   gameGem: 0
 --- !u!4 &1501837793

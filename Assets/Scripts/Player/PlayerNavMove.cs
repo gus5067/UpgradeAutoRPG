@@ -8,11 +8,20 @@ public class PlayerNavMove : MonoBehaviour
     [SerializeField]
     LayerMask layerMask;
 
+    [SerializeField]
+    LayerMask interactLayerMask;
+
     private NavMeshAgent character;
 
     private Animator animator;
 
     private Vector3 destination;
+
+    [SerializeField]
+    private Transform interactPoint;
+
+    [SerializeField, Range(0f, 3f)]
+    private float interactRange;
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -22,6 +31,7 @@ public class PlayerNavMove : MonoBehaviour
     private void Update()
     {
         MoveToMousePoint();
+        InteractSphere();
     }
     private void MoveToMousePoint()
     {
@@ -45,5 +55,32 @@ public class PlayerNavMove : MonoBehaviour
         {
             animator.SetBool("Run", false);
         }
+    }
+
+    
+    private void InteractSphere()
+    {
+        Collider[] targets = Physics.OverlapSphere(interactPoint.position, interactRange, interactLayerMask);
+
+        if (targets.Length > 0)
+        {
+            IInteractable interactTarget = targets[0].gameObject.GetComponent<IInteractable>();
+
+
+            interactTarget?.Interact();
+
+
+        }
+        else
+        {
+            return;
+        }
+
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(interactPoint.position, interactRange);
     }
 }

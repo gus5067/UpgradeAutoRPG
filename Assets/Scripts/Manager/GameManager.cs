@@ -4,6 +4,12 @@ using UnityEngine;
 using UnityEngine.Events;
 public class GameManager : Singleton<GameManager>
 {
+
+    [SerializeField]
+    Texture2D cursorImg;
+
+    public MonsterData curStage = null;
+
     public event UnityAction onChangeMoney;
     //[HideInInspector]
     public int gameMoney = 0;
@@ -16,8 +22,14 @@ public class GameManager : Singleton<GameManager>
     private void Awake()
     {
         base.Awake();
+       
+    }
+
+    private void Start()
+    {
         curMoney = gameMoney;
         curGem = gameGem;
+        Cursor.SetCursor(cursorImg, Vector2.zero, CursorMode.ForceSoftware);
     }
 
     private void Update()
@@ -29,5 +41,7 @@ public class GameManager : Singleton<GameManager>
             onChangeMoney?.Invoke();
         }
     }
+
+
 
 }
