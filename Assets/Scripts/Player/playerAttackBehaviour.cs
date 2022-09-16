@@ -20,7 +20,6 @@ public class playerAttackBehaviour : StateMachineBehaviour
             if (target != null)
             {
                 damage = Random.Range(attackController.minDamage, attackController.maxDamage + 1);
-                Debug.Log(damage);
                 target.HitDamage(damage);
             }
         }

@@ -182,6 +182,7 @@ public class StunState : BaseState
             {
                 isDie = false;
                 Owner.animator.SetTrigger("Die");
+                Owner.DieCount();
                 Owner.Die(1.5f);
             }
         }

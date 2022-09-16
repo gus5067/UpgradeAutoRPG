@@ -18,4 +18,9 @@ public abstract class Monster : MonoBehaviour,IDamageable
         onChangeHp?.Invoke(damage);
 
     }
+
+    public void DieCount()
+    {
+        StageManager.instance.monsterCount--;
+    }
 }

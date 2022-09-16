@@ -62,6 +62,14 @@ public class NormalWarrior : Player,IDamageable
 
         hp = hpController.hp;
         initHp = hpController.initHp;
+
+     
+
+    }
+    private void Start()
+    {
+        StageManager.instance.onStageEnd += Victory;
+        animator.SetBool("isVic", false);
     }
     private void Update()
     {
@@ -77,7 +85,17 @@ public class NormalWarrior : Player,IDamageable
         }
     }
 
-
+    private void Victory(bool isVic)
+    {
+        if(isVic)
+        {
+            animator.SetBool("isVic", true);
+        }
+        else
+        {
+            return;
+        }
+    }
     public void ChangeState(State nextState)
     {
         stateMachine.ChangeState(nextState);
