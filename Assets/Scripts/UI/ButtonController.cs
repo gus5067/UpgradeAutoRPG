@@ -5,12 +5,16 @@ using UnityEngine.SceneManagement;
 public class ButtonController : MonoBehaviour
 {
     [SerializeField]
+    public Transform characterPos;
+    [SerializeField]
     private UIControllOnStageScene uiController;
 
     [SerializeField]
     private GameObject uiImg;
     public void OnClickYesButton()
     {
+        GameManager.instance.curPos = characterPos.position;
+        GameManager.instance.curRotation = characterPos.rotation;
         Time.timeScale = 1f;
         SceneManager.LoadScene("CharacterTest");
     }

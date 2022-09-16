@@ -331,6 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a7659c4c49b3bc4f867e53f2dcef87c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterPos: {fileID: 0}
   uiController: {fileID: 92662082}
   uiImg: {fileID: 846024487}
 --- !u!1001 &296818287
