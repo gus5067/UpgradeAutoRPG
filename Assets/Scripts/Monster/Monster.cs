@@ -21,6 +21,6 @@ public abstract class Monster : MonoBehaviour,IDamageable
 
     public void DieCount()
     {
-        StageManager.instance.monsterCount--;
+        StageManager.monsterCount--;
     }
 }

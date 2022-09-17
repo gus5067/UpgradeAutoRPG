@@ -68,7 +68,7 @@ public class NormalWarrior : Player,IDamageable
     }
     private void Start()
     {
-        StageManager.instance.onStageEnd += Victory;
+        StageManager.onStageEnd += Victory;
         animator.SetBool("isVic", false);
     }
     private void Update()

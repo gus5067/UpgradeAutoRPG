@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
 
-    [SerializeField]
-    Texture2D cursorImg;
 
     public Vector3 curPos = Vector3.zero;
     public Quaternion curRotation = Quaternion.identity;
@@ -15,6 +13,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private Transform character;
 
+    [SerializeField]
+    public Sword playerWeapon;
 
     public MonsterData curStage = null;
 
@@ -27,17 +27,11 @@ public class GameManager : Singleton<GameManager>
     private int curMoney;
     private int curGem;
 
-    private void Awake()
-    {
-        base.Awake();
-       
-    }
-
     private void Start()
     {
         curMoney = gameMoney;
         curGem = gameGem;
-        Cursor.SetCursor(cursorImg, Vector2.zero, CursorMode.ForceSoftware);
+       
 
         Scene scene = SceneManager.GetActiveScene();
         if(scene.name == "StageSelectTest")

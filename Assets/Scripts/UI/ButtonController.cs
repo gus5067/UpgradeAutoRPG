@@ -13,8 +13,8 @@ public class ButtonController : MonoBehaviour
     private GameObject uiImg;
     public void OnClickYesButton()
     {
-        GameManager.instance.curPos = characterPos.position;
-        GameManager.instance.curRotation = characterPos.rotation;
+        GameManager.Instance.curPos = characterPos.position;
+        GameManager.Instance.curRotation = characterPos.rotation;
         Time.timeScale = 1f;
         SceneManager.LoadScene("CharacterTest");
     }

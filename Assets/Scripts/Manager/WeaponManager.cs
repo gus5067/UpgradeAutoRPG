@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 public class WeaponManager : Singleton<WeaponManager>
 {
-    [SerializeField]
-    public Sword playerWeapon;
     [HideInInspector]
     public int weaponValue = 1;
     [HideInInspector]
@@ -20,17 +18,14 @@ public class WeaponManager : Singleton<WeaponManager>
     private string curName;
     private int curValue;
     public event UnityAction onChangeWeaponValue;
+
     private void Awake()
     {
         base.Awake();
-    }
-
-    private void OnEnable()
-    {
-        swordName = playerWeapon.swordName;
-        minDamage = playerWeapon.minDamage;
-        maxDamage = playerWeapon.maxDamage;
-        attackSpeed = playerWeapon.attackSpeed;
+        swordName = GameManager.Instance.playerWeapon.swordName;
+        minDamage = GameManager.Instance.playerWeapon.minDamage;
+        maxDamage = GameManager.Instance.playerWeapon.maxDamage;
+        attackSpeed = GameManager.Instance.playerWeapon.attackSpeed;
         curName = swordName;
         curValue = weaponValue;
     }

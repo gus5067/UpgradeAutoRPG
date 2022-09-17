@@ -15,16 +15,16 @@ public class WeaponTextController : MonoBehaviour
     private TextMeshProUGUI weaponDamageText;
     private void Start()
     {
-        WeaponManager.instance.onChangeWeaponValue += OnChangeValue;
-        weaponNameText.text = WeaponManager.instance.swordName;
-        weaponValueText.text = "+" + WeaponManager.instance.weaponValue.ToString();
-        weaponDamageText.text = "Damage : " + WeaponManager.instance.minDamage + " ~ " + WeaponManager.instance.maxDamage;
+        WeaponManager.Instance.onChangeWeaponValue += OnChangeValue;
+        weaponNameText.text = WeaponManager.Instance.swordName;
+        weaponValueText.text = "+" + WeaponManager.Instance.weaponValue.ToString();
+        weaponDamageText.text = "Damage : " + WeaponManager.Instance.minDamage + " ~ " + WeaponManager.Instance.maxDamage;
     }
 
     private void OnChangeValue()
     {
-        weaponNameText.text = WeaponManager.instance.swordName;
-        weaponValueText.text = "+" + WeaponManager.instance.weaponValue.ToString();
-        weaponDamageText.text = "공격력 : " + WeaponManager.instance.minDamage + " ~ " + WeaponManager.instance.maxDamage;
+        weaponNameText.text = WeaponManager.Instance.swordName;
+        weaponValueText.text = "+" + WeaponManager.Instance.weaponValue.ToString();
+        weaponDamageText.text = "공격력 : " + WeaponManager.Instance.minDamage + " ~ " + WeaponManager.Instance.maxDamage;
     }
 }

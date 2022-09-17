@@ -15,9 +15,9 @@ public class UpgradeButton : MonoBehaviour
 
     public void ButtonClick()
     {
-        if(GameManager.instance.gameMoney >= WeaponManager.instance.weaponValue * 100)
+        if(GameManager.Instance.gameMoney >= WeaponManager.Instance.weaponValue * 100)
         {
-            GameManager.instance.gameMoney -= WeaponManager.instance.weaponValue * 100;
+            GameManager.Instance.gameMoney -= WeaponManager.Instance.weaponValue * 100;
         }
         else
         {
@@ -29,9 +29,9 @@ public class UpgradeButton : MonoBehaviour
 
     public void SpecialButtonClick()
     {
-        if (GameManager.instance.gameGem >= 1)
+        if (GameManager.Instance.gameGem >= 1)
         {
-            GameManager.instance.gameGem--;
+            GameManager.Instance.gameGem--;
         }
         else
         {
@@ -68,12 +68,12 @@ public class UpgradeButton : MonoBehaviour
     {
         int num = Random.Range(1, 101);
 
-        if(num >= 5 * WeaponManager.instance.weaponValue)
+        if(num >= 5 * WeaponManager.Instance.weaponValue)
         {
             Debug.Log("강화 성공");
-            WeaponManager.instance.weaponValue++;
-            WeaponManager.instance.minDamage += 2 * WeaponManager.instance.weaponValue;
-            WeaponManager.instance.maxDamage += 2 * WeaponManager.instance.weaponValue;
+            WeaponManager.Instance.weaponValue++;
+            WeaponManager.Instance.minDamage += 2 * WeaponManager.Instance.weaponValue;
+            WeaponManager.Instance.maxDamage += 2 * WeaponManager.Instance.weaponValue;
         }
         else
         {
@@ -82,9 +82,9 @@ public class UpgradeButton : MonoBehaviour
             if(num2 >= 2)
             {
                 Debug.Log("강화 수치 하락");
-                WeaponManager.instance.minDamage -= 2 * WeaponManager.instance.weaponValue;
-                WeaponManager.instance.maxDamage -= 2 * WeaponManager.instance.weaponValue;
-                WeaponManager.instance.weaponValue--;
+                WeaponManager.Instance.minDamage -= 2 * WeaponManager.Instance.weaponValue;
+                WeaponManager.Instance.maxDamage -= 2 * WeaponManager.Instance.weaponValue;
+                WeaponManager.Instance.weaponValue--;
             }
             else
             {

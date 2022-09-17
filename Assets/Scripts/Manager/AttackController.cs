@@ -15,19 +15,19 @@ public class AttackController : MonoBehaviour
 
     private void Start()
     {
-        minDamage = WeaponManager.instance.minDamage;
-        maxDamage = WeaponManager.instance.maxDamage;
-        attackSpeed = WeaponManager.instance.attackSpeed;
+        minDamage = WeaponManager.Instance.minDamage;
+        maxDamage = WeaponManager.Instance.maxDamage;
+        attackSpeed = WeaponManager.Instance.attackSpeed;
     }
     private void Update()
     {
-        if(WeaponManager.instance != null)
+        if(WeaponManager.Instance != null)
         {
-            if (minDamage != WeaponManager.instance.minDamage | maxDamage != WeaponManager.instance.maxDamage | attackSpeed != WeaponManager.instance.attackSpeed)
+            if (minDamage != WeaponManager.Instance.minDamage | maxDamage != WeaponManager.Instance.maxDamage | attackSpeed != WeaponManager.Instance.attackSpeed)
             {
-                minDamage = WeaponManager.instance.minDamage;
-                maxDamage = WeaponManager.instance.maxDamage;
-                attackSpeed = WeaponManager.instance.attackSpeed;
+                minDamage = WeaponManager.Instance.minDamage;
+                maxDamage = WeaponManager.Instance.maxDamage;
+                attackSpeed = WeaponManager.Instance.attackSpeed;
             }
             else
             {

@@ -20,7 +20,7 @@ public abstract class Player : MonoBehaviour,IDamageable
 
     public void DieCount()
     {
-        StageManager.instance.characterCount--;
+        StageManager.characterCount--;
     }
 
     

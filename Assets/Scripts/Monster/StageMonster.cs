@@ -19,7 +19,7 @@ public class StageMonster : MonoBehaviour,IInteractable
             if (ownMonsterData != null)
             {
                 uiController.curStage = this;
-                GameManager.instance.curStage = ownMonsterData;
+                GameManager.Instance.curStage = ownMonsterData;
                 onStageMonster?.Invoke(this);
                 Time.timeScale = 0f;
             }

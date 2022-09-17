@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class UIManager : Singleton<UIManager>
+public class UIManager : MonoBehaviour
 {
     [SerializeField]
     public GameObject damageTextPrefab;

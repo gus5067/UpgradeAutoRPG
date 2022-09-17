@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 public class monsterHpController : MonoBehaviour
 {
+    [SerializeField]
+    private UIManager uiManager;
     public float hp;
 
     public float initHp;
@@ -25,10 +27,11 @@ public class monsterHpController : MonoBehaviour
     private Monster hpMonster;
     private void Awake()
     {
-        damageText = UIManager.instance.damageTextPrefab;
+        uiManager = FindObjectOfType<UIManager>();
+        damageText = uiManager.damageTextPrefab;
         hpMonster = GetComponent<Monster>();
         hpMonster.onChangeHp += OnChangeHp;
-
+        
         
     }
     private void Start()
@@ -39,7 +42,7 @@ public class monsterHpController : MonoBehaviour
 
     private void SetHpBar()
     {
-        uiCanvas = UIManager.instance.uiCanvas;
+        uiCanvas = uiManager.uiCanvas;
 
         GameObject hpBar = Instantiate<GameObject>(hpBarPrefab, uiCanvas.transform);
 
@@ -61,7 +64,7 @@ public class monsterHpController : MonoBehaviour
 
     private void SetDamageText(int damageValue)
     {
-        uiCanvas = UIManager.instance.uiCanvas;
+        uiCanvas = uiManager.uiCanvas;
 
         GameObject damageObj = Instantiate<GameObject>(damageText, uiCanvas.transform);
 

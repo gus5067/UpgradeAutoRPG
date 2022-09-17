@@ -6,6 +6,7 @@ using TMPro;
 public class TextController : MonoBehaviour
 {
 
+    private UIManager uimanager;
     [SerializeField]
     private TextMeshProUGUI moneyText;
 
@@ -15,44 +16,44 @@ public class TextController : MonoBehaviour
     private TextMeshProUGUI stageEndText;
 
     private MonsterData curMapMonster;
+    private void Awake()
+    {
+        uimanager = FindObjectOfType<UIManager>();
+        GameManager.Instance.onChangeMoney += OnChangeMoney;
+        StageManager.onStageEnd += OnStageEnd;
+    }
     private void Start()
     {
+        moneyText.text = GameManager.Instance.gameMoney.ToString();
+        gemText.text = GameManager.Instance.gameGem.ToString();
+        curMapMonster = StageManager.monsterData;
 
-        GameManager.instance.onChangeMoney += OnChangeMoney;
-        moneyText.text = GameManager.instance.gameMoney.ToString();
-        gemText.text = GameManager.instance.gameGem.ToString();
 
-
-        if (StageManager.instance != null)
+        if(curMapMonster != null)
         {
-            StageManager.instance.onStageEnd += OnStageEnd;
-            curMapMonster = StageManager.instance.monsterData;
+            uimanager.stageRoundText.text = "스테이지 " + curMapMonster.stageNum.ToString() + "-" + curMapMonster.roundNum.ToString();
         }
-
-        if (UIManager.instance != null)
-        {
-            UIManager.instance.stageRoundText.text = "스테이지 " + curMapMonster.stageNum.ToString() + "-" + curMapMonster.roundNum.ToString();
-        }
+        
 
     }
 
     private void OnChangeMoney()
     {
-        moneyText.text = GameManager.instance.gameMoney.ToString();
-        gemText.text = GameManager.instance.gameGem.ToString(); 
+        moneyText.text = GameManager.Instance.gameMoney.ToString();
+        gemText.text = GameManager.Instance.gameGem.ToString(); 
     }
 
     private void OnStageEnd(bool result)
     {
         if (result)
         {
-            UIManager.instance.stageResultText.color = Color.green;
-            UIManager.instance.stageResultText.text = "스테이지 클리어!!";
+            uimanager.stageResultText.color = Color.green;
+            uimanager.stageResultText.text = "스테이지 클리어!!";
         }
         else if(!result)
         {
-            UIManager.instance.stageResultText.color = Color.red;
-            UIManager.instance.stageResultText.text = "스테이지 실패!";
+            uimanager.stageResultText.color = Color.red;
+            uimanager.stageResultText.text = "스테이지 실패!";
         }
          
     }
