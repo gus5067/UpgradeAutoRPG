@@ -200,8 +200,7 @@ namespace GruntStates
                 Owner.animator.SetTrigger("Die");
                 Owner.DieCount();
                 Owner.characterController.enabled = false;
-                GameManager.Instance.gameMoney += 10;
-                GameManager.Instance.gameGem += 10;
+                GameManager.Instance.gameMoney += 10 + Random.Range(10, 30);
                 Owner.Die(1.5f);
             }
             

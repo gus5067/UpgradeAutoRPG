@@ -72,8 +72,8 @@ public class UpgradeButton : MonoBehaviour
         {
             Debug.Log("강화 성공");
             WeaponManager.Instance.weaponValue++;
-            WeaponManager.Instance.minDamage += 2 * WeaponManager.Instance.weaponValue;
-            WeaponManager.Instance.maxDamage += 2 * WeaponManager.Instance.weaponValue;
+            WeaponManager.Instance.minDamage += 4 * WeaponManager.Instance.weaponValue;
+            WeaponManager.Instance.maxDamage += 4 * WeaponManager.Instance.weaponValue;
         }
         else
         {
@@ -82,8 +82,8 @@ public class UpgradeButton : MonoBehaviour
             if(num2 >= 2)
             {
                 Debug.Log("강화 수치 하락");
-                WeaponManager.Instance.minDamage -= 2 * WeaponManager.Instance.weaponValue;
-                WeaponManager.Instance.maxDamage -= 2 * WeaponManager.Instance.weaponValue;
+                WeaponManager.Instance.minDamage -= 4 * WeaponManager.Instance.weaponValue;
+                WeaponManager.Instance.maxDamage -= 4 * WeaponManager.Instance.weaponValue;
                 WeaponManager.Instance.weaponValue--;
             }
             else

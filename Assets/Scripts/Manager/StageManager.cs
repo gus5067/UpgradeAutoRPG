@@ -66,7 +66,7 @@ public class StageManager : MonoBehaviour
         for(int i = 0; i < monsterData.monstersPrefab.Length; i++)
         {
             Summon(i);
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(6f);
         }
     }
 

@@ -73,7 +73,6 @@ public class Grunt : Monster,IDamageable
     {
         stateMachine.ChangeState(nextState);
     }
-
     public void Die(float time)
     {
         Destroy(gameObject, time);
