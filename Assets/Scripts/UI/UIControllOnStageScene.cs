@@ -9,6 +9,9 @@ public class UIControllOnStageScene : MonoBehaviour
     private StageMonster preStage = null;
 
     [SerializeField]
+    private Transform playerTransform;
+
+    [SerializeField]
     private GameObject uiImg;
 
     [SerializeField]
@@ -39,6 +42,11 @@ public class UIControllOnStageScene : MonoBehaviour
     }
     private void UIactive(StageMonster curMonster)
     {
+        if(GameManager.Instance.characterPos == null)
+        {
+            GameManager.Instance.characterPos = playerTransform.position;
+            GameManager.Instance.characterRotation = playerTransform.rotation.eulerAngles;
+        }
         curMonster.isInteract = true;
         uiImg.SetActive(true);
         stageText.text = "Stage " + curMonster.ownMonsterData.stageNum.ToString()+ "-" + curMonster.ownMonsterData.roundNum.ToString();

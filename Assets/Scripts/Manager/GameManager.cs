@@ -11,7 +11,10 @@ public class GameManager : Singleton<GameManager>
     public Quaternion curRotation = Quaternion.identity;
 
     [SerializeField]
-    private Transform character;
+    public Vector3 characterPos;
+
+    [SerializeField]
+    public Vector3 characterRotation;
 
     //[SerializeField]
     //public Sword playerWeapon;
@@ -31,16 +34,18 @@ public class GameManager : Singleton<GameManager>
         curMoney = gameMoney;
         curGem = gameGem;
 
+ 
 
-        Scene scene = SceneManager.GetActiveScene();
-        if (scene.name == "StageSelectTest")
-        {
-            if (curPos != Vector3.zero)
-            {
-                character.position = new Vector3(curPos.x + 0.3f, curPos.y, curPos.z);
-                character.rotation = curRotation;
-            }
-        }
+        //Scene scene = SceneManager.GetActiveScene();
+        //if (scene.name == "StageSelectTest")
+        //{
+        //    player = FindObjectOfType<PlayerNavMove>().gameObject;
+        //    if(characterPos != null)
+        //    {
+        //        player.transform.position = characterPos;
+        //        player.transform.rotation = Quaternion.Euler(characterRotation);
+        //    }
+        //}
     }
 
     private void Update()
