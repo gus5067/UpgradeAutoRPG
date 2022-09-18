@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curStage: {fileID: 0}
-  playerTransform: {fileID: 1461596968}
+  player: {fileID: 601704712}
   uiImg: {fileID: 846024487}
   stageText: {fileID: 1120645412}
 --- !u!4 &92662083
@@ -942,14 +942,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1461596967, guid: c98317791ed2efe459c6c5fe8932d47a, type: 3}
-      propertyPath: layerMask.m_Bits
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1461596967, guid: c98317791ed2efe459c6c5fe8932d47a, type: 3}
-      propertyPath: interactLayerMask.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
     - target: {fileID: 2941927329194893146, guid: c98317791ed2efe459c6c5fe8932d47a, type: 3}
       propertyPath: m_Name
       value: Warrior_Dummy
@@ -1000,6 +992,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c98317791ed2efe459c6c5fe8932d47a, type: 3}
+--- !u!1 &601704712 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2941927329194893146, guid: c98317791ed2efe459c6c5fe8932d47a, type: 3}
+  m_PrefabInstance: {fileID: 601704711}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &703062063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3116,7 +3113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43374906046044c408c873886d475ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1461596968}
+  player: {fileID: 601704712}
+  uiController: {fileID: 92662082}
 --- !u!4 &1345078174
 Transform:
   m_ObjectHideFlags: 0
