@@ -13,28 +13,27 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private Transform character;
 
-    [SerializeField]
-    public Sword playerWeapon;
+    //[SerializeField]
+    //public Sword playerWeapon;
 
     public MonsterData curStage = null;
 
     public event UnityAction onChangeMoney;
     //[HideInInspector]
-    public int gameMoney = 0;
+    public int gameMoney = 200;
     //[HideInInspector]
-    public int gameGem = 0;
+    public int gameGem;
 
     private int curMoney;
     private int curGem;
-
     private void Start()
     {
         curMoney = gameMoney;
         curGem = gameGem;
-       
+
 
         Scene scene = SceneManager.GetActiveScene();
-        if(scene.name == "StageSelectTest")
+        if (scene.name == "StageSelectTest")
         {
             if (curPos != Vector3.zero)
             {
@@ -42,7 +41,6 @@ public class GameManager : Singleton<GameManager>
                 character.rotation = curRotation;
             }
         }
-       
     }
 
     private void Update()

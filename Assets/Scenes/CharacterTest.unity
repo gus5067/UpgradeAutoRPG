@@ -701,6 +701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c0ceabac5af3f84fbfc456de798f694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageManager: {fileID: 896722720}
   uimanager: {fileID: 681978892}
   moneyText: {fileID: 394912233}
   gemText: {fileID: 1206136584}
@@ -845,6 +846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curMap: {fileID: 0}
+  monsterData: {fileID: 0}
 --- !u!4 &896722721
 Transform:
   m_ObjectHideFlags: 0

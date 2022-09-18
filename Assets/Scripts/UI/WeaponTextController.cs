@@ -13,9 +13,14 @@ public class WeaponTextController : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI weaponDamageText;
-    private void Start()
+
+    private void Awake()
     {
         WeaponManager.Instance.onChangeWeaponValue += OnChangeValue;
+    }
+    private void Start()
+    {
+      
         weaponNameText.text = WeaponManager.Instance.swordName;
         weaponValueText.text = "+" + WeaponManager.Instance.weaponValue.ToString();
         weaponDamageText.text = "Damage : " + WeaponManager.Instance.minDamage + " ~ " + WeaponManager.Instance.maxDamage;

@@ -10,16 +10,17 @@ public class StageManager : MonoBehaviour
     private  MapGenerator curMap;
 
     [HideInInspector]
-    public static MonsterData monsterData;
+    public MonsterData monsterData;
 
-    public static event UnityAction<bool> onStageEnd;
+    public event UnityAction<bool> onStageEnd;
 
     public static int characterCount;
 
     public static int monsterCount;
 
     private bool isEnd;
-    private void Start()
+
+    private void OnEnable()
     {
         if (GameManager.Instance.curStage != null)
         {

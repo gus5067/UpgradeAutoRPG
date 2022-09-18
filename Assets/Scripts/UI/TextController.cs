@@ -5,8 +5,12 @@ using TMPro;
 
 public class TextController : MonoBehaviour
 {
+    [SerializeField]
+    private StageManager stageManager;
 
+    [SerializeField]
     private UIManager uimanager;
+
     [SerializeField]
     private TextMeshProUGUI moneyText;
 
@@ -16,17 +20,20 @@ public class TextController : MonoBehaviour
     private TextMeshProUGUI stageEndText;
 
     private MonsterData curMapMonster;
-    private void Awake()
-    {
-        uimanager = FindObjectOfType<UIManager>();
-        GameManager.Instance.onChangeMoney += OnChangeMoney;
-        StageManager.onStageEnd += OnStageEnd;
-    }
     private void Start()
     {
+        GameManager.Instance.onChangeMoney += OnChangeMoney;
+        if(stageManager!=null)
+        {
+            stageManager.onStageEnd += OnStageEnd;
+        }
         moneyText.text = GameManager.Instance.gameMoney.ToString();
         gemText.text = GameManager.Instance.gameGem.ToString();
-        curMapMonster = StageManager.monsterData;
+        if(stageManager != null)
+        {
+            curMapMonster = stageManager.monsterData;
+        }
+     
 
 
         if(curMapMonster != null)
