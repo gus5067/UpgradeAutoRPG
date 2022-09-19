@@ -98,14 +98,33 @@ public class UpgradeButton : MonoBehaviour
     {
         int num = Random.Range(1, 101);
 
-        if (num >= 70)
+        if (num >= 49)
         {
             Debug.Log("특수 강화 성공");
-            
+            WeaponManager.Instance.WeaponStateNum = Random.Range(1, 3);
+            switch (WeaponManager.Instance.WeaponStateNum)
+            {
+                case 0:
+                    WeaponManager.Instance.swordName = "기본 전사의 검";
+        
+                    break;
+                case 1:
+                    WeaponManager.Instance.swordName = "흡혈의 검";
+       
+                    break;
+                case 2:
+                    WeaponManager.Instance.swordName = "강력한 전사의 검";
+                    break;
+
+            }
+            Debug.Log("무기 번호 : " + WeaponManager.Instance.WeaponStateNum);
+
         }
         else
         {
             Debug.Log("특수 강화 실패");
+            WeaponManager.Instance.WeaponStateNum = 0;
+            Debug.Log("무기 번호 : " + WeaponManager.Instance.WeaponStateNum);
         }
     }
 }

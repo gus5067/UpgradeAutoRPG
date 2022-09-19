@@ -20,13 +20,11 @@ public class ChangeSceneButton : MonoBehaviour
     }
     public void ButtonFocused()
     {
-        Debug.Log("버튼 위에 있음");
         StartCoroutine("ButtonMoveRoutine");
     }
 
     public void ButtonFocusedOut()
     {
-        Debug.Log("버튼 나감");
         StopCoroutine("ButtonMoveRoutine");
         curStageButtonPos.anchoredPosition = firstPos;
     }
@@ -49,8 +47,10 @@ public class ChangeSceneButton : MonoBehaviour
         SceneManager.LoadScene("StageSelectTest");
     }
 
-    public void LoadBattleScene()
+    public void CheatOn()
     {
-        SceneManager.LoadScene("CharacterTest");
+        Debug.Log("치트키 사용");
+        GameManager.Instance.gameMoney += 1000;
+        GameManager.Instance.gameGem += 10;
     }
 }

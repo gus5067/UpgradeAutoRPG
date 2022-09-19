@@ -11,6 +11,7 @@ public class playerAttackBehaviour : StateMachineBehaviour
     private int damage;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+      
         attackController = animator.GetComponentInParent<AttackController>();
         viewDetector = animator.GetComponentInParent<ViewDetector>();
         viewDetector.FindTarget();
@@ -20,9 +21,28 @@ public class playerAttackBehaviour : StateMachineBehaviour
             if (target != null)
             {
                 damage = Random.Range(attackController.minDamage, attackController.maxDamage + 1);
-                target.HitDamage(damage);
+                switch (WeaponManager.Instance.WeaponStateNum)
+                {
+                    case 0:
+                        target.HitDamage(damage);
+                        break;
+                    case 1:
+                        target.HitDamage(damage);
+                        animator.GetComponentInParent<IDamageable>().HitDamage(-damage/4);
+                        if(animator.GetComponentInParent<HpController>().hp >= animator.GetComponentInParent<HpController>().initHp)
+                        {
+                            animator.GetComponentInParent<HpController>().hp = animator.GetComponentInParent<HpController>().initHp;
+                        }
+                        break;
+                    case 2:
+                        target.HitDamage(damage * 2);
+                        break;
+                }
+                
             }
         }
+
+        
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

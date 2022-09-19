@@ -7900,7 +7900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiController: {fileID: 92662082}
   ownMonsterData: {fileID: 0}
-  ownMapData: {fileID: 0}
+  ownMapData: {fileID: 11400000, guid: ef82856a510866443a7ec22c3f997b6f, type: 2}
   isInteract: 0
 --- !u!1001 &3303675132164139082
 PrefabInstance:
@@ -8938,7 +8938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiController: {fileID: 92662082}
   ownMonsterData: {fileID: 11400000, guid: da70105c59305f84a9281c40697f09f8, type: 2}
-  ownMapData: {fileID: 11400000, guid: db555f39f70cc49419b4c58dd310fa56, type: 2}
+  ownMapData: {fileID: 11400000, guid: 17b7cd91740a19c4f8a74aa44ca442d2, type: 2}
   isInteract: 0
 --- !u!114 &3414272837998592352
 MonoBehaviour:
@@ -8954,7 +8954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiController: {fileID: 92662082}
   ownMonsterData: {fileID: 11400000, guid: b74fc0f1cf7fdde44a588683eabc4168, type: 2}
-  ownMapData: {fileID: 11400000, guid: ef82856a510866443a7ec22c3f997b6f, type: 2}
+  ownMapData: {fileID: 11400000, guid: db555f39f70cc49419b4c58dd310fa56, type: 2}
   isInteract: 0
 --- !u!136 &3414272837998592353
 CapsuleCollider:
@@ -16228,7 +16228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiController: {fileID: 92662082}
   ownMonsterData: {fileID: 0}
-  ownMapData: {fileID: 0}
+  ownMapData: {fileID: 11400000, guid: ef82856a510866443a7ec22c3f997b6f, type: 2}
   isInteract: 0
 --- !u!137 &4489273882299781920
 SkinnedMeshRenderer:
@@ -20847,7 +20847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiController: {fileID: 92662082}
   ownMonsterData: {fileID: 0}
-  ownMapData: {fileID: 0}
+  ownMapData: {fileID: 11400000, guid: ef82856a510866443a7ec22c3f997b6f, type: 2}
   isInteract: 0
 --- !u!64 &7293442086496158368
 MeshCollider:

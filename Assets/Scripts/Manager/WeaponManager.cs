@@ -6,7 +6,8 @@ public class WeaponManager : Singleton<WeaponManager>
 {
     [SerializeField]
     private Sword playerWeapon;
-
+    [SerializeField]
+    public int WeaponStateNum = 0;
     [HideInInspector]
     public int weaponValue = 1;
     public int minDamage;
@@ -35,6 +36,12 @@ public class WeaponManager : Singleton<WeaponManager>
         if (curValue != weaponValue)
         {
             onChangeWeaponValue?.Invoke();
+            curValue = weaponValue;
+        }
+        else if(curName != swordName)
+        {
+            onChangeWeaponValue?.Invoke();
+            curName = swordName;
         }
         else
         {
