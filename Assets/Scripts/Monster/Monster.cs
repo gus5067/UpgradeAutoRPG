@@ -4,21 +4,25 @@ using UnityEngine;
 using UnityEngine.Events;
 public abstract class Monster : MonoBehaviour,IDamageable
 {
-    [SerializeField]
-    private int hp;
-    [SerializeField]
-    private int initHp;
     public event UnityAction<int> onChangeHp;
 
+    [SerializeField]
+    protected DropItemData dropItemData;
 
-   
+    private void Start()
+    {
+      
+    }
 
     public void HitDamage(int damage)
     {
         onChangeHp?.Invoke(damage);
-
     }
-
+    public void DropItem()
+    {
+        GameManager.Instance.gameMoney += Random.Range(dropItemData.minGold, dropItemData.maxGold);
+        GameManager.Instance.gameGem += dropItemData.gem;
+    }
     public void DieCount()
     {
         StageManager.monsterCount--;

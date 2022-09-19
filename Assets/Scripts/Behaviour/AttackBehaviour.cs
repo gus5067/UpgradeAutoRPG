@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackBehaviour : StateMachineBehaviour
 {
     [SerializeField]
-    private int damage;
+    public int damage;
     private IDamageable target;
     private ViewDetector viewDetector;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

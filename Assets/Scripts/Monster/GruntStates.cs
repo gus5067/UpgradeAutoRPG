@@ -24,6 +24,13 @@ namespace GruntStates
 
         public override void HandleStateChange(Grunt Owner)
         {
+            CheckDie(Owner);
+            CheckSkill(Owner);
+
+            
+        }
+        public void CheckDie(Grunt Owner)
+        {
             if (Owner.hpController.hp <= 0)
             {
                 isDie = true;
@@ -41,9 +48,15 @@ namespace GruntStates
                     Owner.characterController.Move(new Vector3(0, Physics.gravity.y, 0).normalized * Time.deltaTime);
                 }
             }
+        }
 
-
-            
+        public void CheckSkill(Grunt Owner)
+        {
+            if(Owner.hpController.initMp>0 && Owner.hpController.mp == Owner.hpController.initMp)
+            {
+                Owner.hpController.mp -= Owner.hpController.initMp;
+                Owner.ChangeState(Grunt.State.Skill);
+            }
         }
     }
 
@@ -160,16 +173,47 @@ namespace GruntStates
 
         IEnumerator AttackTime(Grunt Owner)
         {
+            isAttackking = true;
             int randomNum = Random.Range(1, 3);
             Owner.animator.SetTrigger("Attack");
             Owner.animator.SetInteger("randomAttack", randomNum);
-            isAttackking = true;
             yield return new WaitForSeconds(1.5f);
-            isAttackking = false;
             Owner.ChangeState(Grunt.State.Idle);
+            isAttackking = false;
         }
     }
 
+    public class SkillState : BaseState
+    {
+        private bool isSkill;
+        public override void Enter(Grunt Owner)
+        {
+            if (isSkill == false)
+            {
+                Owner.StartCoroutine(SkillRoutine(Owner));
+            }
+        }
+
+        public override void Update(Grunt Owner)
+        {
+
+
+        }
+
+        public override void Exit(Grunt Owner)
+        {
+            Owner.animator.ResetTrigger("Skill");
+        }
+
+        IEnumerator SkillRoutine(Grunt Owner)
+        {
+            isSkill = true;
+            Owner.animator.SetTrigger("Skill");
+            yield return new WaitForSeconds(2f);
+            isSkill = false;
+            Owner.ChangeState(Grunt.State.Idle);
+        }
+    }
     public class StunState : BaseState
     {
         public override void Enter(Grunt Owner)
@@ -198,9 +242,9 @@ namespace GruntStates
             {
                 isDie = false;
                 Owner.animator.SetTrigger("Die");
+                Owner.DropItem();
                 Owner.DieCount();
                 Owner.characterController.enabled = false;
-                GameManager.Instance.gameMoney += 10 + Random.Range(10, 30);
                 Owner.Die(1.5f);
             }
             

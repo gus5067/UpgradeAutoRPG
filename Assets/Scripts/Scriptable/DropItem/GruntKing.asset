@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172ebc71602794a40bfbd530cc5a178c, type: 3}
-  m_Name: Stage1-3Monster
+  m_Script: {fileID: 11500000, guid: d07b9c621d7cc9846bc2517916344f45, type: 3}
+  m_Name: GruntKing
   m_EditorClassIdentifier: 
-  monstersPrefab:
-  - {fileID: 3695343289938160501, guid: 3605f99b31603104d8cdc85188ee63c0, type: 3}
-  stageNum: 1
-  roundNum: 3
+  minGold: 300
+  maxGold: 500
+  gem: 1

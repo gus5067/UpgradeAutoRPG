@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 public class Grunt : Monster,IDamageable
 {
-    public enum State { Idle, Trace, Attack, Stun, Die }
+    public enum State { Idle, Trace, Attack, Stun, Skill, Die }
     private StateMachine<State, Grunt> stateMachine;
 
     [SerializeField]
@@ -51,7 +51,7 @@ public class Grunt : Monster,IDamageable
         stateMachine.AddState(State.Attack, new GruntStates.AttackState());
         stateMachine.AddState(State.Stun, new GruntStates.StunState());
         stateMachine.AddState(State.Die, new GruntStates.DieState());
-
+        stateMachine.AddState(State.Skill, new GruntStates.SkillState());
         stateMachine.ChangeState(State.Idle);
     }
     private void Update()
