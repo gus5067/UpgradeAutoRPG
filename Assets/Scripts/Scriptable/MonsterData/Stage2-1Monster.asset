@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Stage2-1Monster
   m_EditorClassIdentifier: 
   monstersPrefab:
-  - {fileID: 0}
-  - {fileID: 0}
-  stageNum: 0
-  roundNum: 0
+  - {fileID: 503022101610888123, guid: c0c0a209776b657439af2b43386ff559, type: 3}
+  stageNum: 2
+  roundNum: 1

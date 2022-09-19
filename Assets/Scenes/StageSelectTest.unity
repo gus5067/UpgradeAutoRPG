@@ -9894,7 +9894,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3875237967411264659}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 10, y: 12.5, z: -10.2}
+  m_LocalPosition: {x: 10, y: 12.553, z: -10.2}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12445,10 +12445,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.6
-  m_Height: 8
+  m_Radius: 1
+  m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: -4, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4489273882288217632
 GameObject:
   m_ObjectHideFlags: 0
@@ -17364,10 +17364,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.6
-  m_Height: 8
+  m_Radius: 1
+  m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: -4, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6774360948676763648
 GameObject:
   m_ObjectHideFlags: 0
@@ -20846,7 +20846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiController: {fileID: 92662082}
-  ownMonsterData: {fileID: 0}
+  ownMonsterData: {fileID: 11400000, guid: 871c40ada369fe44fb42e936c989e6e3, type: 2}
   ownMapData: {fileID: 11400000, guid: ef82856a510866443a7ec22c3f997b6f, type: 2}
   isInteract: 0
 --- !u!64 &7293442086496158368

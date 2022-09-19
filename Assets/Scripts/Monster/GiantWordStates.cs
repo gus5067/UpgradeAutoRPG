@@ -122,7 +122,7 @@ namespace GiantWormStates
             if (targets.Length > 0)
             {
                 traceTarget = targets[0].gameObject;
-                Owner.animator.SetBool("isRun", true);
+                //Owner.animator.SetBool("isRun", true);
             }
             else
             {
@@ -145,7 +145,7 @@ namespace GiantWormStates
 
         public override void Exit(GiantWorm Owner)
         {
-            Owner.animator.SetBool("isRun", false);
+           // Owner.animator.SetBool("isRun", false);
         }
     }
 
@@ -174,10 +174,10 @@ namespace GiantWormStates
         IEnumerator AttackTime(GiantWorm Owner)
         {
             isAttackking = true;
-            int randomNum = Random.Range(1, 3);
+            //int randomNum = Random.Range(1, 3);
             Owner.animator.SetTrigger("Attack");
-            Owner.animator.SetInteger("randomAttack", randomNum);
-            yield return new WaitForSeconds(1.5f);
+            //Owner.animator.SetInteger("randomAttack", randomNum);
+            yield return new WaitForSeconds(1f);
             Owner.ChangeState(GiantWorm.State.Idle);
             isAttackking = false;
         }
@@ -209,7 +209,7 @@ namespace GiantWormStates
         {
             isSkill = true;
             Owner.animator.SetTrigger("Skill");
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(3f);
             isSkill = false;
             Owner.ChangeState(GiantWorm.State.Idle);
         }
