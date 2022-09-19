@@ -81,6 +81,7 @@ public class monsterHpController : MonoBehaviour
             SetDamageText(damage);
             if (initMp > 0)
             {
+                
                 OnChangeMp(1);
             }
         }
