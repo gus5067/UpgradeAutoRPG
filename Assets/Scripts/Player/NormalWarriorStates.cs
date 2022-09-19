@@ -158,7 +158,7 @@ public class StunState : BaseState
     {
         public override void Enter(NormalWarrior Owner)
         {
-    
+            Owner.StartCoroutine(StunTime(Owner));
         }
 
         public override void Update(NormalWarrior Owner)
@@ -170,6 +170,15 @@ public class StunState : BaseState
         public override void Exit(NormalWarrior Owner)
         {
 
+        }
+
+        IEnumerator StunTime(NormalWarrior Owner)
+        {
+            Owner.animator.SetBool("isStun", true);
+            Owner.animator.SetTrigger("Stun");
+            yield return new WaitForSeconds(2f);
+            Owner.animator.SetBool("isStun", false);
+            Owner.ChangeState(NormalWarrior.State.Idle);
         }
     }
 

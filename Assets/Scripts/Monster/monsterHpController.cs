@@ -48,6 +48,7 @@ public class monsterHpController : MonoBehaviour
     {
         preHp = hp;
         SetHpBar();
+        mpSlider.value = this.mp / this.initMp;
     }
 
     private void SetHpBar()

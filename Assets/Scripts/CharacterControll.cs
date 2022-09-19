@@ -7,11 +7,8 @@ public class CharacterControll : MonoBehaviour
     [SerializeField]
     public GameObject player;
 
-
-    private void Start()
+    private void Awake()
     {
-   
-
         if (GameManager.Instance.characterPos != Vector3.zero)
         {
             player.transform.position = GameManager.Instance.characterPos;

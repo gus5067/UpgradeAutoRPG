@@ -5,11 +5,6 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
-
-
-    public Vector3 curPos = Vector3.zero;
-    public Quaternion curRotation = Quaternion.identity;
-
     [SerializeField]
     public Vector3 characterPos;
 

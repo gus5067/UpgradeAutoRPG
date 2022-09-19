@@ -43,9 +43,9 @@ public class HpController : MonoBehaviour
         _hpBar.offset = hpBarOffset;
     }
 
-    private void OnChangeHp(float hp)
+    private void OnChangeHp(float damage)
     {
-        this.hp = hp;
+        this.hp -= damage* (1- WeaponManager.Instance.weaponValue * 0.04f);
         hpSlider.value = this.hp/this.initHp;
     }
     

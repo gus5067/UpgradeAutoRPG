@@ -145,7 +145,7 @@ namespace GiantWormStates
 
         public override void Exit(GiantWorm Owner)
         {
-           // Owner.animator.SetBool("isRun", false);
+            // Owner.animator.SetBool("isRun", false);
         }
     }
 
@@ -154,10 +154,21 @@ namespace GiantWormStates
         private bool isAttackking;
         public override void Enter(GiantWorm Owner)
         {
+            GameObject attackTarget;
+            Collider[] attackTargets = Physics.OverlapSphere(Owner.transform.position, Owner.attackRange, Owner.targetLayerMask);
+            if (attackTargets.Length > 0)
+            {
+                attackTarget = attackTargets[0].gameObject;
+                Owner.transform.LookAt(new Vector3(attackTarget.transform.position.x, Owner.transform.position.y, attackTarget.transform.position.z));
+                return;
 
+            }
+            else
+            {
+                attackTarget = null;
+            }
         }
-
-        public override void Update(GiantWorm Owner)
+    public override void Update(GiantWorm Owner)
         {
 
             if (isAttackking == false)
@@ -211,7 +222,6 @@ namespace GiantWormStates
             Owner.animator.SetTrigger("Skill");
             yield return new WaitForSeconds(3f);
             isSkill = false;
-            Owner.ChangeState(GiantWorm.State.Idle);
         }
     }
     public class StunState : BaseState

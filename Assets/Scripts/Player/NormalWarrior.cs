@@ -59,12 +59,6 @@ public class NormalWarrior : Player,IDamageable
         stateMachine.AddState(State.Die, new NormalWarriorStates.DieState());
 
         stateMachine.ChangeState(State.Idle);
-
-        hp = hpController.hp;
-        initHp = hpController.initHp;
-
-     
-
     }
     private void Start()
     {
