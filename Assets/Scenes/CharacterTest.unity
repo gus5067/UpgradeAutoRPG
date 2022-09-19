@@ -874,7 +874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b9063635e88b5c4ea10281b62998d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curMap: {fileID: 11400000, guid: db555f39f70cc49419b4c58dd310fa56, type: 2}
+  curMap: {fileID: 0}
   unvisibleWall: {fileID: 1643719497323972, guid: 7553277937e95b8409cfc49371f69ec7, type: 3}
   monsterPoint: {x: 0, y: 0, z: 0}
   monsterPoint2: {x: 0, y: 0, z: 0}

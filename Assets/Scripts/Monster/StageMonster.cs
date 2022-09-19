@@ -8,17 +8,23 @@ public class StageMonster : MonoBehaviour,IInteractable
     private UIControllOnStageScene uiController;
     public MonsterData ownMonsterData;
 
+    public MapData ownMapData;
+
     public bool isInteract;
 
     public event UnityAction<StageMonster> onStageMonster;
 
     public void Interact()
     {
-        if(!isInteract)
+        if (!isInteract)
         {
             if (ownMonsterData != null)
             {
                 uiController.curStage = this;
+                if (ownMapData != null)
+                {
+                    GameManager.Instance.curMap = ownMapData;
+                }
                 GameManager.Instance.curStage = ownMonsterData;
                 onStageMonster?.Invoke(this);
                 Time.timeScale = 0f;

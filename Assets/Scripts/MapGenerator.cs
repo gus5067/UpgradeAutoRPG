@@ -22,6 +22,13 @@ public class MapGenerator : MonoBehaviour
 
     private void Awake()
     {
+        if (GameManager.Instance.curMap != null)
+        {
+            this.curMap = GameManager.Instance.curMap;
+        }
+    }
+    private void OnEnable()
+    {
         mapCube = curMap.tilePrefab.gameObject;
         mapSize = curMap.tileSize;
         CreateGrid();

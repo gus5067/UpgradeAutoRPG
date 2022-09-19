@@ -21,6 +21,8 @@ public class GameManager : Singleton<GameManager>
 
     public MonsterData curStage = null;
 
+    public MapData curMap = null;
+
     public event UnityAction onChangeMoney;
     //[HideInInspector]
     public int gameMoney = 200;

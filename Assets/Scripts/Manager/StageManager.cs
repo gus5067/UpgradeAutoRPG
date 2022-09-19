@@ -26,12 +26,15 @@ public class StageManager : MonoBehaviour
         {
             monsterData = GameManager.Instance.curStage;
         }
-        curMap = GetComponent<MapGenerator>();
-        StartCoroutine(SummonMonsterRoutine());
         monsterCount = monsterData.monstersPrefab.Length;
         characterCount = 1; //아직 동료는 미구현이니깐 일단은 1로 시작
 
         isEnd = false;
+    }
+    private void Start()
+    {
+        curMap = GetComponent<MapGenerator>();
+        StartCoroutine(SummonMonsterRoutine());
     }
 
     private void Update()
