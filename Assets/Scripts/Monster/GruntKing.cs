@@ -17,5 +17,6 @@ public class GruntKing : Grunt
             this.hpController.CheckHpChange();
             yield return new WaitForSeconds(0.01f);
         }
+        ChangeState(State.Idle);
     }
 }

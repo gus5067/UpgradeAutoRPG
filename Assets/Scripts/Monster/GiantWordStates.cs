@@ -52,7 +52,7 @@ namespace GiantWormStates
 
         public void CheckSkill(GiantWorm Owner)
         {
-            if (Owner.hpController.initMp > 0 && Owner.hpController.mp == Owner.hpController.initMp)
+            if (Owner.hpController.initMp > 0 && Owner.hpController.mp >= Owner.hpController.initMp)
             {
                 Owner.hpController.mp -= Owner.hpController.initMp;
                 Owner.ChangeState(GiantWorm.State.Skill);

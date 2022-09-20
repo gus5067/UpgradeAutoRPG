@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172ebc71602794a40bfbd530cc5a178c, type: 3}
-  m_Name: Stage2-1Monster
+  m_Name: Stage2-2Monster
   m_EditorClassIdentifier: 
   monstersPrefab:
-  - {fileID: 7976870357471896194, guid: d480c2e68a0857541a314aba815b180c, type: 3}
-  - {fileID: 7976870357471896194, guid: d480c2e68a0857541a314aba815b180c, type: 3}
+  - {fileID: 3558737215664726094, guid: d4ceb2bec854df3449b7d43e702a51ad, type: 3}
+  - {fileID: 503022101610888123, guid: c0c0a209776b657439af2b43386ff559, type: 3}
+  - {fileID: 503022101610888123, guid: c0c0a209776b657439af2b43386ff559, type: 3}
   stageNum: 2
-  roundNum: 1
+  roundNum: 2

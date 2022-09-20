@@ -9,16 +9,17 @@ public class GiantWormSkillAttack : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        controller = animator.GetComponent<CharacterController>();
-        worm = animator.GetComponent<GiantWorm>();
+        controller = animator.GetComponentInParent<CharacterController>();
+        worm = animator.GetComponentInParent<GiantWorm>();
 
-        controller.enabled = true;
+        worm.gameObject.layer = 6;
 
         GameObject attackTarget;
         Collider[] attackTargets = Physics.OverlapSphere(worm.gameObject.transform.position, worm.attackRange, worm.targetLayerMask);
         if (attackTargets.Length > 0)
         {
             attackTarget = attackTargets[0].gameObject;
+            attackTarget.GetComponent<Transform>().position = attackTarget.transform.position + Vector3.up * 1.5f;
             attackTarget.GetComponent<NormalWarrior>().ChangeState(NormalWarrior.State.Stun);
             return;
         }
@@ -37,7 +38,7 @@ public class GiantWormSkillAttack : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        worm.ChangeState(GiantWorm.State.Idle);
     }
 
 }

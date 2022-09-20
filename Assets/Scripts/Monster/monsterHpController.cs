@@ -48,21 +48,27 @@ public class monsterHpController : MonoBehaviour
     {
         preHp = hp;
         SetHpBar();
-        mpSlider.value = this.mp / this.initMp;
+        if(initMp != 0)
+        {
+            mpSlider.value = this.mp / this.initMp;
+        }
+        else
+        {
+            mpSlider.value = 0;
+        }
+        
     }
 
     private void SetHpBar()
     {
         uiCanvas = uiManager.uiCanvas;
-        if(initMp > 0)
-        {
-            GameObject mpBar = Instantiate<GameObject>(mpBarPrefab, uiCanvas.transform);
-            mpSlider = mpBar.GetComponent<Slider>();
-            var _mpBar = mpBar.GetComponent<EnemyHpBar>();
-            _mpBar.targetTr = this.gameObject.transform;
-            _mpBar.offset = mpBarOffset;
 
-        }
+        GameObject mpBar = Instantiate<GameObject>(mpBarPrefab, uiCanvas.transform);
+        mpSlider = mpBar.GetComponent<Slider>();
+        var _mpBar = mpBar.GetComponent<EnemyHpBar>();
+        _mpBar.targetTr = this.gameObject.transform;
+        _mpBar.offset = mpBarOffset;
+
         GameObject hpBar = Instantiate<GameObject>(hpBarPrefab, uiCanvas.transform);
         hpSlider = hpBar.GetComponent<Slider>();
         var _hpBar = hpBar.GetComponent<EnemyHpBar>();
@@ -103,14 +109,14 @@ public class monsterHpController : MonoBehaviour
             hp = initHp;
         }
     }
-    public void OnChangeMp(int mana)
+    public void OnChangeMp(float mana)
     {
         if(initMp > 0)
         {
             this.mp += mana;
             mpSlider.value = this.mp / this.initMp;
         }
-        else if(initMp == 0)
+        else
         {
             mpSlider.value = 0;
         }

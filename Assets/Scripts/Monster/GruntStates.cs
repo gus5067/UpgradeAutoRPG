@@ -52,7 +52,7 @@ namespace GruntStates
 
         public void CheckSkill(Grunt Owner)
         {
-            if(Owner.hpController.initMp>0 && Owner.hpController.mp == Owner.hpController.initMp)
+            if(Owner.hpController.initMp>0 && Owner.hpController.mp >= Owner.hpController.initMp)
             {
                 Owner.hpController.mp -= Owner.hpController.initMp;
                 Owner.ChangeState(Grunt.State.Skill);
@@ -154,7 +154,6 @@ namespace GruntStates
         private bool isAttackking;
         public override void Enter(Grunt Owner)
         {
-           
         }
 
         public override void Update(Grunt Owner)
@@ -177,7 +176,7 @@ namespace GruntStates
             int randomNum = Random.Range(1, 3);
             Owner.animator.SetTrigger("Attack");
             Owner.animator.SetInteger("randomAttack", randomNum);
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.5f - Owner.attackTime);
             Owner.ChangeState(Grunt.State.Idle);
             isAttackking = false;
         }
@@ -211,7 +210,7 @@ namespace GruntStates
             Owner.animator.SetTrigger("Skill");
             yield return new WaitForSeconds(2f);
             isSkill = false;
-            Owner.ChangeState(Grunt.State.Idle);
+            //Owner.ChangeState(Grunt.State.Idle);
         }
     }
     public class StunState : BaseState

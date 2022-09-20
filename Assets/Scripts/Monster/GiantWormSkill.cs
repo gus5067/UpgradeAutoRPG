@@ -9,16 +9,14 @@ public class GiantWormSkill : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
     {
-        controller = animator.GetComponent<CharacterController>();
-        worm = animator.GetComponent<GiantWorm>();
-
-        controller.enabled = false;
+        controller = animator.GetComponentInParent<CharacterController>();
+        worm = animator.GetComponentInParent<GiantWorm>();
+        worm.gameObject.layer = 8;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        controller.enabled = false;
         GameObject traceTarget = null;
         Collider[] targets = Physics.OverlapSphere(animator.gameObject.transform.position, worm.findRange, worm.targetLayerMask);
         if (targets.Length > 0)
@@ -27,11 +25,10 @@ public class GiantWormSkill : StateMachineBehaviour
             Debug.Log(traceTarget.name);
         }
         Vector3 moveDir = traceTarget.transform.position - worm.gameObject.transform.position;
-        Debug.Log(moveDir);
-        animator.transform.position = Vector3.MoveTowards(animator.transform.position, traceTarget.transform.position, worm.moveSpeed * Time.deltaTime);
-        animator.gameObject.transform.LookAt(new Vector3(traceTarget.transform.position.x, animator.gameObject.transform.position.y, traceTarget.transform.position.z));
+        controller.Move(new Vector3(moveDir.x, Physics.gravity.y, moveDir.z).normalized * Time.deltaTime * worm.moveSpeed * 5f);
+        worm.gameObject.transform.LookAt(new Vector3(traceTarget.transform.position.x, worm.gameObject.transform.position.y, traceTarget.transform.position.z));
 
-        if(moveDir.magnitude < 1f)
+        if(moveDir.magnitude < 1.5f)
         {
             animator.SetTrigger("SkillOn");
         }

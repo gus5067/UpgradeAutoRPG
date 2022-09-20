@@ -7899,7 +7899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiController: {fileID: 92662082}
-  ownMonsterData: {fileID: 0}
+  ownMonsterData: {fileID: 11400000, guid: 4bcf186b7c3f86e41a9e3a0dc64d08d5, type: 2}
   ownMapData: {fileID: 11400000, guid: ef82856a510866443a7ec22c3f997b6f, type: 2}
   isInteract: 0
 --- !u!1001 &3303675132164139082
@@ -9010,7 +9010,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 115c383ac82154e5cadac2968263703a, type: 2}
+  - {fileID: 2100000, guid: cbd3008d830c049208ae8e0b66548da9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17929,7 +17929,7 @@ GameObject:
   - component: {fileID: 4319448129638922577}
   - component: {fileID: 645527626959261261}
   m_Layer: 6
-  m_Name: Giant_Worm_OnStage (1)
+  m_Name: Giant_Worm_OnStage 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20359,7 +20359,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 115c383ac82154e5cadac2968263703a, type: 2}
+  - {fileID: 2100000, guid: cbd3008d830c049208ae8e0b66548da9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

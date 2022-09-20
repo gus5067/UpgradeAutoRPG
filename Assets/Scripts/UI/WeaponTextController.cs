@@ -23,15 +23,24 @@ public class WeaponTextController : MonoBehaviour
     }
     private void Start()
     {
-      
+        ChangeColor();
         weaponNameText.text = WeaponManager.Instance.swordName;
         weaponValueText.text = "+" + WeaponManager.Instance.weaponValue.ToString();
         weaponDamageText.text = "Damage : " + WeaponManager.Instance.minDamage + " ~ " + WeaponManager.Instance.maxDamage;
+
     }
 
     private void OnChangeValue()
     {
 
+        ChangeColor();
+        weaponNameText.text = WeaponManager.Instance.swordName;
+        weaponValueText.text = "+" + WeaponManager.Instance.weaponValue.ToString();
+        weaponDamageText.text = "공격력 : " + WeaponManager.Instance.minDamage + " ~ " + WeaponManager.Instance.maxDamage;
+    }
+
+    private void ChangeColor()
+    {
         switch (WeaponManager.Instance.WeaponStateNum)
         {
             case 0:
@@ -50,8 +59,5 @@ public class WeaponTextController : MonoBehaviour
                 break;
 
         }
-        weaponNameText.text = WeaponManager.Instance.swordName;
-        weaponValueText.text = "+" + WeaponManager.Instance.weaponValue.ToString();
-        weaponDamageText.text = "공격력 : " + WeaponManager.Instance.minDamage + " ~ " + WeaponManager.Instance.maxDamage;
     }
 }

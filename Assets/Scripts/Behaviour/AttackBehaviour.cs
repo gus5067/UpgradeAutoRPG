@@ -10,6 +10,8 @@ public class AttackBehaviour : StateMachineBehaviour
     private ViewDetector viewDetector;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.GetComponentInParent<monsterHpController>().OnChangeMp(1);
+        animator.speed = animator.GetComponentInParent<Monster>().attackTime + 1f;
         viewDetector = animator.GetComponentInParent<ViewDetector>();
         viewDetector.FindTarget();
         if (viewDetector.target != null)
