@@ -9,6 +9,9 @@ public class UIManager : MonoBehaviour
     public GameObject damageTextPrefab;
 
     [SerializeField]
+    public GameObject playerDamageTextPrefab;
+
+    [SerializeField]
     public Canvas uiCanvas;
 
     [SerializeField]

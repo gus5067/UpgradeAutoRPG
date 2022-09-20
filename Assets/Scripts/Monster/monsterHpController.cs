@@ -9,7 +9,7 @@ public class monsterHpController : MonoBehaviour
     private UIManager uiManager;
     public float hp;
 
-    public float preHp;
+    private float preHp;
 
     public float mp;
 

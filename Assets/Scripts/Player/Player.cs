@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public abstract class Player : MonoBehaviour,IDamageable
 {
-    public event UnityAction<float> onChangeHp;
+    public event UnityAction<int> onChangeHp;
 
 
 
