@@ -8,6 +8,9 @@ public class Anubis : Monster
 
     [SerializeField]
     public GameObject skillPrefab;
+
+    [SerializeField]
+    public GameObject skillEffect;
     public enum State { Idle, Trace, Attack, Stun, Skill, Die }
     private StateMachine<State, Anubis> stateMachine;
 

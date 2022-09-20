@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class FireBall : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject FireBallEffect;
     private ViewDetector viewDetector;
+    private MeshRenderer meshRenderer;
 
     private bool isReady = false;
 
     private void Awake()
     {
         viewDetector = GetComponent<ViewDetector>();
+        meshRenderer = GetComponent<MeshRenderer>();
     }
     private void Start()
     {
@@ -54,7 +58,9 @@ public class FireBall : MonoBehaviour
         if (other.gameObject.layer == 7)
         {
             other.gameObject.GetComponent<IDamageable>().HitDamage(30);
-            Destroy(gameObject);
+            FireBallEffect.SetActive(true);
+            meshRenderer.enabled = false;
+            Destroy(gameObject,1f);
         }
     }
 }

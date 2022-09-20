@@ -9,6 +9,7 @@ public class AnubisSkillBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         anubis = animator.GetComponentInParent<Anubis>();
+        anubis.skillEffect.SetActive(true);
         GameObject skillObj = Instantiate(anubis.skillPrefab, anubis.skillPoint.position, Quaternion.identity);
         
     }
@@ -22,6 +23,7 @@ public class AnubisSkillBehaviour : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        anubis.skillEffect.SetActive(false);
         anubis.ChangeState(Anubis.State.Idle);
     }
 }
