@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monstersPrefab:
   - {fileID: 3558737215664726094, guid: d4ceb2bec854df3449b7d43e702a51ad, type: 3}
-  - {fileID: 503022101610888123, guid: c0c0a209776b657439af2b43386ff559, type: 3}
-  - {fileID: 503022101610888123, guid: c0c0a209776b657439af2b43386ff559, type: 3}
+  - {fileID: 7976870357471896194, guid: d480c2e68a0857541a314aba815b180c, type: 3}
+  - {fileID: 7976870357471896194, guid: d480c2e68a0857541a314aba815b180c, type: 3}
   stageNum: 2
   roundNum: 2
