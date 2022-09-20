@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04d87c180182fce439efbafba0788d03, type: 3}
+  m_Name: SwordTrail
+  m_EditorClassIdentifier: 
+  trails:
+  - {fileID: 2100000, guid: fa1d2da0274c70f44b00bee5d277aa74, type: 2}
+  - {fileID: 2100000, guid: 7dbb780f9a047704bbc3ca839cbecafd, type: 2}
+  - {fileID: 2100000, guid: 4568427d9a4c8444a81645111e6af4f8, type: 2}

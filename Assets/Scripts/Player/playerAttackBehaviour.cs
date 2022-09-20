@@ -9,9 +9,11 @@ public class playerAttackBehaviour : StateMachineBehaviour
     private ViewDetector viewDetector;
     private AttackController attackController;
     private int damage;
+    private TrailRenderer trailRenderer;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-      
+        trailRenderer = animator.GetComponentInParent<NormalWarrior>().trailRenderer;
+        trailRenderer.enabled = true;
         attackController = animator.GetComponentInParent<AttackController>();
         viewDetector = animator.GetComponentInParent<ViewDetector>();
         viewDetector.FindTarget();
@@ -51,6 +53,6 @@ public class playerAttackBehaviour : StateMachineBehaviour
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        trailRenderer.enabled = false;
     }
 }

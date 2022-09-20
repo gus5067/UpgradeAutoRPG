@@ -19,8 +19,12 @@ public class StateMachine<T1, T2> where T2 : MonoBehaviour
 
     public void Update()
     {
-        curState.Update(Owner);
-        curState.HandleStateChange(Owner);
+        if(curState != null)
+        {
+            curState.Update(Owner);
+            curState.HandleStateChange(Owner);
+        }
+        
     }
 
     public void AddState(T1 type, State<T2> state)

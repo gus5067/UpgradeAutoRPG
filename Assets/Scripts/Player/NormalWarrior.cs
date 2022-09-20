@@ -9,6 +9,8 @@ public class NormalWarrior : Player,IDamageable
     public enum State {Idle, Trace, Attack, Stun, Die }
     private StateMachine<State, NormalWarrior> stateMachine;
 
+    [SerializeField]
+    public TrailRenderer trailRenderer;
 
     [SerializeField]
     private LayerMask _targetLayerMask;
@@ -59,6 +61,8 @@ public class NormalWarrior : Player,IDamageable
         stateMachine.AddState(State.Die, new NormalWarriorStates.DieState());
 
         stateMachine.ChangeState(State.Idle);
+
+        trailRenderer.enabled = false;
     }
     private void Start()
     {

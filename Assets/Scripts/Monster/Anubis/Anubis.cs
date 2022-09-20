@@ -56,7 +56,11 @@ public class Anubis : Monster
         stateMachine.AddState(State.Stun, new AnubisStates.StunState());
         stateMachine.AddState(State.Die, new AnubisStates.DieState());
         stateMachine.AddState(State.Skill, new AnubisStates.SkillState());
-        stateMachine.ChangeState(State.Idle);
+    }
+
+    private void Start()
+    {
+        StartCoroutine(AnubisRoutine());
     }
     private void Update()
     {
@@ -70,6 +74,15 @@ public class Anubis : Monster
 
             isGround = false;
         }
+    }
+
+    IEnumerator AnubisRoutine()
+    {
+        yield return new WaitForSeconds(4f);
+        animator.SetTrigger("idleBreak");
+        yield return new WaitForSeconds(2f);
+        gameObject.layer = 6;
+        ChangeState(State.Idle);
     }
 
 
