@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29e8091d1d83c8d40ad7f760074c195f, type: 3}
   m_Name: DeepGreenMap
   m_EditorClassIdentifier: 
-  _tilePrefab: {fileID: 1300963437821764, guid: ae76b94e34179c242b7ca5b300bebf21, type: 3}
+  _tilePrefab: {fileID: 1823785120789908, guid: 10f2abe45867ecb49bb5dcd301ab1a61, type: 3}
   _tileSize: {x: 15, y: 15}
