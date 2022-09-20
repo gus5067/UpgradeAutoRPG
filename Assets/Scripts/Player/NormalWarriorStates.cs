@@ -7,6 +7,7 @@ namespace NormalWarriorStates
 
     public class BaseState : State<NormalWarrior>
     {
+        private bool isDie = false;
         public override void Enter(NormalWarrior Owner)
         {
         }
@@ -23,18 +24,37 @@ namespace NormalWarriorStates
 
         public override void HandleStateChange(NormalWarrior Owner)
         {
-            if(!Owner.isGround)
-            {
-                Owner.characterController.Move(new Vector3(0, Physics.gravity.y, 0).normalized * Time.deltaTime);
-            }
+            CheckDie(Owner);
+            CheckSkill(Owner);
+        }
 
+        public void CheckDie(NormalWarrior Owner)
+        {
             if (Owner.hpController.hp <= 0)
             {
+                isDie = true;
                 Owner.ChangeState(NormalWarrior.State.Die);
             }
             else
             {
                 return;
+            }
+
+            if (!isDie)
+            {
+                if (!Owner.isGround)
+                {
+                    Owner.characterController.Move(new Vector3(0, Physics.gravity.y, 0).normalized * Time.deltaTime);
+                }
+            }
+        }
+
+        public void CheckSkill(NormalWarrior Owner)
+        {
+            if (Owner.hpController.initMp > 0 && Owner.hpController.mp >= Owner.hpController.initMp)
+            {
+                Owner.hpController.mp -= Owner.hpController.initMp;
+                Owner.ChangeState(NormalWarrior.State.Skill);
             }
         }
     }
@@ -153,8 +173,38 @@ namespace NormalWarriorStates
             Owner.ChangeState(NormalWarrior.State.Idle);
         }
     }
+    public class SkillState : BaseState
+    {
+        private bool isSkill;
+        public override void Enter(NormalWarrior Owner)
+        {
+            if (isSkill == false)
+            {
+                Owner.StartCoroutine(SkillRoutine(Owner));
+            }
+        }
 
-public class StunState : BaseState
+        public override void Update(NormalWarrior Owner)
+        {
+
+
+        }
+
+        public override void Exit(NormalWarrior Owner)
+        {
+            Owner.animator.ResetTrigger("Skill");
+        }
+
+        IEnumerator SkillRoutine(NormalWarrior Owner)
+        {
+            isSkill = true;
+            Owner.animator.SetTrigger("Skill");
+            yield return new WaitForSeconds(2f);
+            isSkill = false;
+            //Owner.ChangeState(Grunt.State.Idle);
+        }
+    }
+    public class StunState : BaseState
     {
         public override void Enter(NormalWarrior Owner)
         {

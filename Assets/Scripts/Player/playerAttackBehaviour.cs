@@ -12,6 +12,7 @@ public class playerAttackBehaviour : StateMachineBehaviour
     private TrailRenderer trailRenderer;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.GetComponentInParent<HpController>().OnChangeMp(1);
         trailRenderer = animator.GetComponentInParent<NormalWarrior>().trailRenderer;
         trailRenderer.enabled = true;
         attackController = animator.GetComponentInParent<AttackController>();

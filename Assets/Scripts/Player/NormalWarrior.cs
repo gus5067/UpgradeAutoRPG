@@ -6,11 +6,14 @@ using UnityEngine.Events;
 
 public class NormalWarrior : Player,IDamageable
 {
-    public enum State {Idle, Trace, Attack, Stun, Die }
+    public enum State {Idle, Trace, Attack, Stun, Skill, Die }
     private StateMachine<State, NormalWarrior> stateMachine;
 
     [SerializeField]
     public TrailRenderer trailRenderer;
+
+    [SerializeField]
+    public GameObject playerSkill;
 
     [SerializeField]
     private LayerMask _targetLayerMask;
@@ -59,6 +62,7 @@ public class NormalWarrior : Player,IDamageable
         stateMachine.AddState(State.Attack, new NormalWarriorStates.AttackState());
         stateMachine.AddState(State.Stun, new NormalWarriorStates.StunState());
         stateMachine.AddState(State.Die, new NormalWarriorStates.DieState());
+        stateMachine.AddState(State.Skill, new NormalWarriorStates.SkillState());
 
         stateMachine.ChangeState(State.Idle);
 
@@ -105,6 +109,23 @@ public class NormalWarrior : Player,IDamageable
         Destroy(gameObject, time);
     }
 
+    public void Slash()
+    {
+        Collider[] targets = Physics.OverlapSphere(transform.position, 15f, 6);
+        if (targets.Length > 0)
+        {
+            for (int i = 0; i < targets.Length; i++)
+            {
+                Vector3 dirToTarget = (targets[i].transform.position - transform.position).normalized;
+                if (Vector3.Dot(transform.forward, dirToTarget) < Mathf.Cos(120 * 0.5f * Mathf.Deg2Rad))
+                {
+                    Debug.Log("타겟이 시야 밖");
+                    continue; // 내적값이 작다는 것은 시야각보다 밖에 있다는 것 (코사인은 각도가 커질수록 값이 작아짐)
+                }
+                targets[i].GetComponent<Monster>().HitDamage(WeaponManager.Instance.minDamage * 5);
+            }
+        }
+    }
 
     private void OnDrawGizmosSelected()
     {
