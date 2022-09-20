@@ -57,7 +57,7 @@ public class FireBall : MonoBehaviour
     {
         if (other.gameObject.layer == 7)
         {
-            other.gameObject.GetComponent<IDamageable>().HitDamage(30);
+            other.gameObject.GetComponent<IDamageable>().HitDamage(50);
             FireBallEffect.SetActive(true);
             meshRenderer.enabled = false;
             Destroy(gameObject,1f);
