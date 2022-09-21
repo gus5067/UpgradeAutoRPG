@@ -12,11 +12,53 @@ public abstract class Monster : MonoBehaviour,IDamageable
     [SerializeField]
     protected DropItemData dropItemData;
 
+    [SerializeField]
+    protected LayerMask _targetLayerMask;
+    public LayerMask targetLayerMask { get { return _targetLayerMask; } }
+    [SerializeField, Range(0f, 10f)]
+    protected float _attackRange;
+    public float attackRange { get { return _attackRange; } }
+
+    [SerializeField, Range(0f, 10f)]
+    protected float _findRange;
+    public float findRange { get { return _findRange; } }
+
+    [SerializeField, Range(0f, 10f)]
+    protected float _moveSpeed;
+    public float moveSpeed { get { return _moveSpeed; } }
+
+    [SerializeField]
+    protected GroundChecker groundChecker;
+
+    protected Animator _animator;
+    public Animator animator { get { return _animator; } }
+
+    protected CharacterController _characterController;
+    public CharacterController characterController { get { return _characterController; } }
+
+    protected monsterHpController _hpController;
+    public monsterHpController hpController { get { return _hpController; } }
+
+
+    public bool isGround;
     private void Start()
     {
-      
+
+    }
+    public void Die(float time)
+    {
+        Destroy(gameObject, time);
     }
 
+
+    protected void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _attackRange);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, _findRange);
+    }
     public virtual void HitDamage(int damage)
     {
         onChangeHp?.Invoke(damage);
