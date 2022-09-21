@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 public abstract class Monster : MonoBehaviour,IDamageable
 {
+
     public event UnityAction<int> onChangeHp;
     [Range(0f, 1.4f)]
     public float attackTime;

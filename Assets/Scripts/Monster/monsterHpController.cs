@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+
+[RequireComponent(typeof(CharacterController))]
+[RequireComponent (typeof(ViewDetector))]
+[RequireComponent(typeof(GroundChecker))]
 public class monsterHpController : MonoBehaviour
 {
     [SerializeField]
