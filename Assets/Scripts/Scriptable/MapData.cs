@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = ("Map"))]
+[CreateAssetMenu(menuName = ("Map/Tile"))]
 public class MapData : ScriptableObject
 {
     [Header("Map")]

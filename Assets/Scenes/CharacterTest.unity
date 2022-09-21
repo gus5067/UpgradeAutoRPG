@@ -847,6 +847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curMap: {fileID: 0}
+  skyBox: {fileID: 11400000, guid: 798d2d5a18cc6de4abb00afaec6c497b, type: 2}
   monsterData: {fileID: 0}
 --- !u!4 &896722721
 Transform:

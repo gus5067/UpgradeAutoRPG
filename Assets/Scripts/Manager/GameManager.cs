@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     public Vector3 characterRotation;
 
+    public int curSkyBoxNum;
     //[SerializeField]
     //public Sword playerWeapon;
 

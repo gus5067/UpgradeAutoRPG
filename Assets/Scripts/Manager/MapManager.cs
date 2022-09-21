@@ -11,6 +11,9 @@ public class MapManager : MonoBehaviour
         public GameObject[] obstacles;
     }
     [SerializeField]
+    private SkyBoxData skyBoxData;
+
+    [SerializeField]
     public Obstacle[] maps;
 
     private void Start()
@@ -25,6 +28,12 @@ public class MapManager : MonoBehaviour
                 }
             }
         }
+        ChangeSkyBox(0);
+    }
+
+    public void ChangeSkyBox(int num)
+    {
+        RenderSettings.skybox = skyBoxData.skyBoxMaterial[num];
     }
 
 }

@@ -9,6 +9,9 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     private  MapGenerator curMap;
 
+    [SerializeField]
+    private SkyBoxData skyBox;
+
     [HideInInspector]
     public MonsterData monsterData;
 
@@ -25,6 +28,7 @@ public class StageManager : MonoBehaviour
         if (GameManager.Instance.curStage != null)
         {
             monsterData = GameManager.Instance.curStage;
+            RenderSettings.skybox = skyBox.skyBoxMaterial[GameManager.Instance.curSkyBoxNum];
         }
         monsterCount = monsterData.monstersPrefab.Length;
         characterCount = 1; //아직 동료는 미구현이니깐 일단은 1로 시작

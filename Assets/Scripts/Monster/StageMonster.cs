@@ -10,6 +10,8 @@ public class StageMonster : MonoBehaviour,IInteractable
 
     public MapData ownMapData;
 
+    [SerializeField]
+    private int skyBoxNum;
     public bool isInteract;
 
     public event UnityAction<StageMonster> onStageMonster;
@@ -24,6 +26,7 @@ public class StageMonster : MonoBehaviour,IInteractable
                 if (ownMapData != null)
                 {
                     GameManager.Instance.curMap = ownMapData;
+                    GameManager.Instance.curSkyBoxNum = skyBoxNum;
                 }
                 GameManager.Instance.curStage = ownMonsterData;
                 onStageMonster?.Invoke(this);
