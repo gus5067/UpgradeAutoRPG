@@ -17,7 +17,7 @@ public abstract class Monster : MonoBehaviour,IDamageable
       
     }
 
-    public void HitDamage(int damage)
+    public virtual void HitDamage(int damage)
     {
         onChangeHp?.Invoke(damage);
     }

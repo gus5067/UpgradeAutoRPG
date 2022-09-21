@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class FishMan : Monster
 {
-    public enum State { Idle, Trace, Attack, Stun, Skill, Die }
+    public enum State { Idle, Trace, Attack, Dodge, Skill, Die }
     private StateMachine<State, FishMan> stateMachine;
 
+    [SerializeField]
+    private GameObject fishMan;
     [SerializeField]
     private LayerMask _targetLayerMask;
     public LayerMask targetLayerMask { get { return _targetLayerMask; } }
@@ -49,7 +51,7 @@ public class FishMan : Monster
         stateMachine.AddState(State.Idle, new FishManStates.IdleState());
         stateMachine.AddState(State.Trace, new FishManStates.TraceState());
         stateMachine.AddState(State.Attack, new FishManStates.AttackState());
-        stateMachine.AddState(State.Stun, new FishManStates.StunState());
+        stateMachine.AddState(State.Dodge, new FishManStates.DodgeState());
         stateMachine.AddState(State.Die, new FishManStates.DieState());
         stateMachine.AddState(State.Skill, new FishManStates.SkillState());
         stateMachine.ChangeState(State.Idle);
@@ -76,6 +78,23 @@ public class FishMan : Monster
     public void Die(float time)
     {
         Destroy(gameObject, time);
+    }
+
+    public override void HitDamage(int damage)
+    {
+        int num = Random.Range(1, 5);
+        if (num == 4)
+        {
+            ChangeState(State.Dodge);
+            base.HitDamage(0);
+        }
+        base.HitDamage(damage);
+    }
+
+    public void SkillSummon()
+    {
+        Instantiate(fishMan, transform.position + Vector3.right * 1f, fishMan.transform.rotation);
+        StageManager.monsterCount++;
     }
 
 

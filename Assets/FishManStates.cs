@@ -24,7 +24,11 @@ namespace FishManStates
         public override void HandleStateChange(FishMan Owner)
         {
             CheckDie(Owner);
-            CheckSkill(Owner);
+            if(!isDie)
+            {
+                CheckSkill(Owner);
+            }
+          
 
 
         }
@@ -80,7 +84,7 @@ namespace FishManStates
             {
                 findtarget = null;
             }
-
+            Debug.Log("현재 상태 : idle");
         }
 
         public override void Exit(FishMan Owner)
@@ -138,7 +142,7 @@ namespace FishManStates
             Owner.characterController.Move(new Vector3(moveDir.x, Physics.gravity.y, moveDir.z).normalized * Time.deltaTime * Owner.moveSpeed);
             Owner.transform.LookAt(new Vector3(traceTarget.transform.position.x, Owner.transform.position.y, traceTarget.transform.position.z));
 
-
+            Debug.Log("현재 상태 : trace");
 
         }
 
@@ -162,6 +166,8 @@ namespace FishManStates
             {
                 Owner.StartCoroutine(AttackTime(Owner));
             }
+
+            Debug.Log("현재 상태 : attack");
         }
 
         public override void Exit(FishMan Owner)
@@ -194,7 +200,7 @@ namespace FishManStates
 
         public override void Update(FishMan Owner)
         {
-
+            Debug.Log("현재 상태 : skill");
 
         }
 
@@ -212,22 +218,39 @@ namespace FishManStates
             //Owner.ChangeState(Grunt.State.Idle);
         }
     }
-    public class StunState : BaseState
+    public class DodgeState : BaseState
     {
+        private bool isDodge = false;
         public override void Enter(FishMan Owner)
         {
-
+            if(isDodge == false)
+            {
+                Owner.StartCoroutine(DodgeRoutine(Owner));
+            }
+            else
+            {
+                Owner.ChangeState(FishMan.State.Idle);
+            }
         }
 
         public override void Update(FishMan Owner)
         {
-
+            Debug.Log("현재 상태 : dodge");
 
         }
 
         public override void Exit(FishMan Owner)
         {
+            Owner.animator.ResetTrigger("Dodge");
+        }
 
+        IEnumerator DodgeRoutine(FishMan Owner)
+        {
+            isDodge = true;
+            Owner.animator.SetTrigger("Dodge");
+            yield return new WaitForSeconds(0.5f);
+            isDodge = false;
+            Owner.ChangeState(FishMan.State.Idle);
         }
     }
 
