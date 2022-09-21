@@ -7,6 +7,9 @@ public class Serpent : Monster
     public enum State { Idle, Trace, Attack, Stun, Skill, Die }
     private StateMachine<State, Serpent> stateMachine;
 
+    [SerializeField]
+    private GameObject serpentRay;
+    
     [SerializeField, Range(0f, 10f)]
     private float _rangeAttackRange;
     public float rangeAttackRange { get { return _rangeAttackRange; } }
@@ -41,7 +44,11 @@ public class Serpent : Monster
             isGround = false;
         }
     }
-
+    
+    public void Ray(bool isAct)
+    {
+        serpentRay.SetActive(isAct);
+    }
     public void ChangeState(State nextState)
     {
         stateMachine.ChangeState(nextState);

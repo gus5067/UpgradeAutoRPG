@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172ebc71602794a40bfbd530cc5a178c, type: 3}
+  m_Name: Stage3-3Boss
+  m_EditorClassIdentifier: 
+  monstersPrefab:
+  - {fileID: 3563908216969271341, guid: ac7a63e709c5b7645a5385fd3ed88205, type: 3}
+  stageNum: 3
+  roundNum: 3

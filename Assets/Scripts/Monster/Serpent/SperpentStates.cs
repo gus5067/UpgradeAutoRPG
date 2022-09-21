@@ -160,11 +160,13 @@ namespace SerpentStates
             {
                 attackTarget = attackTargets[0].gameObject;
                 isMeleeRange = true;
+                Owner.animator.SetBool("isMelee", true);
                 return;
             }
             else
             {
                 isMeleeRange=false;
+                Owner.animator.SetBool("isMelee", false);
             }
         }
 
@@ -185,9 +187,7 @@ namespace SerpentStates
         IEnumerator AttackTime(Serpent Owner)
         {
             isAttackking = true;
-            int randomNum = Random.Range(1, 3);
             Owner.animator.SetTrigger("Attack");
-            Owner.animator.SetInteger("randomAttack", randomNum);
             yield return new WaitForSeconds(1.5f - Owner.attackTime);
             Owner.ChangeState(Serpent.State.Idle);
             isAttackking = false;

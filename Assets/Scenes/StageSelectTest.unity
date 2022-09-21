@@ -9887,8 +9887,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiController: {fileID: 92662082}
-  ownMonsterData: {fileID: 0}
-  ownMapData: {fileID: 0}
+  ownMonsterData: {fileID: 11400000, guid: 43fa7215029ec4e4e91f9758c33a6d14, type: 2}
+  ownMapData: {fileID: 11400000, guid: 4c5b6a1ee03c44641b7b14efdc1f20b4, type: 2}
   skyBoxNum: 0
   isInteract: 0
 --- !u!1001 &1436174766
@@ -16589,7 +16589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b6ec909761d6741bfba76be9f9f09e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiController: {fileID: 0}
+  uiController: {fileID: 92662082}
   ownMonsterData: {fileID: 11400000, guid: 2b6a30920453e034a8566521e51c667a, type: 2}
   ownMapData: {fileID: 11400000, guid: 4c5b6a1ee03c44641b7b14efdc1f20b4, type: 2}
   skyBoxNum: 0
