@@ -203,7 +203,7 @@ namespace FishManStates
             Owner.animator.ResetTrigger("Skill");
         }
 
-        IEnumerator SkillRoutine(Grunt Owner)
+        IEnumerator SkillRoutine(FishMan Owner)
         {
             isSkill = true;
             Owner.animator.SetTrigger("Skill");
