@@ -30,30 +30,31 @@ namespace NormalWarriorStates
 
         public void CheckDie(NormalWarrior Owner)
         {
+           
             if (Owner.hpController.hp <= 0)
             {
                 isDie = true;
                 Owner.ChangeState(NormalWarrior.State.Die);
             }
-            else
-            {
-                return;
-            }
-
-            if (!isDie)
+            else if (!isDie)
             {
                 if (!Owner.isGround)
                 {
                     Owner.characterController.Move(new Vector3(0, Physics.gravity.y, 0).normalized * Time.deltaTime);
                 }
             }
+            else
+            {
+                return;
+            }
+
+            
         }
 
         public void CheckSkill(NormalWarrior Owner)
         {
             if (Owner.hpController.initMp > 0 && Owner.hpController.mp >= Owner.hpController.initMp)
             {
-                Owner.hpController.mp -= Owner.hpController.initMp;
                 Owner.ChangeState(NormalWarrior.State.Skill);
             }
         }
@@ -175,13 +176,10 @@ namespace NormalWarriorStates
     }
     public class SkillState : BaseState
     {
-        private bool isSkill;
+
         public override void Enter(NormalWarrior Owner)
         {
-            if (isSkill == false)
-            {
-                Owner.StartCoroutine(SkillRoutine(Owner));
-            }
+            Owner.StartCoroutine(SkillRoutine(Owner));
         }
 
         public override void Update(NormalWarrior Owner)
@@ -197,10 +195,11 @@ namespace NormalWarriorStates
 
         IEnumerator SkillRoutine(NormalWarrior Owner)
         {
-            isSkill = true;
+            Owner.hpController.mp -= Owner.hpController.initMp;
+            Owner.hpController.OnChangeMp(0);
             Owner.animator.SetTrigger("Skill");
             yield return new WaitForSeconds(2f);
-            isSkill = false;
+          
             //Owner.ChangeState(Grunt.State.Idle);
         }
     }
