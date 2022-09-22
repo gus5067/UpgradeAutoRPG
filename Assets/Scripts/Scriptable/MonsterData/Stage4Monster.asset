@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172ebc71602794a40bfbd530cc5a178c, type: 3}
+  m_Name: Stage4Monster
+  m_EditorClassIdentifier: 
+  monstersPrefab:
+  - {fileID: 7029180006006265717, guid: 86a5105024b0b884ab1cec63617ec5d3, type: 3}
+  stageNum: 4
+  roundNum: 1

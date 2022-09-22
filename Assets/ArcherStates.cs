@@ -1,0 +1,276 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace ArcherStates
+{
+    public class BaseState : State<Archer>
+    {
+        private bool isDie = false;
+        public override void Enter(Archer Owner)
+        {
+        }
+
+        public override void Update(Archer Owner)
+        {
+
+        }
+
+        public override void Exit(Archer Owner)
+        {
+
+        }
+
+        public override void HandleStateChange(Archer Owner)
+        {
+            CheckDie(Owner);
+            CheckSkill(Owner);
+        }
+
+        public void CheckDie(Archer Owner)
+        {
+
+            if (Owner.hpController.hp <= 0)
+            {
+                isDie = true;
+                Owner.ChangeState(Archer.State.Die);
+            }
+            else if (!isDie)
+            {
+                if (!Owner.isGround)
+                {
+                    Owner.characterController.Move(new Vector3(0, Physics.gravity.y, 0).normalized * Time.deltaTime);
+                }
+            }
+            else
+            {
+                return;
+            }
+
+
+        }
+
+        public void CheckSkill(Archer Owner)
+        {
+            if (Owner.hpController.initMp > 0 && Owner.hpController.mp >= Owner.hpController.initMp)
+            {
+                Owner.ChangeState(Archer.State.Skill);
+            }
+        }
+    }
+
+    public class IdleState : BaseState
+    {
+        public override void Enter(Archer Owner)
+        {
+        }
+
+        public override void Update(Archer Owner)
+        {
+            GameObject findtarget;
+            Collider[] targets = Physics.OverlapSphere(Owner.transform.position, Owner.findRange, Owner.targetLayerMask);
+            if (targets.Length > 0)
+            {
+                findtarget = targets[0].gameObject;
+                Owner.ChangeState(Archer.State.Trace);
+                return;
+            }
+            else
+            {
+                findtarget = null;
+            }
+
+        }
+
+        public override void Exit(Archer Owner)
+        {
+
+        }
+    }
+
+    public class TraceState : BaseState
+    {
+        public override void Enter(Archer Owner)
+        {
+
+        }
+
+        public override void Update(Archer Owner)
+        {
+            //몬스터 공격
+            GameObject attackTarget;
+            Collider[] attackTargets = Physics.OverlapSphere(Owner.transform.position, Owner.attackRange, Owner.targetLayerMask);
+            if (attackTargets.Length > 0)
+            {
+                attackTarget = attackTargets[0].gameObject;
+                Owner.transform.LookAt(new Vector3(attackTarget.transform.position.x, Owner.transform.position.y, attackTarget.transform.position.z));
+                Owner.ChangeState(Archer.State.Attack);
+                return;
+            }
+            else
+            {
+                attackTarget = null;
+            }
+            //몬스터 추적
+            GameObject traceTarget = null;
+            Collider[] targets = Physics.OverlapSphere(Owner.transform.position, Owner.findRange, Owner.targetLayerMask);
+            if (targets.Length > 0)
+            {
+                traceTarget = targets[0].gameObject;
+                Owner.animator.SetBool("isRun", true);
+            }
+            else
+            {
+                traceTarget = null;
+            }
+
+            if (traceTarget == null)
+            {
+                Owner.ChangeState(Archer.State.Idle);
+                return;
+            }
+
+            Vector3 moveDir = traceTarget.transform.position - Owner.transform.position;
+            Owner.characterController.Move(new Vector3(moveDir.x, Physics.gravity.y, moveDir.z).normalized * Time.deltaTime * Owner.moveSpeed);
+            Owner.transform.LookAt(new Vector3(traceTarget.transform.position.x, Owner.transform.position.y, traceTarget.transform.position.z));
+
+
+
+        }
+
+        public override void Exit(Archer Owner)
+        {
+            Owner.animator.SetBool("isRun", false);
+        }
+    }
+
+    public class AttackState : BaseState
+    {
+        private bool isAttacking;
+        public override void Enter(Archer Owner)
+        {
+        }
+
+        public override void Update(Archer Owner)
+        {
+            if (isAttacking == false)
+            {
+                Owner.StartCoroutine(AttackTime(Owner));
+            }
+        }
+
+        public override void Exit(Archer Owner)
+        {
+            Owner.animator.ResetTrigger("Attack");
+        }
+
+        IEnumerator AttackTime(Archer Owner)
+        {
+            int randomNum = Random.Range(1, 6);
+            Owner.animator.SetTrigger("Attack");
+            Owner.animator.SetInteger("randomAttack", randomNum);
+            yield return new WaitForSeconds(1.0f / Owner.attackController.attackSpeed);
+            Owner.ChangeState(Archer.State.Idle);
+        }
+    }
+
+    public class RunState : BaseState
+    {
+        public override void Enter(Archer Owner)
+        {
+            
+        }
+
+        public override void Update(Archer Owner)
+        {
+
+
+        }
+
+        public override void Exit(Archer Owner)
+        {
+            
+        }
+    }
+    public class SkillState : BaseState
+    {
+
+        public override void Enter(Archer Owner)
+        {
+            Owner.StartCoroutine(SkillRoutine(Owner));
+        }
+
+        public override void Update(Archer Owner)
+        {
+
+
+        }
+
+        public override void Exit(Archer Owner)
+        {
+            Owner.animator.ResetTrigger("Skill");
+        }
+
+        IEnumerator SkillRoutine(Archer Owner)
+        {
+            Owner.hpController.mp -= Owner.hpController.initMp;
+            Owner.hpController.OnChangeMp(0);
+            Owner.animator.SetTrigger("Skill");
+            yield return new WaitForSeconds(2f);
+
+            //Owner.ChangeState(Grunt.State.Idle);
+        }
+    }
+    public class StunState : BaseState
+    {
+        public override void Enter(Archer Owner)
+        {
+            Owner.StartCoroutine(StunTime(Owner));
+        }
+
+        public override void Update(Archer Owner)
+        {
+
+
+        }
+
+        public override void Exit(Archer Owner)
+        {
+
+        }
+
+        IEnumerator StunTime(Archer Owner)
+        {
+            Owner.animator.SetBool("isStun", true);
+            Owner.animator.SetTrigger("Stun");
+            yield return new WaitForSeconds(2f);
+            Owner.animator.SetBool("isStun", false);
+            Owner.ChangeState(Archer.State.Idle);
+        }
+    }
+
+    public class DieState : BaseState
+    {
+        private bool isDie = true;
+        public override void Enter(Archer Owner)
+        {
+            if (isDie == true)
+            {
+                isDie = false;
+                Owner.animator.SetTrigger("Die");
+                Owner.DieCount();
+                Owner.Die(1.5f);
+            }
+        }
+
+        public override void Update(Archer Owner)
+        {
+
+        }
+
+        public override void Exit(Archer Owner)
+        {
+
+        }
+    }
+}

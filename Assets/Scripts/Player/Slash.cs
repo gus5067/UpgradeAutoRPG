@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Slash : MonoBehaviour
 {
+    [SerializeField]
+    private int num;
     private void OnParticleCollision(GameObject other)
     {
-        Monster target = other.GetComponent<Monster>();
-        target?.HitDamage(WeaponManager.Instance.minDamage * 2);
+        IDamageable target = other.GetComponent<IDamageable>();
+        target?.HitDamage(num * 2);
     }
 }
