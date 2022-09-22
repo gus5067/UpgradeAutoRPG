@@ -21,7 +21,7 @@ public class GiantWormSkill : StateMachineBehaviour
         Collider[] targets = Physics.OverlapSphere(animator.gameObject.transform.position, worm.findRange, worm.targetLayerMask);
         if (targets.Length > 0)
         {
-            traceTarget = targets[0].gameObject;
+            traceTarget = worm.ChangeTarget(targets).gameObject;
             Debug.Log(traceTarget.name);
         }
         Vector3 moveDir = traceTarget.transform.position - worm.gameObject.transform.position;

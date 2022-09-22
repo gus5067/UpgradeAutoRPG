@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-public abstract class Monster : MonoBehaviour,IDamageable
+public abstract class Monster : MonoBehaviour,IDamageable,ICanChangeTarget
 {
 
     public event UnityAction<int> onChangeHp;
@@ -72,4 +72,29 @@ public abstract class Monster : MonoBehaviour,IDamageable
     {
         StageManager.monsterCount--;
     }
+    public Collider ChangeTarget(Collider[] targets)
+    {
+        if(targets.Length>1)
+        {
+            float curValue;
+            int curNum = 0;
+            float shortValue = (transform.position - targets[0].transform.position).sqrMagnitude;
+            for (int i = 0; i < targets.Length; i++)
+            {
+                curValue = (transform.position - targets[i].transform.position).sqrMagnitude;
+                if (curValue < shortValue)
+                {
+                    shortValue = curValue;
+                    curNum = i;
+                }
+            }
+            return targets[curNum];
+        }
+        else
+        {
+            return targets[0];
+        }
+        
+    }
+
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class Player : MonoBehaviour,IDamageable
+public abstract class Player : MonoBehaviour,IDamageable,ICanChangeTarget
 {
 
     [SerializeField]
@@ -76,5 +76,29 @@ public abstract class Player : MonoBehaviour,IDamageable
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, _findRange);
+    }
+
+    public Collider ChangeTarget(Collider[] targets)
+    {
+        if (targets.Length > 1)
+        {
+            float curValue;
+            int curNum = 0;
+            float shortValue = (transform.position - targets[0].transform.position).sqrMagnitude;
+            for (int i = 0; i < targets.Length; i++)
+            {
+                curValue = (transform.position - targets[i].transform.position).sqrMagnitude;
+                if (curValue < shortValue)
+                {
+                    shortValue = curValue;
+                    curNum = i;
+                }
+            }
+            return targets[curNum];
+        }
+        else
+        {
+            return targets[0];
+        }
     }
 }

@@ -53,7 +53,7 @@ namespace ArcherStates
             Collider[] targets = Physics.OverlapSphere(Owner.transform.position, Owner.runRange, Owner.targetLayerMask);
             if(targets.Length > 0)
             {
-                runTarget = targets[0].gameObject;
+                runTarget = Owner.ChangeTarget(targets).gameObject;
                 Owner.ChangeState(Archer.State.Run);
                 return;
             }
@@ -83,7 +83,7 @@ namespace ArcherStates
             Collider[] targets = Physics.OverlapSphere(Owner.transform.position, Owner.findRange, Owner.targetLayerMask);
             if (targets.Length > 0)
             {
-                findtarget = targets[0].gameObject;
+                findtarget = Owner.ChangeTarget(targets).gameObject;
                 Owner.ChangeState(Archer.State.Trace);
                 return;
             }
@@ -114,7 +114,7 @@ namespace ArcherStates
             Collider[] attackTargets = Physics.OverlapSphere(Owner.transform.position, Owner.attackRange, Owner.targetLayerMask);
             if (attackTargets.Length > 0)
             {
-                attackTarget = attackTargets[0].gameObject;
+                attackTarget = Owner.ChangeTarget(attackTargets).gameObject;
                 Owner.transform.LookAt(new Vector3(attackTarget.transform.position.x, Owner.transform.position.y, attackTarget.transform.position.z));
                 Owner.ChangeState(Archer.State.Attack);
                 return;
@@ -128,7 +128,7 @@ namespace ArcherStates
             Collider[] targets = Physics.OverlapSphere(Owner.transform.position, Owner.findRange, Owner.targetLayerMask);
             if (targets.Length > 0)
             {
-                traceTarget = targets[0].gameObject;
+                traceTarget = Owner.ChangeTarget(targets).gameObject;
                 Owner.animator.SetBool("isRun", true);
             }
             else

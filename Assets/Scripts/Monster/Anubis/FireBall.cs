@@ -51,7 +51,11 @@ public class FireBall : MonoBehaviour
     private void FireBallMove()
     {
         viewDetector.FindTarget();
-        transform.position = Vector3.MoveTowards(transform.position, viewDetector.target.transform.position, Time.deltaTime * 3f);
+        if(viewDetector.target != null)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, viewDetector.target.transform.position, Time.deltaTime * 3f);
+        }
+ 
     }
     private void OnTriggerEnter(Collider other)
     {
