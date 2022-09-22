@@ -2255,6 +2255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPos: {x: 0, y: 0, z: 0}
   characterRotation: {x: 0, y: 0, z: 0}
+  curSkyBoxNum: 0
   curStage: {fileID: 0}
   curMap: {fileID: 0}
   gameMoney: 200

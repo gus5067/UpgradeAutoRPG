@@ -25,11 +25,11 @@ namespace ArcherStates
         {
             CheckDie(Owner);
             CheckSkill(Owner);
+            CheckRunRange(Owner);
         }
 
         public void CheckDie(Archer Owner)
         {
-
             if (Owner.hpController.hp <= 0)
             {
                 isDie = true;
@@ -46,10 +46,22 @@ namespace ArcherStates
             {
                 return;
             }
-
-
         }
-
+        public void CheckRunRange(Archer Owner)
+        {
+            GameObject runTarget;
+            Collider[] targets = Physics.OverlapSphere(Owner.transform.position, Owner.runRange, Owner.targetLayerMask);
+            if(targets.Length > 0)
+            {
+                runTarget = targets[0].gameObject;
+                Owner.ChangeState(Archer.State.Run);
+                return;
+            }
+            else
+            {
+                runTarget = null;
+            }
+        }
         public void CheckSkill(Archer Owner)
         {
             if (Owner.hpController.initMp > 0 && Owner.hpController.mp >= Owner.hpController.initMp)
@@ -166,7 +178,7 @@ namespace ArcherStates
 
         IEnumerator AttackTime(Archer Owner)
         {
-            int randomNum = Random.Range(1, 6);
+            int randomNum = Random.Range(1, 3);
             Owner.animator.SetTrigger("Attack");
             Owner.animator.SetInteger("randomAttack", randomNum);
             yield return new WaitForSeconds(1.0f / Owner.attackController.attackSpeed);
@@ -176,9 +188,10 @@ namespace ArcherStates
 
     public class RunState : BaseState
     {
+        GameObject runTarget;
         public override void Enter(Archer Owner)
         {
-            
+            Owner.animator.SetBool("isRun", true);
         }
 
         public override void Update(Archer Owner)
@@ -189,7 +202,19 @@ namespace ArcherStates
 
         public override void Exit(Archer Owner)
         {
-            
+            Owner.animator.SetBool("isRun", false);
+        }
+
+        IEnumerator RunRoutine(Archer Owner)
+        {
+            float x = Random.Range(-1f, 1f);
+            float y = Random.Range(-1f, 1f);
+            for(float i = 0; i<2f; i+=0.01f)
+            {
+                Owner.characterController.Move(new Vector3(x, 0, y).normalized * 0.01f * Owner.moveSpeed *2f);
+                yield return new WaitForSeconds(0.01f);
+            }
+            Owner.ChangeState(Archer.State.Idle);
         }
     }
     public class SkillState : BaseState

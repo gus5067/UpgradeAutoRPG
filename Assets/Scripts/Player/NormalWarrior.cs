@@ -9,7 +9,12 @@ public class NormalWarrior : Player,IDamageable
     public enum State {Idle, Trace, Attack, Stun, Skill, Die }
     private StateMachine<State, NormalWarrior> stateMachine;
 
-   
+
+    [SerializeField]
+    public TrailRenderer trailRenderer;
+
+    [SerializeField]
+    public GameObject playerSkill;
 
     private void Awake()
     {

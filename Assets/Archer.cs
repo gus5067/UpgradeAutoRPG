@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Archer : Player
 {
-    public enum State { Idle, Trace, Attack, Stun, Run, Skill, Die }
+    public enum State { Idle, Trace, Attack, Stun, Run, Skill, Die }    
     private StateMachine<State, Archer> stateMachine;
 
     [SerializeField, Range(0f, 10f)]
-    private float runRange;
+    public float runRange;
 
+    [SerializeField]
+    public Transform shotPoint;
 
 
     private void Awake()
@@ -31,7 +33,6 @@ public class Archer : Player
 
         stateMachine.ChangeState(State.Idle);
 
-        trailRenderer.enabled = false;
     }
     private void Start()
     {

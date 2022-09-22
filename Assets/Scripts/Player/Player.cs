@@ -7,12 +7,6 @@ public abstract class Player : MonoBehaviour,IDamageable
 {
 
     [SerializeField]
-    public TrailRenderer trailRenderer;
-
-    [SerializeField]
-    public GameObject playerSkill;
-
-    [SerializeField]
     private LayerMask _targetLayerMask;
     public LayerMask targetLayerMask { get { return _targetLayerMask; } }
     [SerializeField, Range(0f, 10f)]
