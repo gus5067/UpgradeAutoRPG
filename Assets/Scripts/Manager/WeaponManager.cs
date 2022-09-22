@@ -21,9 +21,8 @@ public class WeaponManager : Singleton<WeaponManager>
     private int curValue;
     public event UnityAction onChangeWeaponValue;
 
-    private void Awake()
+    private void OnEnable()
     {
-        base.Awake();
         swordName = playerWeapon.swordName;
         minDamage = playerWeapon.minDamage;
         maxDamage = playerWeapon.maxDamage;

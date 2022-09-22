@@ -17,12 +17,9 @@ public class WeaponTextController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI weaponSpecialText;
 
-    private void Awake()
-    {
-        WeaponManager.Instance.onChangeWeaponValue += OnChangeValue;
-    }
     private void Start()
     {
+        WeaponManager.Instance.onChangeWeaponValue += OnChangeValue;
         ChangeColor();
         weaponNameText.text = WeaponManager.Instance.swordName;
         weaponValueText.text = "+" + WeaponManager.Instance.weaponValue.ToString();

@@ -13,7 +13,7 @@ public abstract class Player : MonoBehaviour,IDamageable
     protected float _attackRange;
     public float attackRange { get { return _attackRange; } }
 
-    [SerializeField, Range(0f, 10f)]
+    [SerializeField, Range(0f, 15f)]
     protected float _findRange;
     public float findRange { get { return _findRange; } }
 

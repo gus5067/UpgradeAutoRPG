@@ -188,10 +188,15 @@ namespace ArcherStates
 
     public class RunState : BaseState
     {
-        GameObject runTarget;
+        private bool isRun;
         public override void Enter(Archer Owner)
         {
             Owner.animator.SetBool("isRun", true);
+            if(isRun == false)
+            {
+                Owner.StartCoroutine(RunRoutine(Owner));
+            }
+            
         }
 
         public override void Update(Archer Owner)
@@ -207,13 +212,16 @@ namespace ArcherStates
 
         IEnumerator RunRoutine(Archer Owner)
         {
+            isRun = true;
             float x = Random.Range(-1f, 1f);
             float y = Random.Range(-1f, 1f);
-            for(float i = 0; i<2f; i+=0.01f)
+            Owner.transform.forward = new Vector3(x, 0, y);
+            for (float i = 0; i<1f; i+=0.01f)
             {
-                Owner.characterController.Move(new Vector3(x, 0, y).normalized * 0.01f * Owner.moveSpeed *2f);
+                Owner.characterController.Move(Owner.transform.forward * 0.01f * Owner.moveSpeed);
                 yield return new WaitForSeconds(0.01f);
             }
+            isRun = false;
             Owner.ChangeState(Archer.State.Idle);
         }
     }
@@ -241,7 +249,7 @@ namespace ArcherStates
             Owner.hpController.mp -= Owner.hpController.initMp;
             Owner.hpController.OnChangeMp(0);
             Owner.animator.SetTrigger("Skill");
-            yield return new WaitForSeconds(2f);
+            yield return null;
 
             //Owner.ChangeState(Grunt.State.Idle);
         }

@@ -20,7 +20,8 @@ public class GiantWormSkillAttack : StateMachineBehaviour
         {
             attackTarget = attackTargets[0].gameObject;
             attackTarget.GetComponent<Transform>().position = attackTarget.transform.position + Vector3.up * 1.5f;
-            attackTarget.GetComponent<NormalWarrior>().ChangeState(NormalWarrior.State.Stun);
+            NormalWarrior target = attackTarget.GetComponent<NormalWarrior>();
+            target?.ChangeState(NormalWarrior.State.Stun);
             return;
         }
         else
