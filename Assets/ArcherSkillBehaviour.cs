@@ -10,15 +10,19 @@ public class ArcherSkillBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         archer = animator.GetComponentInParent<Archer>();
-        arrowDir = new Vector3[5];
+        arrowDir = new Vector3[9];
 
         arrowDir[0] = AngleToDir(archer.transform.eulerAngles.y - 120 * 0.5f);
-        arrowDir[1] = AngleToDir(archer.transform.eulerAngles.y - 120 * 0.25f);
-        arrowDir[2] = AngleToDir(archer.transform.eulerAngles.y);
-        arrowDir[3] = AngleToDir(archer.transform.eulerAngles.y + 120 * 0.25f);
-        arrowDir[4] = AngleToDir(archer.transform.eulerAngles.y + 120 * 0.5f);
+        arrowDir[1] = AngleToDir(archer.transform.eulerAngles.y - 120 * 0.375f);
+        arrowDir[2] = AngleToDir(archer.transform.eulerAngles.y - 120 * 0.25f);
+        arrowDir[3] = AngleToDir(archer.transform.eulerAngles.y - 120 * 0.125f);
+        arrowDir[4] = AngleToDir(archer.transform.eulerAngles.y);
+        arrowDir[5] = AngleToDir(archer.transform.eulerAngles.y + 120 * 0.125f);
+        arrowDir[6] = AngleToDir(archer.transform.eulerAngles.y + 120 * 0.25f);
+        arrowDir[7] = AngleToDir(archer.transform.eulerAngles.y + 120 * 0.375f);
+        arrowDir[8] = AngleToDir(archer.transform.eulerAngles.y + 120 * 0.5f);
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 9; i++)
         {
             var Arrow = ObjectPooling.GetObject();
             Arrow.transform.position = archer.shotPoint.position;
