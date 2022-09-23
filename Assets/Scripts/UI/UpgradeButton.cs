@@ -118,6 +118,7 @@ public class UpgradeButton : MonoBehaviour
 
             }
             Debug.Log("무기 번호 : " + WeaponManager.Instance.WeaponStateNum);
+            WeaponChanger.instance.ChangeWeaponImg();
 
         }
         else

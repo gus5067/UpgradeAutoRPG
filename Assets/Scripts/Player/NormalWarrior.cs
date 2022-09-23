@@ -14,7 +14,7 @@ public class NormalWarrior : Player,IDamageable
     public TrailRenderer trailRenderer;
 
     [SerializeField]
-    public GameObject playerSkill;
+    public GameObject[] playerSkill;
 
     private void Awake()
     {

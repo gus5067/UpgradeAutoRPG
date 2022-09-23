@@ -198,7 +198,8 @@ namespace NormalWarriorStates
             Owner.hpController.mp -= Owner.hpController.initMp;
             Owner.hpController.OnChangeMp(0);
             Owner.animator.SetTrigger("Skill");
-            yield return new WaitForSeconds(2f);
+            Owner.animator.SetInteger("WeaponValue", WeaponManager.Instance.WeaponStateNum);
+            yield return new WaitForSeconds(1f);
           
             //Owner.ChangeState(Grunt.State.Idle);
         }

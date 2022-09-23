@@ -134,9 +134,19 @@ public class HpController : MonoBehaviour
 
         _damage.targetTr = this.gameObject.transform;
 
-        _damage.offset = damageOffset;
-
-        this.text.text = damageValue.ToString();
+        if(damageValue < 0)
+        {
+            _damage.offset = damageOffset + Vector3.right * 1.5f;
+            this.text.color = Color.red;
+            this.text.text = "+ " + (-damageValue).ToString();
+        }
+        else
+        {
+            _damage.offset = damageOffset + Vector3.right * Random.Range(-0.2f, 0.2f);
+            this.text.color = Color.white;
+            this.text.text = damageValue.ToString();
+        }
+        
     }
 
 

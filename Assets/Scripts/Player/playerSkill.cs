@@ -5,20 +5,47 @@ using UnityEngine;
 public class playerSkill : StateMachineBehaviour
 {
     private NormalWarrior player;
+    [SerializeField]
+    private int num;
     private Collider[] colliders;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = animator.GetComponentInParent<NormalWarrior>();
 
-        player.playerSkill.SetActive(true);
+       
 
-        colliders = Physics.OverlapSphere(player.transform.position + Vector3.up, 6, 1<<6);
-
-        foreach(var collider in colliders)
+        switch (num)
         {
-            collider.GetComponent<Monster>().HitDamage(WeaponManager.Instance.minDamage * 2);
+            case 0:
+                player.playerSkill[num].SetActive(true);
+                colliders = Physics.OverlapSphere(player.transform.position + Vector3.up, 6, 1 << 6);
+
+                foreach (var collider in colliders)
+                {
+                    collider.GetComponent<Monster>().HitDamage(WeaponManager.Instance.minDamage * 2);
+                }
+                break;
+            case 1:
+                player.playerSkill[num].SetActive(true);
+                colliders = Physics.OverlapSphere(player.transform.position + Vector3.up, 6, 1 << 6);
+
+                foreach (var collider in colliders)
+                {
+                    collider.GetComponent<Monster>().HitDamage(WeaponManager.Instance.maxDamage);
+                    player.HitDamage(-WeaponManager.Instance.maxDamage);
+                }
+                break;
+            case 2:
+                colliders = Physics.OverlapSphere(player.transform.position + Vector3.up, 6, 1 << 6);
+                GameObject target = colliders[0].gameObject;
+                GameObject skillobj = Instantiate(player.playerSkill[num], target.transform.position, Quaternion.identity);
+                skillobj.transform.SetParent(target.transform);
+                target.GetComponent<Monster>().HitDamage(WeaponManager.Instance.maxDamage * 4);
+                break;
+
         }
+
     }
 
 
@@ -31,7 +58,10 @@ public class playerSkill : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        player.playerSkill.SetActive(false);
+        if(num != 2)
+        {
+            player.playerSkill[num].SetActive(false);
+        }
         player.ChangeState(NormalWarrior.State.Idle);
     }
 

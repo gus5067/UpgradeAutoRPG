@@ -151,4 +151,4 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   targetTr: {fileID: 0}
   moveSpeed: 4
-  destroyTime: 2
+  destroyTime: 1.5
