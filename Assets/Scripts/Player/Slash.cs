@@ -10,18 +10,10 @@ public class Slash : MonoBehaviour
     private List<GameObject> colliderList;
     private void OnParticleCollision(GameObject other)
     {
-        if(other.layer == 6)
+        if(other.tag == "Player")
         {
-            colliderList.Add(other);
+            IDamageable target = other.GetComponent<IDamageable>();
+            target?.HitDamage(num);
         }
-    
-        
-        //IDamageable target = other.GetComponent<IDamageable>();
-        //target?.HitDamage(num * 2);
-    }
-
-    private void DamageList()
-    {
-
     }
 }

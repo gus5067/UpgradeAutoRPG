@@ -87,6 +87,10 @@ public class monsterHpController : MonoBehaviour
         if(hp <= initHp)
         {
             this.hp -= damage;
+            if(this.hp > this.initHp)
+            {
+                this.hp = this.initHp;
+            }    
             preHp = hp;
             hpSlider.value = this.hp / this.initHp;
             SetDamageText(damage);

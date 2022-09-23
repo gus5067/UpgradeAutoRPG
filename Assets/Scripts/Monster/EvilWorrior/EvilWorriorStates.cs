@@ -225,6 +225,7 @@ namespace EvilWorriorStates
             {
                 isDie = false;
                 Owner.animator.SetTrigger("Die");
+                Owner.animator.SetBool("isDie", true);
                 Owner.DropItem();
                 Owner.DieCount();
                 Owner.characterController.enabled = false;
