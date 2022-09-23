@@ -240,6 +240,7 @@ namespace NormalWarriorStates
             {
                 isDie = false;
                 Owner.animator.SetTrigger("Die");
+                Owner.animator.SetBool("isDie", true);
                 Owner.DieCount();
                 Owner.Die(1.5f);
             }
