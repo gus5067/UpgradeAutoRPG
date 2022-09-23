@@ -10,12 +10,16 @@ public class MapManager : MonoBehaviour
     {
         public GameObject[] obstacles;
     }
+
+
     [SerializeField]
     private SkyBoxData skyBoxData;
 
     [SerializeField]
     public Obstacle[] maps;
 
+    [SerializeField]
+    private GameObject[] companions;
     private void Start()
     {
         for(int i = 0; i < StageMapController.Instance.isTrigger.Length; i++)
@@ -26,6 +30,13 @@ public class MapManager : MonoBehaviour
                 {
                     Destroy(maps[i].obstacles[j]);
                 }
+            }
+        }
+        for(int j = 0; j < StageMapController.Instance.isPlayerTrigger.Length; j++)
+        {
+            if( StageMapController.Instance.isPlayerTrigger[j])
+            {
+                Destroy(companions[j]);
             }
         }
         ChangeSkyBox(0);

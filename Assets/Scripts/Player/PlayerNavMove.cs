@@ -57,7 +57,7 @@ public class PlayerNavMove : MonoBehaviour
         }
     }
 
-    
+
     private void InteractSphere()
     {
         Collider[] targets = Physics.OverlapSphere(interactPoint.position, interactRange, interactLayerMask);
@@ -66,9 +66,10 @@ public class PlayerNavMove : MonoBehaviour
         {
             IInteractable interactTarget = targets[0].gameObject.GetComponent<IInteractable>();
 
-
-            interactTarget?.Interact();
-
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                interactTarget?.Interact();
+            }
 
         }
         else

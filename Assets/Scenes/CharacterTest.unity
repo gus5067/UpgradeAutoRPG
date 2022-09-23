@@ -894,6 +894,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curMap: {fileID: 0}
   skyBox: {fileID: 11400000, guid: 798d2d5a18cc6de4abb00afaec6c497b, type: 2}
+  companions:
+  - {fileID: 1290202083}
   monsterData: {fileID: 0}
 --- !u!4 &896722721
 Transform:
@@ -1345,8 +1347,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archer
       objectReference: {fileID: 0}
+    - target: {fileID: 6204525855911623589, guid: 36d4c4b1ca6a466448feb6f234379adb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36d4c4b1ca6a466448feb6f234379adb, type: 3}
+--- !u!1 &1290202083 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6204525855911623589, guid: 36d4c4b1ca6a466448feb6f234379adb, type: 3}
+  m_PrefabInstance: {fileID: 1290202082}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1477011043
 GameObject:
   m_ObjectHideFlags: 0

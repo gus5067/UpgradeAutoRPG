@@ -5,5 +5,8 @@ using UnityEngine;
 public class StageMapController : Singleton<StageMapController>
 {
     [SerializeField]
-    public bool[] isTrigger = new bool[4]; 
+    public bool[] isTrigger = new bool[4];
+
+    [SerializeField]
+    public bool[] isPlayerTrigger = new bool[2];
 }

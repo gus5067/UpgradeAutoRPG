@@ -12,6 +12,9 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     private SkyBoxData skyBox;
 
+    [SerializeField]
+    private GameObject[] companions;
+
     [HideInInspector]
     public MonsterData monsterData;
 
@@ -39,6 +42,13 @@ public class StageManager : MonoBehaviour
     {
         curMap = GetComponent<MapGenerator>();
         StartCoroutine(SummonMonsterRoutine());
+        for(int i=0; i< companions.Length; i++)
+        {
+            if(StageMapController.Instance.isPlayerTrigger[i])
+            {
+                companions[i].SetActive(true);
+            }
+        }
     }
 
     private void Update()

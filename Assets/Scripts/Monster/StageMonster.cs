@@ -29,6 +29,7 @@ public class StageMonster : MonoBehaviour,IInteractable
                     GameManager.Instance.curSkyBoxNum = skyBoxNum;
                 }
                 GameManager.Instance.curStage = ownMonsterData;
+
                 onStageMonster?.Invoke(this);
                 Time.timeScale = 0f;
             }
