@@ -15,5 +15,6 @@ MonoBehaviour:
   monstersPrefab:
   - {fileID: 916335320934365836, guid: 504b7660790783a4aa96f60776d49775, type: 3}
   - {fileID: 916335320934365836, guid: 504b7660790783a4aa96f60776d49775, type: 3}
+  - {fileID: 916335320934365836, guid: 504b7660790783a4aa96f60776d49775, type: 3}
   stageNum: 3
   roundNum: 1

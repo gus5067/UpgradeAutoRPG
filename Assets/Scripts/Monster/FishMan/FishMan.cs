@@ -62,8 +62,8 @@ public class FishMan : Monster
 
     public void SkillSummon()
     {
-        Instantiate(fishMan, transform.position + Vector3.right * 1f, fishMan.transform.rotation);
         StageManager.monsterCount++;
+        Instantiate(fishMan, transform.position + Vector3.right * 1f, fishMan.transform.rotation);
     }
 
 }
