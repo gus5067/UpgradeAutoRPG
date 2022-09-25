@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class ChangeSceneButton : MonoBehaviour
 {
+    [SerializeField]
+    private MapData InfiniteMap;
+
+    [SerializeField]
+    private MonsterData InfiniteMonster;
 
     private Button toStageButton;
 
@@ -44,9 +49,19 @@ public class ChangeSceneButton : MonoBehaviour
 
     public void LoadStageScene()
     {
+        GameManager.Instance.curState = GameManager.State.Normal;
         SceneManager.LoadScene("StageSelectTest");
     }
+    
+    public void LoadInfiniteBattleScene()
+    {
+        GameManager.Instance.curState = GameManager.State.Infinite;
+        GameManager.Instance.curSkyBoxNum = 3;
+        GameManager.Instance.curMap = InfiniteMap;
+        GameManager.Instance.curStage = InfiniteMonster;
+        SceneManager.LoadScene("CharacterTest");
 
+    }
     public void CheatOn()
     {
         Debug.Log("치트키 사용");

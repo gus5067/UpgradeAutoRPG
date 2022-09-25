@@ -34,6 +34,10 @@ public class Archer : Player
         stateMachine.ChangeState(State.Idle);
 
     }
+    private void OnEnable()
+    {
+        StageManager.characterCount++;
+    }
     private void Start()
     {
         StageManager stageManager = FindObjectOfType<StageManager>();

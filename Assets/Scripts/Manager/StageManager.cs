@@ -76,14 +76,49 @@ public class StageManager : MonoBehaviour
                 }
         }
     }
+    private void Summon(int monNum, int num)
+    {
+        switch (num % 3)
+        {
+            case 0:
+                {
+                    Instantiate(monsterData.monstersPrefab[monNum], curMap.monsterPoint + Vector3.up * 1.2f, monsterData.monstersPrefab[monNum].transform.rotation);
+                    break;
+                }
+            case 1:
+                {
+                    Instantiate(monsterData.monstersPrefab[monNum], curMap.monsterPoint2 + Vector3.up * 1.2f, monsterData.monstersPrefab[monNum].transform.rotation);
+                    break;
+                }
+            case 2:
+                {
+                    Instantiate(monsterData.monstersPrefab[monNum], curMap.monsterPoint3 + Vector3.up * 1.2f, monsterData.monstersPrefab[monNum].transform.rotation);
+                    break;
+                }
+        }
+    }
 
     IEnumerator SummonMonsterRoutine()
     {
-        for(int i = 0; i < monsterData.monstersPrefab.Length; i++)
+        if (GameManager.Instance.curState == GameManager.State.Normal)
         {
-            Summon(i);
-            yield return new WaitForSeconds(6f);
+            for (int i = 0; i < monsterData.monstersPrefab.Length; i++)
+            {
+                Summon(i);
+                yield return new WaitForSeconds(6f);
+            }
         }
+        else
+        {
+            int i = 0;
+            while(characterCount != 0)
+            {
+                Summon(Random.Range(0,monsterData.monstersPrefab.Length), i);
+                i++;
+                yield return new WaitForSeconds(8f);
+            }
+        }
+       
     }
 
 

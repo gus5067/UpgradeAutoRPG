@@ -5,6 +5,8 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
+    public enum State { Normal, Infinite}
+    public State curState;
     [SerializeField]
     public Vector3 characterPos;
 
