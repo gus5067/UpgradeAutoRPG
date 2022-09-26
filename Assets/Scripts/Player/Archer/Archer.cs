@@ -41,6 +41,7 @@ public class Archer : Player,IStunable
     private void Start()
     {
         StageManager stageManager = FindObjectOfType<StageManager>();
+
         stageManager.onStageEnd += Victory;
         animator.SetBool("isVic", false);
     }

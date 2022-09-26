@@ -20,8 +20,7 @@ public abstract class Monster : MonoBehaviour,IDamageable,ICanChangeTarget
     protected float _attackRange;
     public float attackRange { get { return _attackRange; } }
 
-    [SerializeField, Range(0f, 10f)]
-    protected float _findRange;
+    protected float _findRange = 15f;
     public float findRange { get { return _findRange; } }
 
     [SerializeField, Range(0f, 10f)]

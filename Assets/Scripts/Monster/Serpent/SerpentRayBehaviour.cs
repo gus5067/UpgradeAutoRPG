@@ -10,14 +10,19 @@ public class SerpentRayBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         serpent = animator.GetComponentInParent<Serpent>();
-        view = animator.GetComponentInParent<ViewDetector>();
-
-        serpent.Ray(true);
+        view = serpent.GetComponent<ViewDetector>();
 
         view.FindTarget();
-        Player target = view.target.GetComponent<Player>();
+        
 
-        target.HitDamage(70);
+        if(view.target != null)
+        {
+            serpent.Ray(true);
+            Player target = view.target.GetComponent<Player>();
+
+            target?.HitDamage(70);
+        }
+  
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

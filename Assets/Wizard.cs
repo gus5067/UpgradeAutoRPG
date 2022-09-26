@@ -41,6 +41,7 @@ public class Wizard : Player
     private void Start()
     {
         StageManager stageManager = FindObjectOfType<StageManager>();
+
         stageManager.onStageEnd += Victory;
         animator.SetBool("isVic", false);
     }
@@ -120,5 +121,6 @@ public class Wizard : Player
         yield return new WaitForSeconds(1f);
         monster.attackTime = temp;
     }
+ 
         
 }

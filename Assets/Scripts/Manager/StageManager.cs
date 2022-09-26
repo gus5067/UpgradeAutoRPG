@@ -26,6 +26,11 @@ public class StageManager : MonoBehaviour
 
     private bool isEnd;
 
+    private void Awake()
+    {
+        characterCount = 1;
+    }
+
     private void OnEnable()
     {
         if (GameManager.Instance.curStage != null)
