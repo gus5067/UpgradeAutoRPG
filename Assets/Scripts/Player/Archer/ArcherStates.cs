@@ -24,8 +24,12 @@ namespace ArcherStates
         public override void HandleStateChange(Archer Owner)
         {
             CheckDie(Owner);
-            CheckSkill(Owner);
-            CheckRunRange(Owner);
+            if(!Owner.isStun)
+            {
+                CheckSkill(Owner);
+                CheckRunRange(Owner);
+            }
+          
         }
 
         public void CheckDie(Archer Owner)
@@ -53,7 +57,7 @@ namespace ArcherStates
             Collider[] targets = Physics.OverlapSphere(Owner.transform.position, Owner.runRange, Owner.targetLayerMask);
             if(targets.Length > 0)
             {
-                runTarget = Owner.ChangeTarget(targets).gameObject;
+                runTarget = Owner.ChangeTarget(targets,true).gameObject;
                 Owner.ChangeState(Archer.State.Run);
                 return;
             }
@@ -83,7 +87,7 @@ namespace ArcherStates
             Collider[] targets = Physics.OverlapSphere(Owner.transform.position, Owner.findRange, Owner.targetLayerMask);
             if (targets.Length > 0)
             {
-                findtarget = Owner.ChangeTarget(targets).gameObject;
+                findtarget = Owner.ChangeTarget(targets, true).gameObject;
                 Owner.ChangeState(Archer.State.Trace);
                 return;
             }
@@ -114,7 +118,7 @@ namespace ArcherStates
             Collider[] attackTargets = Physics.OverlapSphere(Owner.transform.position, Owner.attackRange, Owner.targetLayerMask);
             if (attackTargets.Length > 0)
             {
-                attackTarget = Owner.ChangeTarget(attackTargets).gameObject;
+                attackTarget = Owner.ChangeTarget(attackTargets, true).gameObject;
                 Owner.transform.LookAt(new Vector3(attackTarget.transform.position.x, Owner.transform.position.y, attackTarget.transform.position.z));
                 Owner.ChangeState(Archer.State.Attack);
                 return;
@@ -128,7 +132,7 @@ namespace ArcherStates
             Collider[] targets = Physics.OverlapSphere(Owner.transform.position, Owner.findRange, Owner.targetLayerMask);
             if (targets.Length > 0)
             {
-                traceTarget = Owner.ChangeTarget(targets).gameObject;
+                traceTarget = Owner.ChangeTarget(targets, true).gameObject;
                 Owner.animator.SetBool("isRun", true);
             }
             else
@@ -218,7 +222,7 @@ namespace ArcherStates
             Owner.transform.forward = new Vector3(x, 0, y);
             for (float i = 0; i<1f; i+=0.01f)
             {
-                Owner.characterController.Move(Owner.transform.forward * 0.01f * Owner.moveSpeed);
+                Owner.characterController.Move(Owner.transform.forward * 0.01f * Owner.moveSpeed *2.5f);
                 yield return new WaitForSeconds(0.01f);
             }
             isRun = false;
@@ -258,6 +262,7 @@ namespace ArcherStates
     {
         public override void Enter(Archer Owner)
         {
+            Owner.isStun = true;
             Owner.StartCoroutine(StunTime(Owner));
         }
 
@@ -277,6 +282,7 @@ namespace ArcherStates
             Owner.animator.SetBool("isStun", true);
             Owner.animator.SetTrigger("Stun");
             yield return new WaitForSeconds(2f);
+            Owner.isStun = true;
             Owner.animator.SetBool("isStun", false);
             Owner.ChangeState(Archer.State.Idle);
         }

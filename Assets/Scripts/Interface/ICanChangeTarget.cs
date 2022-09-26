@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ICanChangeTarget
 {
-    public Collider ChangeTarget(Collider[] targets);
+    public Collider ChangeTarget(Collider[] targets, bool isTargetMode);
 }

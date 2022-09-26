@@ -24,8 +24,6 @@ public class StateMachine<T1, T2> where T2 : MonoBehaviour
             curState.Update(Owner);
             curState.HandleStateChange(Owner);
         }
-       
-
     }
 
     public void AddState(T1 type, State<T2> state)

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Archer : Player
+public class Archer : Player,IStunable
 {
-    public enum State { Idle, Trace, Attack, Stun, Run, Skill, Die }    
+    //public enum State { Idle, Trace, Attack, Stun, Run, Skill, Die }    
     private StateMachine<State, Archer> stateMachine;
 
     [SerializeField, Range(0f, 10f)]
@@ -13,7 +13,7 @@ public class Archer : Player
     [SerializeField]
     public Transform shotPoint;
 
-
+    public bool isStun;
     private void Awake()
     {
         _attackController = GetComponent<AttackController>();
@@ -69,5 +69,10 @@ public class Archer : Player
         base.OnDrawGizmosSelected();
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, runRange);
+    }
+
+    public void Stunned()
+    {
+        ChangeState(State.Stun);
     }
 }

@@ -19,14 +19,15 @@ public class GiantWormSkill : StateMachineBehaviour
     {
         GameObject traceTarget = null;
         Collider[] targets = Physics.OverlapSphere(animator.gameObject.transform.position, worm.findRange, worm.targetLayerMask);
-        if (targets.Length > 0)
+        if (targets.Length > 0 && worm.skillTarget == null)
         {
-            traceTarget = worm.ChangeTarget(targets).gameObject;
+            traceTarget = worm.ChangeTarget(targets, false).gameObject;
+            worm.skillTarget = traceTarget;
             Debug.Log(traceTarget.name);
         }
-        Vector3 moveDir = traceTarget.transform.position - worm.gameObject.transform.position;
+        Vector3 moveDir = worm.skillTarget.transform.position - worm.gameObject.transform.position;
         controller.Move(new Vector3(moveDir.x, Physics.gravity.y, moveDir.z).normalized * Time.deltaTime * worm.moveSpeed * 5f);
-        worm.gameObject.transform.LookAt(new Vector3(traceTarget.transform.position.x, worm.gameObject.transform.position.y, traceTarget.transform.position.z));
+        worm.gameObject.transform.LookAt(new Vector3(worm.skillTarget.transform.position.x, worm.gameObject.transform.position.y, worm.skillTarget.transform.position.z));
 
         if(moveDir.magnitude < 1.5f)
         {

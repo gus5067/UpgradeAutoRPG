@@ -10,6 +10,8 @@ public class GiantWorm : Monster, IDamageable
     [SerializeField]
     private GameObject _shotPrefab;
 
+    public GameObject skillTarget;
+
     public GameObject ShotPrefab { get { return _shotPrefab; } }
 
 

@@ -72,7 +72,7 @@ namespace EvilWorriorStates
             Collider[] targets = Physics.OverlapSphere(Owner.transform.position, Owner.findRange, Owner.targetLayerMask);
             if (targets.Length > 0)
             {
-                findtarget = Owner.ChangeTarget(targets).gameObject;
+                findtarget = Owner.ChangeTarget(targets, true).gameObject;
                 Owner.ChangeState(EvilWorrior.State.Trace);
                 return;
             }
@@ -107,7 +107,7 @@ namespace EvilWorriorStates
             Collider[] attackTargets = Physics.OverlapSphere(Owner.transform.position, Owner.attackRange, Owner.targetLayerMask);
             if (attackTargets.Length > 0)
             {
-                attackTarget = Owner.ChangeTarget(attackTargets).gameObject;
+                attackTarget = Owner.ChangeTarget(attackTargets, true).gameObject;
                 Owner.ChangeState(EvilWorrior.State.Attack);
                 return;
             }
@@ -120,7 +120,7 @@ namespace EvilWorriorStates
             Collider[] targets = Physics.OverlapSphere(Owner.transform.position, Owner.findRange, Owner.targetLayerMask);
             if (targets.Length > 0)
             {
-                traceTarget = Owner.ChangeTarget(targets).gameObject;
+                traceTarget = Owner.ChangeTarget(targets, true).gameObject;
                 Owner.animator.SetBool("isRun", true);
             }
             else
@@ -229,7 +229,7 @@ namespace EvilWorriorStates
                 Owner.DropItem();
                 Owner.DieCount();
                 Owner.characterController.enabled = false;
-                Owner.Die(1.5f);
+                Owner.Die(1f);
             }
 
 

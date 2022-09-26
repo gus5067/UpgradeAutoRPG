@@ -18,10 +18,11 @@ public class GiantWormSkillAttack : StateMachineBehaviour
         Collider[] attackTargets = Physics.OverlapSphere(worm.gameObject.transform.position, worm.attackRange, worm.targetLayerMask);
         if (attackTargets.Length > 0)
         {
-            attackTarget = worm.ChangeTarget(attackTargets).gameObject;
+            attackTarget = worm.ChangeTarget(attackTargets, true).gameObject;
             attackTarget.GetComponent<Transform>().position = attackTarget.transform.position + Vector3.up * 1.5f;
-            NormalWarrior target = attackTarget.GetComponent<NormalWarrior>();
-            target?.ChangeState(NormalWarrior.State.Stun);
+            IStunable target = attackTarget.GetComponent<IStunable>();
+            target?.Stunned();
+
             return;
         }
         else
@@ -39,6 +40,7 @@ public class GiantWormSkillAttack : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        worm.skillTarget = null;
         worm.ChangeState(GiantWorm.State.Idle);
     }
 

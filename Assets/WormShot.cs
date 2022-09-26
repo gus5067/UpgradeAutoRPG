@@ -17,6 +17,7 @@ public class WormShot : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(WormShotRoutine());
         viewDetector.FindTarget();
         if(viewDetector.target != null)
         {
@@ -45,11 +46,14 @@ public class WormShot : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, 5f);
     }
 
-    //IEnumerator DestroyRoutine(float num)
-    //{
-    //    yield return new WaitForSeconds(num);
-    //    ObjectPooling.ReturnWormObject(this);
-    //}
+    IEnumerator WormShotRoutine()
+    {
+        if (!this.gameObject.activeSelf)
+        {
+            yield return new WaitForSeconds(2f);
+            ObjectPooling.ReturnWormObject(this);
+        }
+    }
 
 
 }

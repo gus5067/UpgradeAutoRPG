@@ -18,6 +18,9 @@ public class ObjectPooling : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        StartPooling(10);
+        StartWormPooling(10);
     }
 
     private void StartPooling(int startCount)
@@ -69,7 +72,7 @@ public class ObjectPooling : MonoBehaviour
 
     public static WormShot GetWormObject()
     {
-        if (instance.poolingObjectQueue.Count > 0)
+        if (instance.wormShotQueue.Count > 0)
         {
             var obj = instance.wormShotQueue.Dequeue();
             obj.transform.SetParent(null);

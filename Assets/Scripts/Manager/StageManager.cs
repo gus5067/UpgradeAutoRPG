@@ -20,7 +20,7 @@ public class StageManager : MonoBehaviour
 
     public event UnityAction<bool> onStageEnd;
 
-    public static int characterCount;
+    public static int characterCount = 1;
 
     public static int monsterCount;
 
@@ -34,7 +34,6 @@ public class StageManager : MonoBehaviour
             RenderSettings.skybox = skyBox.skyBoxMaterial[GameManager.Instance.curSkyBoxNum];
         }
         monsterCount = monsterData.monstersPrefab.Length;
-        characterCount = 1; //아직 동료는 미구현이니깐 일단은 1로 시작
 
         isEnd = false;
     }

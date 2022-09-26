@@ -72,28 +72,55 @@ public abstract class Monster : MonoBehaviour,IDamageable,ICanChangeTarget
     {
         StageManager.monsterCount--;
     }
-    public Collider ChangeTarget(Collider[] targets)
+    public Collider ChangeTarget(Collider[] targets, bool isFindTargetMode)
     {
-        if(targets.Length>1)
+        if(isFindTargetMode)
         {
-            float curValue;
-            int curNum = 0;
-            float shortValue = (transform.position - targets[0].transform.position).sqrMagnitude;
-            for (int i = 0; i < targets.Length; i++)
+            if (targets.Length > 1)
             {
-                curValue = (transform.position - targets[i].transform.position).sqrMagnitude;
-                if (curValue < shortValue)
+                float curValue;
+                int curNum = 0;
+                float shortValue = (transform.position - targets[0].transform.position).sqrMagnitude;
+                for (int i = 0; i < targets.Length; i++)
                 {
-                    shortValue = curValue;
-                    curNum = i;
+                    curValue = (transform.position - targets[i].transform.position).sqrMagnitude;
+                    if (curValue < shortValue)
+                    {
+                        shortValue = curValue;
+                        curNum = i;
+                    }
                 }
+                return targets[curNum];
             }
-            return targets[curNum];
+            else
+            {
+                return targets[0];
+            }
         }
         else
         {
-            return targets[0];
+            if (targets.Length > 1)
+            {
+                float curValue;
+                int curNum = 0;
+                float longValue = (transform.position - targets[0].transform.position).sqrMagnitude;
+                for (int i = 0; i < targets.Length; i++)
+                {
+                    curValue = (transform.position - targets[i].transform.position).sqrMagnitude;
+                    if (curValue > longValue)
+                    {
+                        longValue = curValue;
+                        curNum = i;
+                    }
+                }
+                return targets[curNum];
+            }
+            else
+            {
+                return targets[0];
+            }
         }
+       
         
     }
 

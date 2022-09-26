@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class NormalWarrior : Player,IDamageable
+public class NormalWarrior : Player,IDamageable,IStunable
 {
-    public enum State {Idle, Trace, Attack, Stun, Skill, Die }
     private StateMachine<State, NormalWarrior> stateMachine;
 
 
@@ -58,6 +57,11 @@ public class NormalWarrior : Player,IDamageable
     public void ChangeState(State nextState)
     {
         stateMachine.ChangeState(nextState);
+    }
+
+    public void Stunned()
+    {
+       ChangeState(State.Stun);
     }
 
     //public void Slash()
