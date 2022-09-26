@@ -115,8 +115,10 @@ public class Wizard : Player
         GameObject obj = Instantiate(skills[3], monster.transform);
         float temp = monster.attackTime;
         monster.attackTime *= 0.5f;
-        yield return new WaitForSeconds(3f);
-        monster.attackTime = temp;
+        yield return new WaitForSeconds(2f);
         Destroy(obj);
+        yield return new WaitForSeconds(1f);
+        monster.attackTime = temp;
     }
+        
 }

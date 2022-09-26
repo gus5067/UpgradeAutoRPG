@@ -29,15 +29,11 @@ public class WormShot : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Vfx.SetActive(true);
-        Vfx.transform.SetParent(null);
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 5f, 1 << 7);
-        foreach (Collider collider in colliders)
+        if(!Vfx.activeSelf)
         {
-            Player target = collider.gameObject.GetComponent<Player>();
-            target?.HitDamage(10);
+            StartCoroutine(VfxRoutine());
         }
-        ObjectPooling.ReturnWormObject(this);   
+        
     }
 
     private void OnDrawGizmos()
@@ -50,9 +46,22 @@ public class WormShot : MonoBehaviour
     {
         if (!this.gameObject.activeSelf)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             ObjectPooling.ReturnWormObject(this);
         }
+    }
+
+    IEnumerator VfxRoutine()
+    {
+        Vfx.SetActive(true);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 5f, 1 << 7);
+        foreach (Collider collider in colliders)
+        {
+            Player target = collider.gameObject.GetComponent<Player>();
+            target?.HitDamage(10);
+        }
+        yield return new WaitForSeconds(0.5f);
+        ObjectPooling.ReturnWormObject(this);
     }
 
 
