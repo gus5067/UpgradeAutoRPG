@@ -6,13 +6,15 @@ using UnityEngine;
 public class CompanionOnStage : MonoBehaviour, IInteractable
 {
     [SerializeField]
+    private int num;
+    [SerializeField]
     private Conversation _conversation;
     public Conversation conversation { get { return _conversation; } }
     
     public void Interact()
     {
       
-            StageMapController.Instance.isPlayerTrigger[0] = true;
+            StageMapController.Instance.isPlayerTrigger[num] = true;
             ConversationController.instance.curConversation = conversation;
             ConversationController.instance.StartConversation();
        
