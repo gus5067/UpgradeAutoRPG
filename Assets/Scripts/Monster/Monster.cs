@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 public abstract class Monster : MonoBehaviour,IDamageable,ICanChangeTarget
 {
-    public enum HitState { Normal, Forzen, Burn }
+    public enum HitState { Normal, Frozen, Burn }
     public HitState hitState = HitState.Normal;
     public event UnityAction<int> onChangeHp;
     [Range(0f, 1.4f)]
@@ -42,10 +42,6 @@ public abstract class Monster : MonoBehaviour,IDamageable,ICanChangeTarget
 
 
     public bool isGround;
-    private void Start()
-    {
-
-    }
     public void Die(float time)
     {
         Destroy(gameObject, time);

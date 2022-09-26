@@ -102,4 +102,21 @@ public class Wizard : Player
         target.hitState = Monster.HitState.Normal;
         Destroy(fire.gameObject);
     }
+
+    public void Frozen(Monster monster)
+    {
+        
+        StartCoroutine(WizardFrozenAttack(monster));
+    }
+    IEnumerator WizardFrozenAttack(Monster monster)
+    {
+        yield return new WaitForSeconds(0.5f);
+        monster?.HitDamage(WeaponManager.Instance.minDamage);
+        GameObject obj = Instantiate(skills[3], monster.transform);
+        float temp = monster.attackTime;
+        monster.attackTime *= 0.5f;
+        yield return new WaitForSeconds(3f);
+        monster.attackTime = temp;
+        Destroy(obj);
+    }
 }

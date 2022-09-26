@@ -16,8 +16,7 @@ public class WizardSkillBehaviour : StateMachineBehaviour
         foreach(var target in viewDetector.FindTargets(8.8f, 42f))
         {
             Monster monster = target.GetComponent<Monster>();
-            monster?.HitDamage(20);
-            monster.hitState = Monster.HitState.Forzen;
+            wizard.Frozen(monster);
         }
     }
 

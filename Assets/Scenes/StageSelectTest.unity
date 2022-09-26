@@ -3519,6 +3519,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3531608491143111327, guid: a9d110e1959edbc48af901a6ebd4784e, type: 3}
+      propertyPath: _conversation
+      value: 
+      objectReference: {fileID: 11400000, guid: 99e9028f66b40724884917193b880096, type: 2}
     - target: {fileID: 5108416962699988232, guid: a9d110e1959edbc48af901a6ebd4784e, type: 3}
       propertyPath: m_Name
       value: WizardOnStage

@@ -1526,6 +1526,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WizardBattle
       objectReference: {fileID: 0}
+    - target: {fileID: 2835157165404573265, guid: 89ee6b99fe781cd4797b6e0c739fcf39, type: 3}
+      propertyPath: skills.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835157165404573265, guid: 89ee6b99fe781cd4797b6e0c739fcf39, type: 3}
+      propertyPath: skills.Array.data[3]
+      value: 
+      objectReference: {fileID: 1139387570327198, guid: a1fd51e33143bf84fa8bdbd6ef485348, type: 3}
     - target: {fileID: 5203110963812931775, guid: 89ee6b99fe781cd4797b6e0c739fcf39, type: 3}
       propertyPath: m_RootOrder
       value: 1
