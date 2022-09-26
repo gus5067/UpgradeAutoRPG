@@ -48,6 +48,28 @@ public class ViewDetector : MonoBehaviour
             return;
         }
     }
+
+    public List<Collider> FindTargets(float Radius, float Angle)
+    {
+        List<Collider> skillTargets = new List<Collider>();
+        Collider[] targets = Physics.OverlapSphere(transform.position, Radius, targetMask);
+        if (targets.Length < 1)
+        {
+            return null;
+        }
+        for (int i = 0; i < targets.Length; i++)
+        {
+            Vector3 dirToTarget = (targets[i].transform.position - transform.position).normalized;
+
+            if (Vector3.Dot(transform.forward, dirToTarget) < Mathf.Cos(Angle * 0.5f * Mathf.Deg2Rad))
+            {
+                Debug.Log("타겟이 시야 밖");
+                continue; // 내적값이 작다는 것은 시야각보다 밖에 있다는 것 (코사인은 각도가 커질수록 값이 작아짐)
+            }
+            skillTargets.Add(targets[i]);
+        }
+        return skillTargets;
+    }
     public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;

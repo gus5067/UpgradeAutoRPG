@@ -254,6 +254,7 @@ namespace WizardStates
             Owner.hpController.mp -= Owner.hpController.initMp;
             Owner.hpController.OnChangeMp(0);
             Owner.animator.SetTrigger("Skill");
+            Owner.animator.SetInteger("RandomSkill", 1); //Random.Range(1,4)
             yield return null;
 
             //Owner.ChangeState(Grunt.State.Idle);

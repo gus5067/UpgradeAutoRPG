@@ -620,10 +620,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2835157165404573262, guid: 89ee6b99fe781cd4797b6e0c739fcf39, type: 3}
-      propertyPath: initMp
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 2835157165404573263, guid: 89ee6b99fe781cd4797b6e0c739fcf39, type: 3}
       propertyPath: m_Name
       value: WizardBattle
