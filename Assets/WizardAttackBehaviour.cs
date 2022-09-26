@@ -15,7 +15,6 @@ public class WizardAttackBehaviour : StateMachineBehaviour
         viewDetector = wizard.GetComponent<ViewDetector>();
 
         viewDetector.FindTarget();
-        Debug.Log(viewDetector.target);
         wizard.FireAttack(viewDetector.target);
         
     }

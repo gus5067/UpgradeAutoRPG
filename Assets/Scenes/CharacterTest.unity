@@ -897,6 +897,7 @@ MonoBehaviour:
   skyBox: {fileID: 11400000, guid: 798d2d5a18cc6de4abb00afaec6c497b, type: 2}
   companions:
   - {fileID: 1290202083}
+  - {fileID: 1530440210}
   monsterData: {fileID: 0}
 --- !u!4 &896722721
 Transform:
@@ -1531,7 +1532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5203110963812931775, guid: 89ee6b99fe781cd4797b6e0c739fcf39, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.4
+      value: -2.39
       objectReference: {fileID: 0}
     - target: {fileID: 5203110963812931775, guid: 89ee6b99fe781cd4797b6e0c739fcf39, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1539,7 +1540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5203110963812931775, guid: 89ee6b99fe781cd4797b6e0c739fcf39, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.34
+      value: 3.74
       objectReference: {fileID: 0}
     - target: {fileID: 5203110963812931775, guid: 89ee6b99fe781cd4797b6e0c739fcf39, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1571,6 +1572,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89ee6b99fe781cd4797b6e0c739fcf39, type: 3}
+--- !u!1 &1530440210 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2835157165404573263, guid: 89ee6b99fe781cd4797b6e0c739fcf39, type: 3}
+  m_PrefabInstance: {fileID: 1530440209}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1904166515
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public class Wizard : Player
     public GameObject[] skills;
 
     public bool isStun;
+    public bool isShieldCool = false;
     private void Awake()
     {
         _attackController = GetComponent<AttackController>();

@@ -11,7 +11,10 @@ public class WizardShield : StateMachineBehaviour
     {
         wizard = animator.GetComponentInParent<Wizard>();
         wizard.gameObject.layer = 8;
-        obj = Instantiate(wizard.skills[0],wizard.transform.position,Quaternion.identity);
+
+        obj = Instantiate(wizard.skills[0], wizard.transform.position, Quaternion.identity);
+
+        Debug.Log("Ω√¿€ : " + obj);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -24,6 +27,8 @@ public class WizardShield : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         wizard.gameObject.layer = 7;
+        wizard.ChangeState(Player.State.Idle);
+        Debug.Log("≥° : " + obj);
         Destroy(obj);
     }
 

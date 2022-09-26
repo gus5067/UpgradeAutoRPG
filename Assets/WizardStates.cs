@@ -27,7 +27,11 @@ namespace WizardStates
             if (!Owner.isStun)
             {
                 CheckSkill(Owner);
-                CheckRunRange(Owner);
+                if (!Owner.isShieldCool)
+                {
+                    CheckRunRange(Owner);
+                }
+
             }
 
         }
@@ -193,10 +197,13 @@ namespace WizardStates
 
     public class RunState : BaseState
     {
-
         public override void Enter(Wizard Owner)
         {
-            Owner.StartCoroutine(RunRoutine(Owner));
+            if(!Owner.isShieldCool)
+            {
+                Owner.StartCoroutine(RunRoutine(Owner));
+            }
+         
 
         }
 
@@ -213,9 +220,13 @@ namespace WizardStates
 
         IEnumerator RunRoutine(Wizard Owner)
         {
+            Owner.isShieldCool = true;
+            Owner.animator.SetTrigger("Invincible");
             Owner.animator.SetBool("isInvincible", true);
             yield return new WaitForSeconds(2f);
             Owner.animator.SetBool("isInvincible", false);
+            yield return new WaitForSeconds(10f);
+            Owner.isShieldCool = false;
 
         }
     }
