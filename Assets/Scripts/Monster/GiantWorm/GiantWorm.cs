@@ -7,6 +7,15 @@ public class GiantWorm : Monster, IDamageable
     public enum State { Idle, Trace, Attack, Stun, Skill, Die }
     private StateMachine<State, GiantWorm> stateMachine;
 
+    [SerializeField]
+    private GameObject _shotPrefab;
+
+    public GameObject ShotPrefab { get { return _shotPrefab; } }
+
+
+    [SerializeField]
+    private Transform _shotPoint;
+    public Transform ShotPoint { get { return _shotPoint; } }
 
     private void Awake()
     {

@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 5428258442584080566, guid: 2e10942c8a2026342b2975d799aebcdc, type: 3}
+  WormShotPrefab: {fileID: 6842527942713034713, guid: ac92f71f2205f5e4b8f2007ceb8c81f3, type: 3}
 --- !u!1 &394912231
 GameObject:
   m_ObjectHideFlags: 0
