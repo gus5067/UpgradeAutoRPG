@@ -9,6 +9,13 @@ public class ButtonController : MonoBehaviour
 
     [SerializeField]
     private GameObject uiImg;
+
+    private AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+    }
     public void OnClickYesButton()
     {
 
@@ -23,9 +30,25 @@ public class ButtonController : MonoBehaviour
         uiImg.SetActive(false);
     }
 
+    public void OnClickBackButton()
+    {
+        uiController.CurPlayerPos();
+        StartCoroutine(BackToUpgradeScene());
+    }
+
+    public void OnPointerEnter()
+    {
+        audioManager.PlayerEffectSound(audioManager.audioClips[0]);
+    }
     IEnumerator InteractCoolTime()
     {
         yield return new WaitForSecondsRealtime(1.5f);
         uiController.curStage.isInteract = false;
+    }
+
+    IEnumerator BackToUpgradeScene()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("UpgradeTest");
     }
 }

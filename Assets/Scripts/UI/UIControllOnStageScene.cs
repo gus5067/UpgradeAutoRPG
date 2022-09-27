@@ -43,11 +43,15 @@ public class UIControllOnStageScene : MonoBehaviour
     private void UIactive(StageMonster curMonster)
     {
 
-        GameManager.Instance.characterPos = player.transform.position;
-        GameManager.Instance.characterRotation = player.transform.rotation.eulerAngles;
-
+        CurPlayerPos();
         curMonster.isInteract = true;
         uiImg.SetActive(true);
         stageText.text = "Stage " + curMonster.ownMonsterData.stageNum.ToString()+ "-" + curMonster.ownMonsterData.roundNum.ToString();
+    }
+
+    public void CurPlayerPos()
+    {
+        GameManager.Instance.characterPos = player.transform.position;
+        GameManager.Instance.characterRotation = player.transform.rotation.eulerAngles;
     }
 }

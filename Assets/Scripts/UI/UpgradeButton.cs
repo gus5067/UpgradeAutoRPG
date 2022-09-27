@@ -13,6 +13,17 @@ public class UpgradeButton : MonoBehaviour
     [SerializeField]
     private Animator weaponAnimator;
 
+    private AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager= FindObjectOfType<AudioManager>();
+    }
+
+    public void PointerEnter()
+    {
+      audioManager.PlayerEffectSound(audioManager.audioClips[0]);
+    }
     public void ButtonClick()
     {
         if(GameManager.Instance.gameMoney >= WeaponManager.Instance.weaponValue * 100)
@@ -24,6 +35,7 @@ public class UpgradeButton : MonoBehaviour
             Debug.Log("돈이 부족합니다");
             return;
         }
+        audioManager.PlayerEffectSound(audioManager.audioClips[1]);
         StartCoroutine(UpgradeRoutine());  
     }
 
@@ -38,6 +50,7 @@ public class UpgradeButton : MonoBehaviour
             Debug.Log("보석이 부족합니다");
             return;
         }
+        audioManager.PlayerEffectSound(audioManager.audioClips[1]);
         StartCoroutine(SpeicalUpgradeRoutine());
     }
     IEnumerator UpgradeRoutine()
@@ -45,7 +58,9 @@ public class UpgradeButton : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         upgradeButton.interactable = false;
+        yield return new WaitForSeconds(1f);
         weaponAnimator.SetTrigger("Upgrade");
+        audioManager.PlayerEffectLoop(audioManager.audioClips[2]);
         yield return new WaitForSeconds(2f);
         Upgrade();
         upgradeButton.interactable = true;
@@ -57,7 +72,9 @@ public class UpgradeButton : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         specialButton.interactable = false;
+        yield return new WaitForSeconds(1f);
         weaponAnimator.SetTrigger("Upgrade");
+        audioManager.PlayerEffectLoop(audioManager.audioClips[2]);
         yield return new WaitForSeconds(2f);
         SpecialUpgrade();
         specialButton.interactable = true;
@@ -71,12 +88,14 @@ public class UpgradeButton : MonoBehaviour
         if(num >= 5 * WeaponManager.Instance.weaponValue)
         {
             Debug.Log("강화 성공");
+            audioManager.PlayerEffectSound(audioManager.audioClips[3]);
             WeaponManager.Instance.weaponValue++;
             WeaponManager.Instance.minDamage += 4 * WeaponManager.Instance.weaponValue;
             WeaponManager.Instance.maxDamage += 4 * WeaponManager.Instance.weaponValue;
         }
         else
         {
+            audioManager.PlayerEffectSound(audioManager.audioClips[4]);
             Debug.Log("강화 실패");
             int num2 = Random.Range(1, 4);
             if(num2 >= 2)
@@ -101,6 +120,7 @@ public class UpgradeButton : MonoBehaviour
         if (num >= 49)
         {
             Debug.Log("특수 강화 성공");
+            audioManager.PlayerEffectSound(audioManager.audioClips[3]);
             WeaponManager.Instance.WeaponStateNum = Random.Range(1, 3);
             switch (WeaponManager.Instance.WeaponStateNum)
             {
@@ -123,6 +143,7 @@ public class UpgradeButton : MonoBehaviour
         }
         else
         {
+            audioManager.PlayerEffectSound(audioManager.audioClips[4]);
             Debug.Log("특수 강화 실패");
             WeaponManager.Instance.WeaponStateNum = 0;
             Debug.Log("무기 번호 : " + WeaponManager.Instance.WeaponStateNum);
