@@ -9,4 +9,7 @@ public class StageMapController : Singleton<StageMapController>
 
     [SerializeField]
     public bool[] isPlayerTrigger = new bool[2];
+
+    [SerializeField]
+    public bool[] questTrigger = new bool[2];
 }

@@ -3388,6 +3388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTrigger: 00000000
   isPlayerTrigger: 0000
+  questTrigger: 0000
 --- !u!4 &1807969144
 Transform:
   m_ObjectHideFlags: 0

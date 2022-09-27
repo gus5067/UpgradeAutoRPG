@@ -84,6 +84,7 @@ public class Wizard : Player
         {
             StartCoroutine(WizardAttackRoutine(target));
         }
+
     }
     IEnumerator WizardAttackRoutine(GameObject monster)
     {

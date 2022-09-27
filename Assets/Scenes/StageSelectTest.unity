@@ -3651,6 +3651,10 @@ PrefabInstance:
       propertyPath: _conversation
       value: 
       objectReference: {fileID: 11400000, guid: 99e9028f66b40724884917193b880096, type: 2}
+    - target: {fileID: 3531608491143111327, guid: a9d110e1959edbc48af901a6ebd4784e, type: 3}
+      propertyPath: _denyConversation
+      value: 
+      objectReference: {fileID: 11400000, guid: 28970bb6cf0d6ff44bdbc9a4e5f1266b, type: 2}
     - target: {fileID: 3598732863000062714, guid: a9d110e1959edbc48af901a6ebd4784e, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -28195,6 +28199,10 @@ PrefabInstance:
       propertyPath: _conversation
       value: 
       objectReference: {fileID: 11400000, guid: ed1e7c62fa01a524f944ede23a2dfd17, type: 2}
+    - target: {fileID: 8695677390998164102, guid: c6ee5eb446b33d64a8aa43ba62500fef, type: 3}
+      propertyPath: _denyConversation
+      value: 
+      objectReference: {fileID: 11400000, guid: c43b1cad0aeca7c4b9c7f16b46178bd9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6ee5eb446b33d64a8aa43ba62500fef, type: 3}
 --- !u!1 &4489273882288217632

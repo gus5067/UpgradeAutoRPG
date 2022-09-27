@@ -245,6 +245,11 @@ namespace GruntStates
                 Owner.DieCount();
                 Owner.characterController.enabled = false;
                 Owner.Die(1f);
+                if(Owner is GruntKing)
+                {
+                    Debug.Log("첫 퀘스트 클리어");
+                    StageMapController.Instance.questTrigger[0] = true;
+                }
             }
             
             

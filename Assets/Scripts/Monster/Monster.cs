@@ -7,6 +7,7 @@ public abstract class Monster : MonoBehaviour,IDamageable,ICanChangeTarget
     public enum HitState { Normal, Frozen, Burn }
     public HitState hitState = HitState.Normal;
     public event UnityAction<int> onChangeHp;
+    public event UnityAction onChangeDie;
     [Range(0f, 1.4f)]
     public float attackTime;
 
@@ -43,9 +44,14 @@ public abstract class Monster : MonoBehaviour,IDamageable,ICanChangeTarget
     public bool isGround;
     public void Die(float time)
     {
-        Destroy(gameObject, time);
+        Invoke("DieProgress", time);
     }
 
+    public void DieProgress()
+    {
+        onChangeDie?.Invoke();
+        gameObject.SetActive(false);
+    }
 
     protected void OnDrawGizmosSelected()
     {

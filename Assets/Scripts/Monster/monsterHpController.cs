@@ -45,6 +45,7 @@ public class monsterHpController : MonoBehaviour
         damageText = uiManager.damageTextPrefab;
         hpMonster = GetComponent<Monster>();
         hpMonster.onChangeHp += OnChangeHp;
+        hpMonster.onChangeDie += OnChangeDie;
         
         
     }
@@ -104,6 +105,11 @@ public class monsterHpController : MonoBehaviour
 
     }
 
+    public void OnChangeDie()
+    {
+        hpSlider.gameObject.SetActive(false);
+        mpSlider.gameObject.SetActive(false);
+    }
     public void CheckHpChange()
     {
         if(preHp != hp)

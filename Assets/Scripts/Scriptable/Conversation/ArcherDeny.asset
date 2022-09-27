@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff8aa9978f15b44ba9a084e6b818f16, type: 3}
+  m_Name: ArcherDeny
+  m_EditorClassIdentifier: 
+  talks:
+  - name: "\uAD81\uC218"
+    talks:
+    - "\uADF8\uB7F0\uD2B8 \uC655\uC744 \uC7A1\uC73C\uBA74 \uB3C4\uC640\uC904\uAC8C"
+  - name: System
+    talks:
+    - "\uADF8\uB7F0\uD2B8 \uC655\uC744 \uC7A1\uC544\uC57C \uD569\uB2C8\uB2E4."

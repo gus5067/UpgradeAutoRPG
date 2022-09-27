@@ -63,7 +63,11 @@ public abstract class Player : MonoBehaviour,IDamageable,ICanChangeTarget
     {
         if (isVic)
         {
-            animator.SetBool("isVic", true);
+            if(animator != null)
+            {
+                animator.SetBool("isVic", true);
+            }
+            
         }
         else
         {

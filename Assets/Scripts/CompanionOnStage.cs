@@ -9,15 +9,27 @@ public class CompanionOnStage : MonoBehaviour, IInteractable
     private int num;
     [SerializeField]
     private Conversation _conversation;
-    public Conversation conversation { get { return _conversation; } }
+    public Conversation Conversation { get { return _conversation; } }
+
+    [SerializeField]
+    private Conversation _denyConversation;
+
+    public Conversation DenyConversation { get { return _denyConversation; } }
     
     public void Interact()
     {
       
-            StageMapController.Instance.isPlayerTrigger[num] = true;
-            ConversationController.instance.curConversation = conversation;
+        if(StageMapController.Instance.questTrigger[num] != true)
+        {
+            ConversationController.instance.curConversation = DenyConversation;
             ConversationController.instance.StartConversation();
-       
-      
+        }
+        else
+        {
+            StageMapController.Instance.isPlayerTrigger[num] = true;
+            ConversationController.instance.curConversation = Conversation;
+            ConversationController.instance.StartConversation();
+        }
+           
     }
 }
