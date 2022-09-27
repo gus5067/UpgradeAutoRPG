@@ -10,6 +10,13 @@ public abstract class Player : MonoBehaviour,IDamageable,ICanChangeTarget
     [SerializeField]
     private LayerMask _targetLayerMask;
     public LayerMask targetLayerMask { get { return _targetLayerMask; } }
+
+    [SerializeField]
+    protected AudioClip[] clips;
+
+    [SerializeField]
+    protected AudioSource curAudio;
+
     [SerializeField, Range(0f, 10f)]
     protected float _attackRange;
     public float attackRange { get { return _attackRange; } }
@@ -41,8 +48,6 @@ public abstract class Player : MonoBehaviour,IDamageable,ICanChangeTarget
     public HpController hpController { get { return _hpController; } }
     public event UnityAction<int> onChangeHp;
     public event UnityAction onChangeDie;
-
-
     public void HitDamage(int damage)
     {
         onChangeHp?.Invoke(damage);

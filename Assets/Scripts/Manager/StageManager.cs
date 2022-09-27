@@ -8,7 +8,9 @@ public class StageManager : MonoBehaviour
 {
     [SerializeField]
     private  MapGenerator curMap;
-
+    private AudioSource curAudio;
+    [SerializeField]
+    private AudioClip[] clips;
     [SerializeField]
     private SkyBoxData skyBox;
 
@@ -29,6 +31,7 @@ public class StageManager : MonoBehaviour
     private void Awake()
     {
         characterCount = 1;
+        curAudio = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -37,6 +40,8 @@ public class StageManager : MonoBehaviour
         {
             monsterData = GameManager.Instance.curStage;
             RenderSettings.skybox = skyBox.skyBoxMaterial[GameManager.Instance.curSkyBoxNum];
+            curAudio.clip = clips[GameManager.Instance.curSkyBoxNum];
+            curAudio.Play();
         }
         monsterCount = monsterData.monstersPrefab.Length;
 

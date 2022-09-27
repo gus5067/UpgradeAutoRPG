@@ -17,6 +17,7 @@ public class NormalWarrior : Player,IDamageable,IStunable
 
     private void Awake()
     {
+        curAudio = GetComponent<AudioSource>();
         _attackController = GetComponent<AttackController>();
         _hpController = GetComponent<HpController>();
         _animator = GetComponentInChildren<Animator>();
