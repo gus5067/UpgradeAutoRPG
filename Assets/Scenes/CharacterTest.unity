@@ -573,7 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9181,6 +9181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1290202085}
+  Background: {fileID: 1919506564}
 --- !u!4 &5177310320810775734
 Transform:
   m_ObjectHideFlags: 0
@@ -9881,6 +9882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1701982497}
+  Background: {fileID: 364586002}
 --- !u!4 &5899041469502120585
 Transform:
   m_ObjectHideFlags: 0
@@ -9910,6 +9912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1530440211}
+  Background: {fileID: 725434968}
 --- !u!4 &5909452265323210747
 Transform:
   m_ObjectHideFlags: 0

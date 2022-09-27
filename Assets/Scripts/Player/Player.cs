@@ -40,7 +40,7 @@ public abstract class Player : MonoBehaviour,IDamageable,ICanChangeTarget
     protected HpController _hpController;
     public HpController hpController { get { return _hpController; } }
     public event UnityAction<int> onChangeHp;
-
+    public event UnityAction onChangeDie;
 
 
     public void HitDamage(int damage)
@@ -56,7 +56,13 @@ public abstract class Player : MonoBehaviour,IDamageable,ICanChangeTarget
 
     public void Die(float time)
     {
-        Destroy(gameObject, time);
+        Invoke("DieProgress", time);
+    }
+
+    public void DieProgress()
+    {
+        onChangeDie?.Invoke();
+        gameObject.SetActive(false);
     }
 
     protected void Victory(bool isVic)

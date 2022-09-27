@@ -53,6 +53,7 @@ public class HpController : MonoBehaviour
         damageText = uiManager.playerDamageTextPrefab;
         hpPlayer = GetComponent<Player>();
         hpPlayer.onChangeHp += OnChangeHp;
+        hpPlayer.onChangeDie += OnChangeDie;
     }
     private void Start()
     {
@@ -89,7 +90,11 @@ public class HpController : MonoBehaviour
 
         _hpBar.offset = hpBarOffset;
     }
-
+    public void OnChangeDie()
+    {
+        hpSlider.gameObject.SetActive(false);
+        mpSlider.gameObject.SetActive(false);
+    }
     private void OnChangeHp(int damage)
     {
         if (hp <= initHp)
