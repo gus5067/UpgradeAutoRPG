@@ -14,7 +14,11 @@ public class WizardExplosion : StateMachineBehaviour
 
         viewDetector.FindTarget();
 
-        obj = Instantiate(wizard.skills[4], viewDetector.target.transform);
+        if (viewDetector.target != null)
+        {
+            obj = Instantiate(wizard.skills[4], viewDetector.target.transform);
+        }
+
 
         Collider[] targets = Physics.OverlapSphere(obj.transform.position, 5f, 1 << 6);
         foreach(var target in targets)

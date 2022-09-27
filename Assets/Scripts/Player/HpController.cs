@@ -36,7 +36,13 @@ public class HpController : MonoBehaviour
 
     private Slider hpSlider;
 
+    [SerializeField]
+    private Slider hpSliderPortrait;
+
     private Slider mpSlider;
+
+    [SerializeField]
+    private Slider mpSliderPortrait;
 
     private TextMeshProUGUI text;
 
@@ -55,6 +61,7 @@ public class HpController : MonoBehaviour
         if (initMp != 0)
         {
             mpSlider.value = this.mp / this.initMp;
+            mpSliderPortrait.value = this.mp / this.initMp;
         }
         else
         {
@@ -90,6 +97,7 @@ public class HpController : MonoBehaviour
             this.hp -= damage * (1 - WeaponManager.Instance.weaponValue * 0.04f);
             preHp = hp;
             hpSlider.value = this.hp / this.initHp;
+            hpSliderPortrait.value = this.hp / this.initHp;
             SetDamageText(damage);
             if (initMp > 0)
             {
@@ -102,6 +110,7 @@ public class HpController : MonoBehaviour
         if (preHp != hp)
         {
             hpSlider.value = this.hp / this.initHp;
+            hpSliderPortrait.value = this.hp / this.initHp;
             preHp = hp;
         }
 
@@ -116,10 +125,12 @@ public class HpController : MonoBehaviour
         {
             this.mp += mana;
             mpSlider.value = this.mp / this.initMp;
+            mpSliderPortrait.value = this.mp / this.initMp;
         }
         else
         {
             mpSlider.value = 0;
+            mpSliderPortrait.value = 0;
         }
     }
     private void SetDamageText(int damageValue)

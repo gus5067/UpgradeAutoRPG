@@ -15,8 +15,10 @@ public class WizardAttackBehaviour : StateMachineBehaviour
         viewDetector = wizard.GetComponent<ViewDetector>();
 
         viewDetector.FindTarget();
-        wizard.FireAttack(viewDetector.target);
-        
+        if(viewDetector.target != null)
+        {
+            wizard.FireAttack(viewDetector.target);
+        }
     }
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

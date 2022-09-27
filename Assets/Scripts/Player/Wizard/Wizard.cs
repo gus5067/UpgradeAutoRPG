@@ -79,6 +79,7 @@ public class Wizard : Player
 
     public void FireAttack(GameObject target)
     {
+        
         if(target.GetComponent<Monster>().hitState != Monster.HitState.Burn)
         {
             StartCoroutine(WizardAttackRoutine(target));
