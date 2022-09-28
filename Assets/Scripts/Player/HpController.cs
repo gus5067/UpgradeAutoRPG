@@ -55,6 +55,29 @@ public class HpController : MonoBehaviour
         hpPlayer.onChangeHp += OnChangeHp;
         hpPlayer.onChangeDie += OnChangeDie;
     }
+
+    private void OnEnable()
+    {
+        if (WeaponManager.Instance.weaponValue > 15)
+        {
+            initHp += 200;
+            hp += 200;
+        }
+        else if (WeaponManager.Instance.weaponValue > 10)
+        {
+            initHp += 100;
+            hp += 100;
+        }
+        else if (WeaponManager.Instance.weaponValue > 5)
+        {
+            initHp += 50;
+            hp += 50;
+        }
+        else
+        {
+            return;
+        }
+    }
     private void Start()
     {
         preHp = hp;

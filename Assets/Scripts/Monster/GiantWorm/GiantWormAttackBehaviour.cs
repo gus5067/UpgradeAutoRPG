@@ -21,6 +21,7 @@ public class GiantWormAttackBehaviour : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         var WormShot = ObjectPooling.GetWormObject();
+        monster.MonsterAttackSound();
         WormShot.transform.position = monster.ShotPoint.position;
     }
 

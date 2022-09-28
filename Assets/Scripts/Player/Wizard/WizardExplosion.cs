@@ -16,7 +16,15 @@ public class WizardExplosion : StateMachineBehaviour
 
         if (viewDetector.target != null)
         {
-            obj = Instantiate(wizard.skills[4], viewDetector.target.transform);
+            if(viewDetector.target.activeSelf)
+            {
+                obj = Instantiate(wizard.skills[4], viewDetector.target.transform);
+            }
+            else
+            {
+                wizard.hpController.OnChangeMp(wizard.hpController.initMp * 0.5f);
+                return;
+            }
         }
 
 

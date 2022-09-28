@@ -133,7 +133,7 @@ public class StageManager : MonoBehaviour
 
     private void StageCheck()
     {
-        if(monsterCount == 0)
+        if(monsterCount == 0 && GameManager.Instance.curState == GameManager.State.Normal)
         {
             onStageEnd?.Invoke(true); //몬스터가 없으면 트루로 보냄
             if(!isEnd)

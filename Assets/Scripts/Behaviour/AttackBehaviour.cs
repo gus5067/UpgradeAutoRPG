@@ -8,8 +8,10 @@ public class AttackBehaviour : StateMachineBehaviour
     public int damage;
     private IDamageable target;
     private ViewDetector viewDetector;
+    private Monster monster;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        monster = animator.GetComponentInParent<Monster>();
         animator.GetComponentInParent<monsterHpController>().OnChangeMp(1);
         animator.speed = animator.GetComponentInParent<Monster>().attackTime + 1f;
         viewDetector = animator.GetComponentInParent<ViewDetector>();
@@ -19,17 +21,9 @@ public class AttackBehaviour : StateMachineBehaviour
             target = viewDetector.target.GetComponent<IDamageable>();
             if (target != null)
             {
+                monster.MonsterAttackSound();
                 target.HitDamage(damage);
             }
         }
     }
-
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-    }
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-
-    }
-    
 }

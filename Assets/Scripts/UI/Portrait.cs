@@ -20,8 +20,18 @@ public class Portrait : MonoBehaviour
 
     public void OnChangeHp(int damage)
     {
-        animator.SetTrigger("Hit");
-        StartCoroutine(BackgroundColor());
+        if(player.hpController.hp > 0)
+        {
+            animator.SetTrigger("Hit");
+            StartCoroutine(BackgroundColor());
+        }
+        else
+        {
+            animator.SetTrigger("Die");
+            animator.SetBool("isDie", true);
+            Background.color = Color.black;
+        }
+      
     }
 
     IEnumerator BackgroundColor()

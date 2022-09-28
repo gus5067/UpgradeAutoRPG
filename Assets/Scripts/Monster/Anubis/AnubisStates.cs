@@ -254,6 +254,7 @@ namespace AnubisStates
                 Owner.animator.SetTrigger("Die");
                 Owner.DropItem();
                 Owner.DieCount();
+                StageMapController.Instance.questTrigger[1] = true;
                 Owner.characterController.enabled = false;
                 Owner.Die(1f);
             }

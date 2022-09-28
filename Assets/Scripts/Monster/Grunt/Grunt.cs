@@ -9,6 +9,7 @@ public class Grunt : Monster,IDamageable
 
     private void Awake()
     {
+        curAudio = GetComponent<AudioSource>();
         _hpController = GetComponent<monsterHpController>();
         _animator = GetComponentInChildren<Animator>();
         _characterController = GetComponent<CharacterController>();

@@ -16,6 +16,7 @@ public class Anubis : Monster
 
     private void Awake()
     {
+        curAudio = GetComponent<AudioSource>();
         _hpController = GetComponent<monsterHpController>();
         _animator = GetComponentInChildren<Animator>();
         _characterController = GetComponent<CharacterController>();

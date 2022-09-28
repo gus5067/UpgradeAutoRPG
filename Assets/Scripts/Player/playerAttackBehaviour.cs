@@ -33,15 +33,15 @@ public class playerAttackBehaviour : StateMachineBehaviour
                         target.HitDamage(damage);
                         break;
                     case 1:
-                        target.HitDamage(damage);
-                        animator.GetComponentInParent<IDamageable>().HitDamage(-damage/4);
+                        target.HitDamage(attackController.minDamage);
+                        animator.GetComponentInParent<IDamageable>().HitDamage(-attackController.minDamage / 4);
                         if(animator.GetComponentInParent<HpController>().hp >= animator.GetComponentInParent<HpController>().initHp)
                         {
                             animator.GetComponentInParent<HpController>().hp = animator.GetComponentInParent<HpController>().initHp;
                         }
                         break;
                     case 2:
-                        target.HitDamage(damage * 2);
+                        target.HitDamage(attackController.maxDamage);
                         break;
                 }
                 

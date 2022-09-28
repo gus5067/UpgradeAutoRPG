@@ -254,7 +254,6 @@ namespace SerpentStates
                 isDie = false;
                 Owner.characterController.enabled = false;
                 Owner.animator.SetTrigger("Die");
-                StageMapController.Instance.questTrigger[1] = true;
                 Owner.DropItem();
                 Owner.DieCount();
                 Owner.Die(1f);

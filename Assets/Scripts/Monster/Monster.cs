@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+
+[RequireComponent(typeof(AudioSource))]
 public abstract class Monster : MonoBehaviour,IDamageable,ICanChangeTarget
 {
     public enum HitState { Normal, Frozen, Burn }
@@ -13,6 +15,11 @@ public abstract class Monster : MonoBehaviour,IDamageable,ICanChangeTarget
 
     [SerializeField]
     protected DropItemData dropItemData;
+
+    [SerializeField]
+    protected AudioClip[] monsterSoundClips;
+
+    protected AudioSource curAudio;
 
     [SerializeField]
     protected LayerMask _targetLayerMask;
@@ -40,6 +47,7 @@ public abstract class Monster : MonoBehaviour,IDamageable,ICanChangeTarget
     protected monsterHpController _hpController;
     public monsterHpController hpController { get { return _hpController; } }
 
+    public event UnityAction onMonsterSound;
 
     public bool isGround;
     public void Die(float time)
@@ -52,7 +60,12 @@ public abstract class Monster : MonoBehaviour,IDamageable,ICanChangeTarget
         onChangeDie?.Invoke();
         gameObject.SetActive(false);
     }
-
+    public void MonsterAttackSound()
+    {
+        curAudio.clip = monsterSoundClips[Random.Range(0, monsterSoundClips.Length)];
+        curAudio.Play();
+        onMonsterSound?.Invoke();
+    }
     protected void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

@@ -38,10 +38,12 @@ public class playerSkill : StateMachineBehaviour
                 break;
             case 2:
                 colliders = Physics.OverlapSphere(player.transform.position + Vector3.up, 6, 1 << 6);
-                GameObject target = colliders[0].gameObject;
-                GameObject skillobj = Instantiate(player.playerSkill[num], target.transform.position, Quaternion.identity);
-                skillobj.transform.SetParent(target.transform);
-                target.GetComponent<Monster>().HitDamage(WeaponManager.Instance.maxDamage * 4);
+                foreach (var collider in colliders)
+                {
+                    GameObject skillobj = Instantiate(player.playerSkill[num], collider.transform.position, Quaternion.identity);
+                    skillobj.transform.SetParent(collider.transform);
+                    collider.GetComponent<Monster>().HitDamage(WeaponManager.Instance.maxDamage* 2);
+                }
                 break;
 
         }

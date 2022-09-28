@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swordName: "\uC804\uC0AC\uC758 \uAC80"
   minDamage: 10
-  maxDamage: 30
+  maxDamage: 20
   attackSpeed: 1.5
