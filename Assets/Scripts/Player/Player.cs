@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+[RequireComponent(typeof(AudioSource))]
 public abstract class Player : MonoBehaviour,IDamageable,ICanChangeTarget
 {
     public enum State { Idle, Trace, Attack, Stun, Run, Skill, Die }
@@ -14,7 +14,6 @@ public abstract class Player : MonoBehaviour,IDamageable,ICanChangeTarget
     [SerializeField]
     protected AudioClip[] clips;
 
-    [SerializeField]
     protected AudioSource curAudio;
 
     [SerializeField, Range(0f, 10f)]
@@ -84,6 +83,11 @@ public abstract class Player : MonoBehaviour,IDamageable,ICanChangeTarget
         {
             return;
         }
+    }
+    public void AttackSound()
+    {
+        curAudio.clip = clips[Random.Range(0, clips.Length)];
+        curAudio.Play();
     }
     protected virtual void OnDrawGizmosSelected()
     {

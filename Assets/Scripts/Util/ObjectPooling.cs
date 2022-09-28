@@ -37,7 +37,6 @@ public class ObjectPooling : MonoBehaviour
             wormShotQueue.Enqueue(CreateNewWormShot());
         }
     }
-
     private Arrow CreateNewArrow()
     {
         var newObj = Instantiate(arrowPrefab).GetComponent<Arrow>();

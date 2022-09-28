@@ -172,6 +172,7 @@ namespace ArcherStates
             if (isAttacking == false)
             {
                 Owner.StartCoroutine(AttackTime(Owner));
+              
             }
         }
 
@@ -182,10 +183,13 @@ namespace ArcherStates
 
         IEnumerator AttackTime(Archer Owner)
         {
+            isAttacking = true;
             int randomNum = Random.Range(1, 3);
+            Owner.AttackSound();
             Owner.animator.SetTrigger("Attack");
             Owner.animator.SetInteger("randomAttack", randomNum);
             yield return new WaitForSeconds(1.0f / Owner.attackController.attackSpeed);
+            isAttacking = false;
             Owner.ChangeState(Archer.State.Idle);
         }
     }

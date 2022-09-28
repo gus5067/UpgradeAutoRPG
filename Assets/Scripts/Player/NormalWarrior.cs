@@ -17,7 +17,7 @@ public class NormalWarrior : Player,IDamageable,IStunable
 
     private void Awake()
     {
-        curAudio = GetComponent<AudioSource>();
+        this.curAudio = GetComponent<AudioSource>();
         _attackController = GetComponent<AttackController>();
         _hpController = GetComponent<HpController>();
         _animator = GetComponentInChildren<Animator>();
@@ -65,21 +65,6 @@ public class NormalWarrior : Player,IDamageable,IStunable
        ChangeState(State.Stun);
     }
 
-    //public void Slash()
-    //{
-    //    Collider[] targets = Physics.OverlapSphere(transform.position, 15f, 6);
-    //    if (targets.Length > 0)
-    //    {
-    //        for (int i = 0; i < targets.Length; i++)
-    //        {
-    //            Vector3 dirToTarget = (targets[i].transform.position - transform.position).normalized;
-    //            if (Vector3.Dot(transform.forward, dirToTarget) < Mathf.Cos(120 * 0.5f * Mathf.Deg2Rad))
-    //            {
-    //                Debug.Log("타겟이 시야 밖");
-    //                continue; // 내적값이 작다는 것은 시야각보다 밖에 있다는 것 (코사인은 각도가 커질수록 값이 작아짐)
-    //            }
-    //            targets[i].GetComponent<Monster>().HitDamage(WeaponManager.Instance.minDamage * 5);
-    //        }
-    //    }
-    //}
+
+
 }

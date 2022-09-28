@@ -16,6 +16,7 @@ public class Archer : Player,IStunable
     public bool isStun;
     private void Awake()
     {
+        this.curAudio = GetComponent<AudioSource>();
         _attackController = GetComponent<AttackController>();
         _hpController = GetComponent<HpController>();
         _animator = GetComponentInChildren<Animator>();

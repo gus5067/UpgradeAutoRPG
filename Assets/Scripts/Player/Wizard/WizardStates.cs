@@ -187,6 +187,7 @@ namespace WizardStates
         IEnumerator AttackTime(Wizard Owner)
         {
             isAttacking = true;
+            Owner.AttackSound();
             Owner.animator.SetTrigger("Attack");
             yield return new WaitForSeconds(3.0f / Owner.attackController.attackSpeed);
             Owner.animator.ResetTrigger("Attack");

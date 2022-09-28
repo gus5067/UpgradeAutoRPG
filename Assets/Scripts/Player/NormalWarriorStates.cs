@@ -157,6 +157,7 @@ namespace NormalWarriorStates
             if(isAttacking == false)
             {
                 Owner.StartCoroutine(AttackTime(Owner));
+           
             }
         }
 
@@ -167,10 +168,13 @@ namespace NormalWarriorStates
 
         IEnumerator AttackTime(NormalWarrior Owner)
         {
+            isAttacking = true;
             int randomNum = Random.Range(1, 6);
+            Owner.AttackSound();
             Owner.animator.SetTrigger("Attack");
             Owner.animator.SetInteger("randomAttack", randomNum);
             yield return new WaitForSeconds(1.0f/Owner.attackController.attackSpeed);
+            isAttacking = false;
             Owner.ChangeState(NormalWarrior.State.Idle);
         }
     }
