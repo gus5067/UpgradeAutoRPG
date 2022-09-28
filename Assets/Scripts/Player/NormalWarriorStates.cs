@@ -170,7 +170,6 @@ namespace NormalWarriorStates
         {
             isAttacking = true;
             int randomNum = Random.Range(1, 6);
-            Owner.AttackSound();
             Owner.animator.SetTrigger("Attack");
             Owner.animator.SetInteger("randomAttack", randomNum);
             yield return new WaitForSeconds(1.0f/Owner.attackController.attackSpeed);

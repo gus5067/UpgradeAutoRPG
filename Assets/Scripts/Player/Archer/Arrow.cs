@@ -19,13 +19,13 @@ public class Arrow : MonoBehaviour
 
         transform.rotation = rot;
 
-
+        body.AddForce(transform.forward * 25f, ForceMode.Impulse);
     }
 
     private void Start()
     {
         StartCoroutine(ArrowRoutine());
-        body.AddForce(transform.forward * 25f,ForceMode.Impulse);
+        
     }
    
 

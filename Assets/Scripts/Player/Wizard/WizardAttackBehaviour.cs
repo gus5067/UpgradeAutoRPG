@@ -17,6 +17,7 @@ public class WizardAttackBehaviour : StateMachineBehaviour
         viewDetector.FindTarget();
         if(viewDetector.target != null)
         {
+            wizard.AttackSound();
             wizard.FireAttack(viewDetector.target);
         }
     }

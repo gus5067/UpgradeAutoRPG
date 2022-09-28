@@ -16,6 +16,7 @@ public class Wizard : Player
     public bool isShieldCool = false;
     private void Awake()
     {
+        this.curAudio = GetComponent<AudioSource>();
         _attackController = GetComponent<AttackController>();
         _hpController = GetComponent<HpController>();
         _animator = GetComponentInChildren<Animator>();
@@ -94,10 +95,10 @@ public class Wizard : Player
         target.hitState = Monster.HitState.Burn;
         for (int i = 0; i < 10; i++)
         {
-            if (monster == null)
+            if (monster.activeSelf == false)
             {
                 Destroy(fire.gameObject);
-                yield return null;
+                break;
             }
             target?.HitDamage(WeaponManager.Instance.minDamage/4);
             yield return new WaitForSeconds(1f);

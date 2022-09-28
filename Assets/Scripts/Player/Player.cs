@@ -47,6 +47,7 @@ public abstract class Player : MonoBehaviour,IDamageable,ICanChangeTarget
     public HpController hpController { get { return _hpController; } }
     public event UnityAction<int> onChangeHp;
     public event UnityAction onChangeDie;
+    public event UnityAction onWeaponSound;
     public void HitDamage(int damage)
     {
         onChangeHp?.Invoke(damage);
@@ -88,6 +89,7 @@ public abstract class Player : MonoBehaviour,IDamageable,ICanChangeTarget
     {
         curAudio.clip = clips[Random.Range(0, clips.Length)];
         curAudio.Play();
+        onWeaponSound?.Invoke();
     }
     protected virtual void OnDrawGizmosSelected()
     {

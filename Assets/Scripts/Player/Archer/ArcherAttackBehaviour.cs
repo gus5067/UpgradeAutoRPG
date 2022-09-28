@@ -8,8 +8,8 @@ public class ArcherAttackBehaviour : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
         archer = animator.GetComponentInParent<Archer>();
+        archer.AttackSound();
         archer.hpController.OnChangeMp(1);
         var Arrow = ObjectPooling.GetObject();
 

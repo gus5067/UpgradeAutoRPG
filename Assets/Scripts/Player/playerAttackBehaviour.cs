@@ -10,8 +10,10 @@ public class playerAttackBehaviour : StateMachineBehaviour
     private AttackController attackController;
     private int damage;
     private TrailRenderer trailRenderer;
+    private Player player;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        player = animator.GetComponentInParent<Player>();
         animator.GetComponentInParent<HpController>().OnChangeMp(1);
         trailRenderer = animator.GetComponentInParent<NormalWarrior>().trailRenderer;
         trailRenderer.enabled = true;
@@ -23,6 +25,7 @@ public class playerAttackBehaviour : StateMachineBehaviour
             target = viewDetector.target.GetComponent<IDamageable>();
             if (target != null)
             {
+                player.AttackSound();
                 damage = Random.Range(attackController.minDamage, attackController.maxDamage + 1);
                 switch (WeaponManager.Instance.WeaponStateNum)
                 {

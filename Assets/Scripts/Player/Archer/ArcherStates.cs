@@ -165,6 +165,18 @@ namespace ArcherStates
         private bool isAttacking;
         public override void Enter(Archer Owner)
         {
+            GameObject attackTarget;
+            Collider[] attackTargets = Physics.OverlapSphere(Owner.transform.position, Owner.attackRange, Owner.targetLayerMask);
+            if (attackTargets.Length > 0)
+            {
+                attackTarget = Owner.ChangeTarget(attackTargets, true).gameObject;
+                Owner.transform.LookAt(new Vector3(attackTarget.transform.position.x, Owner.transform.position.y, attackTarget.transform.position.z));
+                return;
+            }
+            else
+            {
+                attackTarget = null;
+            }
         }
 
         public override void Update(Archer Owner)
@@ -185,7 +197,6 @@ namespace ArcherStates
         {
             isAttacking = true;
             int randomNum = Random.Range(1, 3);
-            Owner.AttackSound();
             Owner.animator.SetTrigger("Attack");
             Owner.animator.SetInteger("randomAttack", randomNum);
             yield return new WaitForSeconds(1.0f / Owner.attackController.attackSpeed);

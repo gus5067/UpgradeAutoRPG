@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172ebc71602794a40bfbd530cc5a178c, type: 3}
+  m_Name: FinalMonsters
+  m_EditorClassIdentifier: 
+  monstersPrefab:
+  - {fileID: 3558737215664726094, guid: 811c10577859b4442a668f260a15d01c, type: 3}
+  - {fileID: 3558737215664726094, guid: 811c10577859b4442a668f260a15d01c, type: 3}
+  - {fileID: 3558737215664726094, guid: d4ceb2bec854df3449b7d43e702a51ad, type: 3}
+  - {fileID: 7976870357471896194, guid: d480c2e68a0857541a314aba815b180c, type: 3}
+  - {fileID: 3558737215664726094, guid: d4ceb2bec854df3449b7d43e702a51ad, type: 3}
+  - {fileID: 7976870357471896194, guid: d480c2e68a0857541a314aba815b180c, type: 3}
+  - {fileID: 916335320934365836, guid: 504b7660790783a4aa96f60776d49775, type: 3}
+  - {fileID: 916335320934365836, guid: 504b7660790783a4aa96f60776d49775, type: 3}
+  - {fileID: 916335320934365836, guid: 0c19409cb9cc30148af35ad3221dfea2, type: 3}
+  - {fileID: 916335320934365836, guid: 0c19409cb9cc30148af35ad3221dfea2, type: 3}
+  - {fileID: 3695343289938160501, guid: 3605f99b31603104d8cdc85188ee63c0, type: 3}
+  - {fileID: 3695343289938160501, guid: 3605f99b31603104d8cdc85188ee63c0, type: 3}
+  - {fileID: 2838209462297247535, guid: 73d24f2cff142ab4ebb1984a0e7a9062, type: 3}
+  - {fileID: 2838209462297247535, guid: 73d24f2cff142ab4ebb1984a0e7a9062, type: 3}
+  - {fileID: 3563908216969271341, guid: ac7a63e709c5b7645a5385fd3ed88205, type: 3}
+  - {fileID: 7029180006006265717, guid: 86a5105024b0b884ab1cec63617ec5d3, type: 3}
+  stageNum: 5
+  roundNum: 1
