@@ -1857,7 +1857,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uCE58\uD2B8\uD0A4 \uBC84\uD2BC"
+  m_text: "\uBCF4\uC11D \uAD50\uD658"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b448f677238cf144da0b349fc039e6a9, type: 2}
   m_sharedMaterial: {fileID: -3819175896092575437, guid: b448f677238cf144da0b349fc039e6a9, type: 2}
@@ -2601,7 +2601,7 @@ GameObject:
   - component: {fileID: 949283845}
   - component: {fileID: 949283844}
   m_Layer: 5
-  m_Name: CheatButton
+  m_Name: ChangeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2745,7 +2745,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 949283844}
         m_TargetAssemblyTypeName: ChangeSceneButton, Assembly-CSharp
-        m_MethodName: CheatOn
+        m_MethodName: ChangeGem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

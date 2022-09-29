@@ -27,14 +27,16 @@ public class playerSkill : StateMachineBehaviour
                 }
                 break;
             case 1:
+                int hitDamage = 0;
                 player.playerSkill[num].SetActive(true);
                 colliders = Physics.OverlapSphere(player.transform.position + Vector3.up, 6, 1 << 6);
 
                 foreach (var collider in colliders)
                 {
                     collider.GetComponent<Monster>().HitDamage(WeaponManager.Instance.minDamage * 2);
-                    player.HitDamage(-WeaponManager.Instance.maxDamage/2);
+                    hitDamage += WeaponManager.Instance.maxDamage/2;
                 }
+                player.HitDamage(-hitDamage);
                 break;
             case 2:
                 colliders = Physics.OverlapSphere(player.transform.position + Vector3.up, 6, 1 << 6);

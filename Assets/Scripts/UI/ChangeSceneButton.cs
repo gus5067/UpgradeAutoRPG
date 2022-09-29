@@ -62,10 +62,18 @@ public class ChangeSceneButton : MonoBehaviour
         SceneManager.LoadScene("CharacterTest");
 
     }
-    public void CheatOn()
+    public void ChangeGem()
     {
-        Debug.Log("치트키 사용");
-        GameManager.Instance.gameMoney += 1000;
-        GameManager.Instance.gameGem += 10;
+        Debug.Log("젬 교환");
+        if(GameManager.Instance.gameGem > 0)
+        {
+            GameManager.Instance.gameGem -= 1;
+            GameManager.Instance.gameMoney += 500;
+        }
+        else
+        {
+            Debug.Log("젬이 없음");
+        }
+       
     }
 }

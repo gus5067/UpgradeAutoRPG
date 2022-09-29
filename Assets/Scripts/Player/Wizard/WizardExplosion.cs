@@ -29,11 +29,15 @@ public class WizardExplosion : StateMachineBehaviour
 
 
         Collider[] targets = Physics.OverlapSphere(obj.transform.position, 5f, 1 << 6);
-        foreach(var target in targets)
+        if(targets.Length > 0)
         {
-            Monster monster = target.GetComponent<Monster>();
-            monster?.HitDamage(WeaponManager.Instance.maxDamage * 2);
+            foreach (var target in targets)
+            {
+                Monster monster = target.GetComponent<Monster>();
+                monster?.HitDamage(WeaponManager.Instance.maxDamage * 2);
+            }
         }
+       
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

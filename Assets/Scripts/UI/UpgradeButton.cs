@@ -26,14 +26,53 @@ public class UpgradeButton : MonoBehaviour
     }
     public void ButtonClick()
     {
-        if(GameManager.Instance.gameMoney >= WeaponManager.Instance.weaponValue * 100)
+        if(WeaponManager.Instance.weaponValue > 15)
         {
-            GameManager.Instance.gameMoney -= WeaponManager.Instance.weaponValue * 100;
+            if (GameManager.Instance.gameMoney >= WeaponManager.Instance.weaponValue * 500)
+            {
+                GameManager.Instance.gameMoney -= WeaponManager.Instance.weaponValue * 500;
+            }
+            else
+            {
+                Debug.Log("돈이 부족합니다");
+                return;
+            }
+        }
+        else if(WeaponManager.Instance.weaponValue > 10)
+        {
+            if (GameManager.Instance.gameMoney >= WeaponManager.Instance.weaponValue * 300)
+            {
+                GameManager.Instance.gameMoney -= WeaponManager.Instance.weaponValue * 300;
+            }
+            else
+            {
+                Debug.Log("돈이 부족합니다");
+                return;
+            }
+        }
+        else if(WeaponManager.Instance.weaponValue >5)
+        {
+            if (GameManager.Instance.gameMoney >= WeaponManager.Instance.weaponValue * 200)
+            {
+                GameManager.Instance.gameMoney -= WeaponManager.Instance.weaponValue * 200;
+            }
+            else
+            {
+                Debug.Log("돈이 부족합니다");
+                return;
+            }
         }
         else
         {
-            Debug.Log("돈이 부족합니다");
-            return;
+            if (GameManager.Instance.gameMoney >= WeaponManager.Instance.weaponValue * 100)
+            {
+                GameManager.Instance.gameMoney -= WeaponManager.Instance.weaponValue * 100;
+            }
+            else
+            {
+                Debug.Log("돈이 부족합니다");
+                return;
+            }
         }
         audioManager.PlayerEffectSound(audioManager.audioClips[1]);
         StartCoroutine(UpgradeRoutine());  
