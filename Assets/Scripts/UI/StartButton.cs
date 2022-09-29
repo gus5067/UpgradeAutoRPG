@@ -11,6 +11,8 @@ public class StartButton : MonoBehaviour
 
     private AudioSource curAudio;
     private Button button;
+    [SerializeField]
+    private Image soundeOption;
     private void Awake()
     {
         curAudio = GetComponent<AudioSource>();
@@ -25,6 +27,20 @@ public class StartButton : MonoBehaviour
     {
         curAudio.clip = auClip[1];
         curAudio.Play();
+    }
+
+    public void OptionEnter()
+    {
+        curAudio.clip = auClip[0];
+        curAudio.Play();
+        soundeOption.gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void OptionExit()
+    {
+        Time.timeScale = 1;
+        soundeOption.gameObject.SetActive(false);
     }
     IEnumerator StartRoutine()
     {

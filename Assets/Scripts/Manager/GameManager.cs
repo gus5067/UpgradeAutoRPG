@@ -29,6 +29,10 @@ public class GameManager : Singleton<GameManager>
 
     private int curMoney;
     private int curGem;
+
+    public float curBGM = 1;
+    public float curSFX = 1;
+    public float curVoice = 1;
     private void Start()
     {
         curMoney = gameMoney;
