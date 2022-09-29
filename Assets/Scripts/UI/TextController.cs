@@ -54,11 +54,13 @@ public class TextController : MonoBehaviour
     {
         if (result)
         {
+            uimanager.stageResultText.transform.SetAsLastSibling();
             uimanager.stageResultText.color = Color.green;
             uimanager.stageResultText.text = "스테이지 클리어!!";
         }
         else if(!result)
         {
+            uimanager.stageResultText.transform.SetAsLastSibling();
             uimanager.stageResultText.color = Color.red;
             uimanager.stageResultText.text = "스테이지 실패!";
         }

@@ -23,7 +23,7 @@ public class WeaponTextController : MonoBehaviour
         ChangeColor();
         weaponNameText.text = WeaponManager.Instance.swordName;
         weaponValueText.text = "+" + WeaponManager.Instance.weaponValue.ToString();
-        weaponDamageText.text = "Damage : " + WeaponManager.Instance.minDamage + " ~ " + WeaponManager.Instance.maxDamage;
+        weaponDamageText.text = "공격력 : " + WeaponManager.Instance.minDamage + " ~ " + WeaponManager.Instance.maxDamage;
 
     }
 
@@ -47,12 +47,12 @@ public class WeaponTextController : MonoBehaviour
             case 1:
                 weaponNameText.color = Color.red;
                 weaponSpecialText.color = Color.red;
-                weaponSpecialText.text = "흡혈 데미지";
+                weaponSpecialText.text = "흡혈 효과";
                 break;
             case 2:
                 weaponNameText.color = Color.gray;
                 weaponSpecialText.color = Color.gray;
-                weaponSpecialText.text = "두 배 데미지";
+                weaponSpecialText.text = "최대 데미지";
                 break;
 
         }

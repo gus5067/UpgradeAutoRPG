@@ -48,6 +48,7 @@ public class SoundButton : MonoBehaviour
 
     public void EnterOptionButton()
     {
+        SoundOption.transform.SetAsLastSibling();
         SoundOption.gameObject.SetActive(true);
         Time.timeScale = 0;
     }

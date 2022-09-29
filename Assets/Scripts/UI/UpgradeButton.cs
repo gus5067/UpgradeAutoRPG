@@ -145,7 +145,6 @@ public class UpgradeButton : MonoBehaviour
         {
             audioManager.PlayerEffectSound(audioManager.audioClips[4]);
             Debug.Log("특수 강화 실패");
-            WeaponManager.Instance.WeaponStateNum = 0;
             Debug.Log("무기 번호 : " + WeaponManager.Instance.WeaponStateNum);
         }
     }
