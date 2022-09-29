@@ -9,8 +9,10 @@ public class GiantWormSkill : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
     {
+        
         controller = animator.GetComponentInParent<CharacterController>();
         worm = animator.GetComponentInParent<GiantWorm>();
+        worm.GiantWormSkill(true);
         worm.gameObject.layer = 8;
     }
 

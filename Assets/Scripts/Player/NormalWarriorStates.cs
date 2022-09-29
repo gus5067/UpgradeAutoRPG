@@ -30,7 +30,7 @@ namespace NormalWarriorStates
 
         public void CheckDie(NormalWarrior Owner)
         {
-           
+
             if (Owner.hpController.hp <= 0)
             {
                 isDie = true;
@@ -47,7 +47,6 @@ namespace NormalWarriorStates
             {
                 return;
             }
-
             
         }
 

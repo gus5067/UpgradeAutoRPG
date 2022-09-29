@@ -20,7 +20,7 @@ public class SerpentRayBehaviour : StateMachineBehaviour
             serpent.Ray(true);
             Player target = view.target.GetComponent<Player>();
 
-            target?.HitDamage(70);
+            target?.HitDamage(100);
         }
   
     }

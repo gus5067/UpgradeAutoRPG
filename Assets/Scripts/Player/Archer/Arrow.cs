@@ -39,15 +39,19 @@ public class Arrow : MonoBehaviour
             ObjectPooling.ReturnObject(this);
         }
 
-        
+
     }
 
     IEnumerator ArrowRoutine()
     {
-        if(!this.gameObject.activeSelf)
+        yield return new WaitForSeconds(2.5f);
+        if (this.gameObject.activeSelf)
         {
-            yield return new WaitForSeconds(5f);
             ObjectPooling.ReturnObject(this);
+        }
+        else
+        {
+            yield return null;
         }
     }
 }

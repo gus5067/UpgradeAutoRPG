@@ -220,7 +220,6 @@ namespace GiantWormStates
         {
             isSkill = true;
             Owner.animator.SetTrigger("Skill");
-            Owner.GiantWormSkill(true);
             yield return new WaitForSeconds(3f);
             isSkill = false;
         }

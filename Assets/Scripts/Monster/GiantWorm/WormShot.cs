@@ -47,10 +47,14 @@ public class WormShot : MonoBehaviour
 
     IEnumerator WormShotRoutine()
     {
-        if (!this.gameObject.activeSelf)
+        yield return new WaitForSeconds(1.5f);
+        if (this.gameObject.activeSelf)
         {
-            yield return new WaitForSeconds(1f);
             ObjectPooling.ReturnWormObject(this);
+        }
+        else
+        {
+            yield return null;
         }
     }
 
