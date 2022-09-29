@@ -23,7 +23,7 @@ public class playerSkill : StateMachineBehaviour
 
                 foreach (var collider in colliders)
                 {
-                    collider.GetComponent<Monster>().HitDamage(WeaponManager.Instance.minDamage * 2);
+                    collider.GetComponent<Monster>().HitDamage(Random.Range(WeaponManager.Instance.minDamage,WeaponManager.Instance.maxDamage+1) * 2);
                 }
                 break;
             case 1:
@@ -32,8 +32,8 @@ public class playerSkill : StateMachineBehaviour
 
                 foreach (var collider in colliders)
                 {
-                    collider.GetComponent<Monster>().HitDamage(WeaponManager.Instance.maxDamage);
-                    player.HitDamage(-WeaponManager.Instance.maxDamage);
+                    collider.GetComponent<Monster>().HitDamage(WeaponManager.Instance.minDamage * 2);
+                    player.HitDamage(-WeaponManager.Instance.maxDamage/2);
                 }
                 break;
             case 2:

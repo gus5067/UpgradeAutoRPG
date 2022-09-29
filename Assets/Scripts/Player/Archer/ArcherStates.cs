@@ -29,7 +29,6 @@ namespace ArcherStates
                 CheckSkill(Owner);
                 CheckRunRange(Owner);
             }
-          
         }
 
         public void CheckDie(Archer Owner)
@@ -297,7 +296,7 @@ namespace ArcherStates
             Owner.animator.SetBool("isStun", true);
             Owner.animator.SetTrigger("Stun");
             yield return new WaitForSeconds(2f);
-            Owner.isStun = true;
+            Owner.isStun = false;
             Owner.animator.SetBool("isStun", false);
             Owner.ChangeState(Archer.State.Idle);
         }

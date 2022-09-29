@@ -34,7 +34,7 @@ public class playerAttackBehaviour : StateMachineBehaviour
                         break;
                     case 1:
                         target.HitDamage(attackController.minDamage);
-                        animator.GetComponentInParent<IDamageable>().HitDamage(-attackController.minDamage / 4);
+                        animator.GetComponentInParent<IDamageable>().HitDamage(-attackController.minDamage / 8);
                         if(animator.GetComponentInParent<HpController>().hp >= animator.GetComponentInParent<HpController>().initHp)
                         {
                             animator.GetComponentInParent<HpController>().hp = animator.GetComponentInParent<HpController>().initHp;

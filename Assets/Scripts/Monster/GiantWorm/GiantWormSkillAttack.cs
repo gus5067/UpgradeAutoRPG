@@ -18,6 +18,7 @@ public class GiantWormSkillAttack : StateMachineBehaviour
         Collider[] attackTargets = Physics.OverlapSphere(worm.gameObject.transform.position, worm.attackRange, worm.targetLayerMask);
         if (attackTargets.Length > 0)
         {
+            worm.GiantWormSkill(false);
             attackTarget = worm.ChangeTarget(attackTargets, true).gameObject;
             attackTarget.GetComponent<Transform>().position = attackTarget.transform.position + Vector3.up * 1.5f;
             IStunable target = attackTarget.GetComponent<IStunable>();

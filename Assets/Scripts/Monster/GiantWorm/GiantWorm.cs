@@ -6,7 +6,8 @@ public class GiantWorm : Monster, IDamageable
 {
     public enum State { Idle, Trace, Attack, Stun, Skill, Die }
     private StateMachine<State, GiantWorm> stateMachine;
-
+    [SerializeField]
+    private AudioClip[] wormSkillSounds;
     [SerializeField]
     private GameObject _shotPrefab;
 
@@ -49,10 +50,23 @@ public class GiantWorm : Monster, IDamageable
             isGround = false;
         }
     }
+
     public void ChangeState(State nextState)
     {
         stateMachine.ChangeState(nextState);
     }
 
-
+    public void GiantWormSkill(bool inOut)
+    {
+        if(inOut)
+        {
+            curAudio.clip = wormSkillSounds[0];
+            curAudio.Play();
+        }
+        else
+        {
+            curAudio.clip = wormSkillSounds[1];
+            curAudio.Play();
+        }
+    }
 }

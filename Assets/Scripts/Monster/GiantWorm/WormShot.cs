@@ -23,17 +23,20 @@ public class WormShot : MonoBehaviour
         {
             Vector3 Dir = viewDetector.target.transform.position - transform.position;
 
-            body.velocity = Dir.normalized * 10f;
+            body.velocity = Dir.normalized * 15f;
 
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(!Vfx.activeSelf)
+        if (!Vfx.activeSelf && Vfx.gameObject != null)
         {
             StartCoroutine(VfxRoutine());
         }
-        
+        else
+        {
+            return;
+        }
     }
 
     private void OnDrawGizmos()

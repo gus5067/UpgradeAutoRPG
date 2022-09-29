@@ -284,7 +284,7 @@ namespace WizardStates
             Owner.animator.SetBool("isStun", true);
             Owner.animator.SetTrigger("Stun");
             yield return new WaitForSeconds(2f);
-            Owner.isStun = true;
+            Owner.isStun = false;
             Owner.animator.SetBool("isStun", false);
             Owner.ChangeState(Wizard.State.Idle);
         }
