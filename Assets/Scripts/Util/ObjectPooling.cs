@@ -19,8 +19,8 @@ public class ObjectPooling : MonoBehaviour
     {
         instance = this;
 
-        StartPooling(10);
-        StartWormPooling(25);
+        StartPooling(50);
+        StartWormPooling(50);
     }
 
     private void StartPooling(int startCount)

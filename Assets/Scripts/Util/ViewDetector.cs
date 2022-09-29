@@ -32,6 +32,7 @@ public class ViewDetector : MonoBehaviour
             if (Vector3.Dot(transform.forward, dirToTarget) < Mathf.Cos(viewAngle * 0.5f * Mathf.Deg2Rad))
             {
                 Debug.Log("타겟이 시야 밖");
+                target = null;
                 continue; // 내적값이 작다는 것은 시야각보다 밖에 있다는 것 (코사인은 각도가 커질수록 값이 작아짐)
             }
 

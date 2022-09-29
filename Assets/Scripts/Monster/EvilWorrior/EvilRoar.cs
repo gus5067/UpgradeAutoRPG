@@ -13,9 +13,9 @@ public class EvilRoar : StateMachineBehaviour
         colliders = Physics.OverlapSphere(worrior.transform.position + Vector3.up, 7, 1 << 7);
         foreach (var target in colliders)
         {
-            target.GetComponent<Player>().HitDamage(40);
-            worrior.HitDamage(-40);
+            target.GetComponent<Player>().HitDamage(60);
         }
+        worrior.HitDamage(-60 * colliders.Length);
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
