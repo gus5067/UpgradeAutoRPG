@@ -22,7 +22,10 @@ public class StartButton : MonoBehaviour
     {
         StartCoroutine(StartRoutine());
     }
-
+    public void OnClickEnd()
+    {
+        Application.Quit();
+    }
     public void OnPointerEnter()
     {
         curAudio.clip = auClip[1];
