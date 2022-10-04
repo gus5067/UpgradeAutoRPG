@@ -33,7 +33,6 @@ public class GameManager : Singleton<GameManager>
     public float curSFX = 1;
     public float curVoice = 1;
 
-
     public Dictionary<string, int> gameCount = new Dictionary<string, int>();
 
     public void AddDictionary(string name)
@@ -53,17 +52,10 @@ public class GameManager : Singleton<GameManager>
         curMoney = gameMoney;
         curGem = gameGem;
 
- 
-
         //Scene scene = SceneManager.GetActiveScene();
-        //if (scene.name == "StageSelectTest")
+        //if (scene.name == "StartScene")
         //{
-        //    player = FindObjectOfType<PlayerNavMove>().gameObject;
-        //    if(characterPos != null)
-        //    {
-        //        player.transform.position = characterPos;
-        //        player.transform.rotation = Quaternion.Euler(characterRotation);
-        //    }
+        //    AddDictionary("게임 접속 횟수");
         //}
     }
 
