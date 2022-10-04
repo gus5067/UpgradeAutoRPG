@@ -17,7 +17,6 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     private GameObject[] companions;
 
-    [HideInInspector]
     public MonsterData monsterData;
 
     public event UnityAction<bool> onStageEnd;
@@ -138,7 +137,15 @@ public class StageManager : MonoBehaviour
             onStageEnd?.Invoke(true); //몬스터가 없으면 트루로 보냄
             if(!isEnd)
             {
-                StartCoroutine(StageRoutine());
+                if(monsterData.name == "FinalMonsters")
+                {
+                    Debug.Log("마지막 스테이지 클리어");
+                }
+                else
+                {
+                    StartCoroutine(StageRoutine());
+                }
+                
             }
         }
         else if(characterCount ==0)
