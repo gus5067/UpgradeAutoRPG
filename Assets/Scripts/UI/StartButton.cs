@@ -24,6 +24,7 @@ public class StartButton : MonoBehaviour
     }
     public void OnClickEnd()
     {
+        DataController.Instance.SaveData();
         Application.Quit();
     }
     public void OnPointerEnter()

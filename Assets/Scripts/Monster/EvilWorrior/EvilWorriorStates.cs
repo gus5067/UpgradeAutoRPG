@@ -9,6 +9,7 @@ namespace EvilWorriorStates
         private bool isDie = false;
         public override void Enter(EvilWorrior Owner)
         {
+
         }
 
         public override void Update(EvilWorrior Owner)
@@ -25,8 +26,6 @@ namespace EvilWorriorStates
         {
             CheckDie(Owner);
             CheckSkill(Owner);
-
-
         }
         public void CheckDie(EvilWorrior Owner)
         {

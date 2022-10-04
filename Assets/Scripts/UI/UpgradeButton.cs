@@ -90,7 +90,7 @@ public class UpgradeButton : MonoBehaviour
             Debug.Log("보석이 부족합니다");
             return;
         }
-        GameManager.Instance.AddDictionary("특수 강화 시도 횟수");
+        GameManager.Instance.AddDictionary("형질 변환 시도 횟수");
         audioManager.PlayerEffectSound(audioManager.audioClips[1]);
         StartCoroutine(SpeicalUpgradeRoutine());
     }
@@ -162,7 +162,7 @@ public class UpgradeButton : MonoBehaviour
         if (num >= 49)
         {
             Debug.Log("특수 강화 성공");
-            GameManager.Instance.AddDictionary("특수 강화 성공 횟수");
+            GameManager.Instance.AddDictionary("형질 변환 성공 횟수");
             audioManager.PlayerEffectSound(audioManager.audioClips[3]);
             WeaponManager.Instance.WeaponStateNum = Random.Range(1, 3);
             switch (WeaponManager.Instance.WeaponStateNum)
@@ -187,7 +187,7 @@ public class UpgradeButton : MonoBehaviour
         else
         {
             audioManager.PlayerEffectSound(audioManager.audioClips[4]);
-            Debug.Log("특수 강화 실패");
+            Debug.Log("형질 변환 실패");
             Debug.Log("무기 번호 : " + WeaponManager.Instance.WeaponStateNum);
         }
     }
