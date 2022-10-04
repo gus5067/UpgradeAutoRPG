@@ -60,8 +60,8 @@ public class DataController : Singleton<DataController>
     {
         if(File.Exists(SAVE_PATH + SAVE_FILE))
         {
-            string loadJason = File.ReadAllText(SAVE_PATH + SAVE_FILE);
-            saveData = JsonUtility.FromJson<SaveData>(loadJason);
+            string loadJson = File.ReadAllText(SAVE_PATH + SAVE_FILE);
+            saveData = JsonUtility.FromJson<SaveData>(loadJson);
 
             gameManager = FindObjectOfType<GameManager>();
             stageMapController = FindObjectOfType<StageMapController>();
