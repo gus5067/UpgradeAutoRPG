@@ -262,6 +262,7 @@ namespace FishManStates
             {
                 isDie = false;
                 Owner.animator.SetTrigger("Die");
+                GameManager.Instance.AddDictionary("어인잡은 횟수");
                 Owner.DropItem();
                 Owner.DieCount();
                 Owner.characterController.enabled = false;

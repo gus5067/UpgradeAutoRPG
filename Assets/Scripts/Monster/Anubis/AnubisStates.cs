@@ -252,6 +252,7 @@ namespace AnubisStates
             {
                 isDie = false;
                 Owner.animator.SetTrigger("Die");
+                GameManager.Instance.AddDictionary("아누비스잡은 횟수");
                 Owner.DropItem();
                 Owner.DieCount();
                 StageMapController.Instance.questTrigger[1] = true;

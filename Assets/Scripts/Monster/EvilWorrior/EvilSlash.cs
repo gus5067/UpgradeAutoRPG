@@ -23,6 +23,7 @@ public class EvilSlash : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         worrior.skillSlash.SetActive(false);
+        worrior.ChangeState(EvilWorrior.State.Idle);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

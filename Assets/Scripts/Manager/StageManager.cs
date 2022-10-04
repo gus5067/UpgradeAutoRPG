@@ -15,6 +15,9 @@ public class StageManager : MonoBehaviour
     private SkyBoxData skyBox;
 
     [SerializeField]
+    private GameObject ending; 
+
+    [SerializeField]
     private GameObject[] companions;
 
     public MonsterData monsterData;
@@ -113,7 +116,7 @@ public class StageManager : MonoBehaviour
             for (int i = 0; i < monsterData.monstersPrefab.Length; i++)
             {
                 Summon(i);
-                yield return new WaitForSeconds(6f);
+                yield return new WaitForSeconds(4f);
             }
         }
         else
@@ -123,7 +126,7 @@ public class StageManager : MonoBehaviour
             {
                 Summon(Random.Range(0,monsterData.monstersPrefab.Length), i);
                 i++;
-                yield return new WaitForSeconds(8f);
+                yield return new WaitForSeconds(5f);
             }
         }
        
@@ -139,7 +142,10 @@ public class StageManager : MonoBehaviour
             {
                 if(monsterData.name == "FinalMonsters")
                 {
+                    monsterCount = 1;
                     Debug.Log("마지막 스테이지 클리어");
+                    StartCoroutine(endingScene());
+                    return;
                 }
                 else
                 {
@@ -158,6 +164,11 @@ public class StageManager : MonoBehaviour
         }
     }
 
+    IEnumerator endingScene()
+    {
+        yield return new WaitForSeconds(1.5f);
+        ending.SetActive(true);
+    }
     IEnumerator StageRoutine()
     {
         isEnd = true;

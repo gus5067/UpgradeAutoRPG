@@ -225,6 +225,7 @@ namespace EvilWorriorStates
             {
                 isDie = false;
                 Owner.animator.SetTrigger("Die");
+                GameManager.Instance.AddDictionary("사악한 전사잡은 횟수");
                 Owner.animator.SetBool("isDie", true);
                 Owner.DropItem();
                 Owner.DieCount();

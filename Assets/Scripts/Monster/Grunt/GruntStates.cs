@@ -248,7 +248,12 @@ namespace GruntStates
                 if(Owner is GruntKing)
                 {
                     Debug.Log("첫 퀘스트 클리어");
+                    GameManager.Instance.AddDictionary("그런트 킹잡은 횟수");
                     StageMapController.Instance.questTrigger[0] = true;
+                }
+                else
+                {
+                    GameManager.Instance.AddDictionary("그런트잡은 횟수");
                 }
             }
             

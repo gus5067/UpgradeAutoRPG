@@ -12,7 +12,6 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField]
     public Vector3 characterRotation;
-
     public int curSkyBoxNum;
     //[SerializeField]
     //public Sword playerWeapon;
@@ -33,6 +32,22 @@ public class GameManager : Singleton<GameManager>
     public float curBGM = 1;
     public float curSFX = 1;
     public float curVoice = 1;
+
+
+    public Dictionary<string, int> gameCount = new Dictionary<string, int>();
+
+    public void AddDictionary(string name)
+    {
+        if(!gameCount.ContainsKey(name))
+        {
+            gameCount.Add(name, 1);
+        }
+        else
+        {
+            gameCount[name]++;
+        }
+        
+    }
     private void Start()
     {
         curMoney = gameMoney;

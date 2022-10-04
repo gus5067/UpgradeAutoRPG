@@ -252,6 +252,7 @@ namespace GiantWormStates
             {
                 isDie = false;
                 Owner.animator.SetTrigger("Die");
+                GameManager.Instance.AddDictionary("거대 모래괴수잡은 횟수");
                 Owner.DropItem();
                 Owner.DieCount();
                 Owner.characterController.enabled = false;

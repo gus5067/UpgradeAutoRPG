@@ -253,6 +253,7 @@ namespace SerpentStates
             {
                 isDie = false;
                 Owner.characterController.enabled = false;
+                GameManager.Instance.AddDictionary("º≠∆Ê∆Æ¿‚¿∫ »Ωºˆ");
                 Owner.animator.SetTrigger("Die");
                 Owner.DropItem();
                 Owner.DieCount();

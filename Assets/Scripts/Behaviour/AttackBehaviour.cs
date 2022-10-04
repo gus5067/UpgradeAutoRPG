@@ -18,6 +18,7 @@ public class AttackBehaviour : StateMachineBehaviour
         viewDetector.FindTarget();
         if (viewDetector.target != null)
         {
+            monster.gameObject.transform.LookAt(viewDetector.target.transform.position);
             target = viewDetector.target.GetComponent<IDamageable>();
             if (target != null)
             {

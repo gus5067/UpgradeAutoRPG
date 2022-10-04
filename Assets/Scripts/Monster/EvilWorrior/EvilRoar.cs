@@ -20,5 +20,6 @@ public class EvilRoar : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         worrior.skillRoar.SetActive(false);
+        worrior.ChangeState(EvilWorrior.State.Idle);
     }
 }

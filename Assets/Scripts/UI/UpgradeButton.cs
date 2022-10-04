@@ -74,6 +74,7 @@ public class UpgradeButton : MonoBehaviour
                 return;
             }
         }
+        GameManager.Instance.AddDictionary("강화 시도 횟수");
         audioManager.PlayerEffectSound(audioManager.audioClips[1]);
         StartCoroutine(UpgradeRoutine());  
     }
@@ -89,6 +90,7 @@ public class UpgradeButton : MonoBehaviour
             Debug.Log("보석이 부족합니다");
             return;
         }
+        GameManager.Instance.AddDictionary("특수 강화 시도 횟수");
         audioManager.PlayerEffectSound(audioManager.audioClips[1]);
         StartCoroutine(SpeicalUpgradeRoutine());
     }
@@ -127,6 +129,7 @@ public class UpgradeButton : MonoBehaviour
         if(num >= 5 * WeaponManager.Instance.weaponValue)
         {
             Debug.Log("강화 성공");
+            GameManager.Instance.AddDictionary("강화 성공 횟수");
             audioManager.PlayerEffectSound(audioManager.audioClips[3]);
             WeaponManager.Instance.weaponValue++;
             WeaponManager.Instance.minDamage += (int)(WeaponManager.Instance.weaponValue * 1.2f);
@@ -159,6 +162,7 @@ public class UpgradeButton : MonoBehaviour
         if (num >= 49)
         {
             Debug.Log("특수 강화 성공");
+            GameManager.Instance.AddDictionary("특수 강화 성공 횟수");
             audioManager.PlayerEffectSound(audioManager.audioClips[3]);
             WeaponManager.Instance.WeaponStateNum = Random.Range(1, 3);
             switch (WeaponManager.Instance.WeaponStateNum)
