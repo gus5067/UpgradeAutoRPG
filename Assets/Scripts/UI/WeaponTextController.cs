@@ -21,6 +21,21 @@ public class WeaponTextController : MonoBehaviour
     {
         WeaponManager.Instance.onChangeWeaponValue += OnChangeValue;
         ChangeColor();
+        switch (WeaponManager.Instance.WeaponStateNum)
+        {
+            case 0:
+                WeaponManager.Instance.swordName = "기본 전사의 검";
+
+                break;
+            case 1:
+                WeaponManager.Instance.swordName = "흡혈의 검";
+
+                break;
+            case 2:
+                WeaponManager.Instance.swordName = "강력한 전사의 검";
+                break;
+
+        }
         weaponNameText.text = WeaponManager.Instance.swordName;
         weaponValueText.text = "+" + WeaponManager.Instance.weaponValue.ToString();
         weaponDamageText.text = "공격력 : " + WeaponManager.Instance.minDamage + " ~ " + WeaponManager.Instance.maxDamage;

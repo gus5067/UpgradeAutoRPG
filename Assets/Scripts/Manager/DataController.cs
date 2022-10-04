@@ -36,6 +36,9 @@ public class DataController : Singleton<DataController>
 
         saveData.playerMoney = gameManager.gameMoney;
         saveData.playerGem = gameManager.gameGem;
+        saveData.Pos = gameManager.characterPos;
+        saveData.Rot = gameManager.characterRotation;
+
 
         saveData.mapTrigger = stageMapController.isTrigger;
         saveData.companionTrigger = stageMapController.isPlayerTrigger;
@@ -66,6 +69,9 @@ public class DataController : Singleton<DataController>
 
             gameManager.gameMoney = saveData.playerMoney;
             gameManager.gameGem = saveData.playerGem;
+            gameManager.characterPos = saveData.Pos;
+            gameManager.characterRotation = saveData.Rot;
+
 
             stageMapController.isTrigger = saveData.mapTrigger;
             stageMapController.isPlayerTrigger = saveData.companionTrigger;
