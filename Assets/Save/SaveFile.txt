@@ -1,1 +1,1 @@
-{"playerMoney":0,"playerGem":1,"weaponValue":2,"weaponStateNum":0,"weaponMinDamage":12,"weaponMaxDamage":23,"mapTrigger":[false,false,false,false],"companionTrigger":[false,false],"questTrigger":[false,false]}
+{"playerMoney":100000,"playerGem":10000,"weaponValue":2,"weaponStateNum":0,"weaponMinDamage":12,"weaponMaxDamage":23,"mapTrigger":[false,false,false,false],"companionTrigger":[false,false],"questTrigger":[false,false]}

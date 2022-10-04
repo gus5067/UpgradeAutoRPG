@@ -14,7 +14,19 @@ public class HpController : MonoBehaviour
     [SerializeField]
     private UIManager uiManager;
 
-    public float hp;
+    [SerializeField]
+    private float _hp;
+    public float hp { get { return _hp; } set {
+            if (_hp > initHp)
+            {
+                _hp = initHp;
+            }
+            else
+            {
+                _hp = value;
+            }
+            } }
+
 
     private float preHp;
 
