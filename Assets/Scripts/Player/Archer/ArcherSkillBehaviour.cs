@@ -24,9 +24,8 @@ public class ArcherSkillBehaviour : StateMachineBehaviour
 
         for (int i = 0; i < 9; i++)
         {
-            var Arrow = ObjectPooling.GetObject();
-            Arrow.transform.position = archer.shotPoint.position;
-            Arrow.Shoot(arrowDir[i]);
+            ObjectPooling.poolDic["Arrow"].GetPool(archer.shotPoint.position, Quaternion.LookRotation(arrowDir[i]));
+
         }
     }
     private Vector3 AngleToDir(float angle)
@@ -46,15 +45,4 @@ public class ArcherSkillBehaviour : StateMachineBehaviour
         archer.ChangeState(Archer.State.Idle);
     }
 
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
 }

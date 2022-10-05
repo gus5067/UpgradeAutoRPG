@@ -12,20 +12,11 @@ public class Arrow : MonoBehaviour
     {
         body = GetComponent<Rigidbody>();
     }
-    public void Shoot(Vector3 dir)
-    {
-        
-        Quaternion rot = Quaternion.LookRotation(dir);
-
-        transform.rotation = rot;
-
-        body.AddForce(transform.forward * 25f, ForceMode.Impulse);
-    }
 
     private void Start()
     {
+        body.AddForce(transform.forward * 25f, ForceMode.Impulse);
         StartCoroutine(ArrowRoutine());
-        
     }
    
 
@@ -36,7 +27,7 @@ public class Arrow : MonoBehaviour
             IDamageable target = other.gameObject.GetComponent<IDamageable>();
             target?.HitDamage(WeaponManager.Instance.minDamage);
 
-            ObjectPooling.ReturnObject(this);
+            ObjectPooling.poolDic["Arrow"].ReturnPool(this.gameObject);
         }
 
 
@@ -47,7 +38,7 @@ public class Arrow : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         if (this.gameObject.activeSelf)
         {
-            ObjectPooling.ReturnObject(this);
+            ObjectPooling.poolDic["Arrow"].ReturnPool(this.gameObject);
         }
         else
         {

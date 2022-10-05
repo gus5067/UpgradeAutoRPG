@@ -50,7 +50,7 @@ public class WormShot : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         if (this.gameObject.activeSelf)
         {
-            ObjectPooling.ReturnWormObject(this);
+            ObjectPooling.poolDic["WormShot"].ReturnPool(this.gameObject);
         }
         else
         {
@@ -68,7 +68,7 @@ public class WormShot : MonoBehaviour
             target?.HitDamage(10);
         }
         yield return new WaitForSeconds(0.5f);
-        ObjectPooling.ReturnWormObject(this);
+        ObjectPooling.poolDic["WormShot"].ReturnPool(this.gameObject);
     }
 
 

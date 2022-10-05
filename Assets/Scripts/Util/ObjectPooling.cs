@@ -1,106 +1,70 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using System.Threading;
+using UnityEngine.UIElements;
 
+[System.Serializable]
+public class ObjectPool
+{
+    public GameObject prafab;
+    public int initSize;
+
+    private GameObject parentsObj;
+
+    public Queue<GameObject> pool = new Queue<GameObject>();
+    public void Init()
+    {
+        parentsObj = new GameObject(prafab.name + "_Pool");
+        AddPool(initSize);
+    }
+    public void AddPool(int count = 1)
+    {
+        for(int i=0; i<count;i++)
+        {
+            GameObject temp = GameObject.Instantiate(prafab, parentsObj.transform);
+            temp.SetActive(false);
+            pool.Enqueue(temp);
+
+        }
+    }
+    public void GetPool(Vector3 pos, Quaternion rot)
+    {
+        GameObject temp = pool.Dequeue();
+
+        temp.transform.parent = null;
+        temp.transform.position = pos;
+        temp.transform.rotation = rot;
+        temp.SetActive(true);
+
+    }
+
+    public void ReturnPool(GameObject obj)
+    {
+        obj.SetActive(false);
+        obj.transform.parent = parentsObj.transform;
+        pool.Enqueue(obj);
+    }
+
+}
+
+[System.Serializable]
 public class ObjectPooling : MonoBehaviour
 {
-    public static ObjectPooling instance;
-
-    [SerializeField]
-    private GameObject arrowPrefab;
-
-    [SerializeField]
-    private GameObject WormShotPrefab;
-
-    Queue<Arrow> poolingObjectQueue = new Queue<Arrow>();
-
-    Queue<WormShot> wormShotQueue = new Queue<WormShot>();
-    private void Awake()
+    public ObjectPool[] pools;
+    public static Dictionary<string, ObjectPool> poolDic = new Dictionary<string, ObjectPool>();
+    private void Start()
     {
-        instance = this;
-
-        StartPooling(50);
-        StartWormPooling(50);
-    }
-
-    private void StartPooling(int startCount)
-    {
-        for(int i = 0; i < startCount; i++)
+        foreach(var pool in pools)
         {
-            poolingObjectQueue.Enqueue(CreateNewArrow());
+            pool.Init();
+            if(poolDic.ContainsKey(pool.prafab.name) == false)
+            {
+                poolDic.Add(pool.prafab.name, pool);
+            }
         }
     }
-    private void StartWormPooling(int startCount)
-    {
-        for (int i = 0; i < startCount; i++)
-        {
-            wormShotQueue.Enqueue(CreateNewWormShot());
-        }
-    }
-    private Arrow CreateNewArrow()
-    {
-        var newObj = Instantiate(arrowPrefab).GetComponent<Arrow>();
-        newObj.gameObject.SetActive(false);
-        newObj.transform.SetParent(transform);
-        return newObj;
-    }
-    private WormShot CreateNewWormShot()
-    {
-        var newObj = Instantiate(WormShotPrefab).GetComponent<WormShot>();
-        newObj.gameObject.SetActive(false);
-        newObj.transform.SetParent(transform);
-        return newObj;
-    }
-    public static Arrow GetObject()
-    {
-        if (instance.poolingObjectQueue.Count > 0)
-        {
-            var obj = instance.poolingObjectQueue.Dequeue();
-            obj.transform.SetParent(null);
-            obj.gameObject.SetActive(true);
-            return obj;
-        }
-        else
-        {
-            var newObj = instance.CreateNewArrow();
-            newObj.gameObject.SetActive(true);
-            newObj.transform.SetParent(null);
-            return newObj;
-        }
-    }
-
-    public static WormShot GetWormObject()
-    {
-        if (instance.wormShotQueue.Count > 0)
-        {
-            var obj = instance.wormShotQueue.Dequeue();
-            obj.transform.SetParent(null);
-            obj.gameObject.SetActive(true);
-            return obj;
-        }
-        else
-        {
-            var newObj = instance.CreateNewWormShot();
-            newObj.gameObject.SetActive(true);
-            newObj.transform.SetParent(null);
-            return newObj;
-        }
-    }
-
-
-    public static void ReturnObject(Arrow obj)
-    {
-        obj.gameObject.SetActive(false);
-        obj.transform.SetParent(instance.transform);
-        instance.poolingObjectQueue.Enqueue(obj);
-    }
-    public static void ReturnWormObject(WormShot obj)
-    {
-        obj.gameObject.SetActive(false);
-        obj.transform.SetParent(instance.transform);
-        instance.wormShotQueue.Enqueue(obj);
-    }
-
 
 
 }
