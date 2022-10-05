@@ -21,6 +21,7 @@ public class ObjectPool
     }
     public void AddPool(int count = 1)
     {
+        pool.Clear();
         for(int i=0; i<count;i++)
         {
             GameObject temp = GameObject.Instantiate(prafab, parentsObj.transform);
@@ -58,9 +59,15 @@ public class ObjectPooling : MonoBehaviour
     {
         foreach(var pool in pools)
         {
-            pool.Init();
             if(poolDic.ContainsKey(pool.prafab.name) == false)
             {
+                pool.Init();
+                poolDic.Add(pool.prafab.name, pool);
+            }
+            else
+            {
+                poolDic.Clear();
+                pool.Init();
                 poolDic.Add(pool.prafab.name, pool);
             }
         }
