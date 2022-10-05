@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using System.Threading;
-using UnityEngine.UIElements;
+
 
 [System.Serializable]
 public class ObjectPool
@@ -21,7 +19,6 @@ public class ObjectPool
     }
     public void AddPool(int count = 1)
     {
-        pool.Clear();
         for(int i=0; i<count;i++)
         {
             GameObject temp = GameObject.Instantiate(prafab, parentsObj.transform);
